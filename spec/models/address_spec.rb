@@ -59,7 +59,7 @@ describe Address do
     end
 
     it "should require a state if country has states" do
-      a = FactoryGirl.build( :address, :country => FactoryGirl.create( :country_with_states ), :state => nil )
+      a = FactoryGirl.build( :manual_address, :country => FactoryGirl.create( :country_with_states ), :state => nil )
       a.should_not be_valid
       a.errors.should include( :state )
     end
@@ -68,7 +68,7 @@ describe Address do
       c1 = FactoryGirl.create( :country_with_states )
       c2 = FactoryGirl.create( :country_with_states )
 
-      a = FactoryGirl.build( :address, :country => c1, :state => c2.states.last )
+      a = FactoryGirl.build( :manual_address, :country => c1, :state => c2.states.last )
 
       a.should_not be_valid
       a.errors.should include( :state )

@@ -10,7 +10,7 @@ class Address < ActiveRecord::Base
   validates :address1, :city, :postal_code, :addressable, :country, :presence => true
   validates :state, :presence => true, :if => Proc.new { |a| !a.country.nil? && a.country.has_states? }
 
-  validate :state_against_country, :unless => Proc.new { |a| a.state.nil? }
+  validate :state_against_country, :unless => Proc.new { |a| a.state.nil? || a.country.nil? }
 
   private
   def state_against_country
