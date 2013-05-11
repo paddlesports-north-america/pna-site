@@ -11,6 +11,91 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130511185920) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.string   "postal_code"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
+  add_index "addresses", ["country_id"], :name => "index_addresses_on_country_id"
+  add_index "addresses", ["state_id"], :name => "index_addresses_on_state_id"
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.string   "iso3"
+    t.string   "iso"
+    t.string   "iso_name"
+    t.string   "numcode"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "email_addresses", :force => true do |t|
+    t.string   "address"
+    t.string   "label"
+    t.integer  "emailable_id"
+    t.string   "emailable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "email_addresses", ["emailable_id", "emailable_type"], :name => "index_email_addresses_on_emailable_id_and_emailable_type"
+
+  create_table "members", :force => true do |t|
+    t.string   "bcu_number"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "gender"
+    t.date     "birthdate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
+
+  create_table "phone_numbers", :force => true do |t|
+    t.string   "label"
+    t.string   "number"
+    t.string   "ext"
+    t.integer  "phoneable_id"
+    t.string   "phoneable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "states", ["country_id"], :name => "index_states_on_country_id"
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",      :null => false
+    t.integer  "item_id",        :null => false
+    t.string   "event",          :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

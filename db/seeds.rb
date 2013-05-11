@@ -1,9 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-# Environment variables (ENV['...']) are set in the file config/application.yml.
-# See http://railsapps.github.io/rails-environment-variables.html
+default_dir = File.join( File.dirname( __FILE__ ), 'seeds' )
+
+# Seed countries
+require File.join( default_dir, 'countries.rb' )
+
+# Seed states
+require File.join( default_dir, 'states.rb' )
