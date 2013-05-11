@@ -61,6 +61,17 @@ describe Member do
     EmailAddress.exists?( eid ).should_not be_true
   end
 
+  it "should have and belong to many centers" do
+    m = FactoryGirl.build( :member )
+    m.should have_and_belong_to_many( :centers )
+  end
+
+  it "should have a valid factory with centers" do
+    m = FactoryGirl.create( :member_with_centers )
+    m.should be_valid
+    m.centers.should_not be_empty
+  end
+
   describe '#valid?' do
     it "should validate gender against GENDER constant values" do
       m = FactoryGirl.build( :member, :gender => Member::GENDER[ :male ] )

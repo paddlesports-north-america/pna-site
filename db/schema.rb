@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511185920) do
+ActiveRecord::Schema.define(:version => 20130511205643) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address1"
@@ -29,6 +29,23 @@ ActiveRecord::Schema.define(:version => 20130511185920) do
   add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
   add_index "addresses", ["country_id"], :name => "index_addresses_on_country_id"
   add_index "addresses", ["state_id"], :name => "index_addresses_on_state_id"
+
+  create_table "centers", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "centers", ["name"], :name => "index_centers_on_name"
+
+  create_table "centers_members", :id => false, :force => true do |t|
+    t.integer "center_id"
+    t.integer "member_id"
+  end
+
+  add_index "centers_members", ["center_id", "member_id"], :name => "index_centers_members_on_center_id_and_member_id"
+  add_index "centers_members", ["member_id", "center_id"], :name => "index_centers_members_on_member_id_and_center_id"
 
   create_table "countries", :force => true do |t|
     t.string   "name"

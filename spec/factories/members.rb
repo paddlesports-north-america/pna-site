@@ -36,4 +36,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :member_with_centers, parent: :member_with_contact_info do
+    after(:create) do |member|
+      FactoryGirl.create( :center_with_contact_info, members: [member] )
+    end
+  end
+
 end
