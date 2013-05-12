@@ -30,6 +30,52 @@ describe Course do
     @course.should belong_to( :country )
   end
 
+  it "should have many course coaches" do
+    @course.should have_many( :course_coaches )
+  end
+
+  it "should have many coaches through course_coach" do
+    @course.should have_many( :coaches ).through( :course_coaches )
+  end
+
+  it "should have a valid factory with coaches" do
+    course = FactoryGirl.create( :course_with_coach )
+    course.should be_valid
+    course.coaches.should_not be_empty
+    course.course_coaches.should_not be_empty
+  end
+
+  describe '#course_director' do
+
+    it "should have a valid factory with a course director" do
+      c = FactoryGirl.create( :course_with_director )
+      c.should be_valid
+      c.course_director.should_not be_nil
+    end
+
+    it "should respond to course_director" do
+      @course.should respond_to( :course_director )
+      @course.should respond_to( :course_director= )
+    end
+
+    it "should accept a member and create a new course_coach" do
+      before_count = @course.course_coaches.length
+      @course.course_director = FactoryGirl.create( :member )
+      @course.course_coaches.length.should == before_count + 1
+    end
+
+    it "should replace the previous course director on assignment" do
+      course = FactoryGirl.create( :course_with_director )
+      previous_director = course.course_director
+      course.course_director = FactoryGirl.create( :member )
+      course.course_director.should_not eq( previous_director )
+      course.save
+      CourseCoach.where( :course_id => course.id, :is_director => true ).count.should == 1
+    end
+  end
+
+
+
   describe "#valid?" do
     it "should require program" do
       @course.program = nil

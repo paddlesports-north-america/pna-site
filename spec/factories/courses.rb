@@ -14,5 +14,19 @@ FactoryGirl.define do
         a.state = a.country.states.first
       end
     end
+
+    factory :course_with_coach do
+      after( :create ) do |c|
+        c.coaches = [ FactoryGirl.create( :member_with_contact_info ) ]
+        c.save
+      end
+
+      factory :course_with_director do
+        after( :create ) do |c|
+          c.course_director = FactoryGirl.create( :member_with_centers )
+          c.save
+        end
+      end
+    end
   end
 end
