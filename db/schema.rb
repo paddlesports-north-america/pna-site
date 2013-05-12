@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512141659) do
+ActiveRecord::Schema.define(:version => 20130512223322) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -160,6 +160,18 @@ ActiveRecord::Schema.define(:version => 20130512141659) do
   end
 
   add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
+
+  create_table "memberships", :force => true do |t|
+    t.date     "expiration_date"
+    t.string   "organization"
+    t.integer  "member_id"
+    t.date     "printed_on"
+    t.boolean  "sent",            :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "memberships", ["member_id"], :name => "index_memberships_on_member_id"
 
   create_table "phone_numbers", :force => true do |t|
     t.string   "label"
