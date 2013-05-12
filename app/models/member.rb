@@ -10,6 +10,8 @@ class Member < ActiveRecord::Base
   has_and_belongs_to_many :centers
 
   has_many :qualifications
+  has_many :course_participations, :class_name => 'CourseParticipant'
+  has_many :courses, :through => :course_participations
 
   attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name, :middle_name
 

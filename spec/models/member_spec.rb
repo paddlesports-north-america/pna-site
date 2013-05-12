@@ -83,6 +83,16 @@ describe Member do
     m.qualifications.should_not be_empty
   end
 
+  it "should have many course participations" do
+    m = FactoryGirl.build( :member )
+    m.should have_many( :course_participations )
+  end
+
+  it "should have many courses through course participations" do
+    m = FactoryGirl.build( :member )
+    m.should have_many( :courses ).through( :course_participations )
+  end
+
   describe '#valid?' do
     it "should validate gender against GENDER constant values" do
       m = FactoryGirl.build( :member, :gender => Member::GENDER[ :male ] )
