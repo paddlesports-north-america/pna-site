@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511205643) do
+ActiveRecord::Schema.define(:version => 20130511223619) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address1"
@@ -57,6 +57,24 @@ ActiveRecord::Schema.define(:version => 20130511205643) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "courses", :force => true do |t|
+    t.integer  "program_id"
+    t.date     "date"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.string   "venue"
+    t.integer  "course_provider_id"
+    t.integer  "center_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "courses", ["center_id"], :name => "index_courses_on_center_id"
+  add_index "courses", ["country_id"], :name => "index_courses_on_country_id"
+  add_index "courses", ["course_provider_id"], :name => "index_courses_on_course_provider_id"
+  add_index "courses", ["program_id"], :name => "index_courses_on_program_id"
+  add_index "courses", ["state_id"], :name => "index_courses_on_state_id"
+
   create_table "email_addresses", :force => true do |t|
     t.string   "address"
     t.string   "label"
@@ -92,6 +110,12 @@ ActiveRecord::Schema.define(:version => 20130511205643) do
   end
 
   add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"
+
+  create_table "programs", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "states", :force => true do |t|
     t.string   "name"

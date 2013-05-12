@@ -1,7 +1,9 @@
 class Member < ActiveRecord::Base
-  include HasContactInfo
+  # include HasContactInfo
 
   has_paper_trail
+
+  has_contact_info
 
   GENDER = { :male => 'm', :female => 'f' }
 
