@@ -3,4 +3,6 @@
 
 en:
   pna:
-    errors:
+    genders:
+      male: Male
+      female: Female

@@ -6,6 +6,11 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Paddlesportsnorthamerica" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+
+    <!-- @TODO: Replace with a trimmed down version when we know what we need -->
+    <%= stylesheet_link_tag "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" %>
+    <%= javascript_include_tag "http://code.jquery.com/ui/1.10.2/jquery-ui.js" %>
+
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
