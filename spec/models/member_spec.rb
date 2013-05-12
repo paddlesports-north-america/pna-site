@@ -72,6 +72,17 @@ describe Member do
     m.centers.should_not be_empty
   end
 
+  it "should have many qualifications" do
+    m = FactoryGirl.build( :member )
+    m.should have_many( :qualifications )
+  end
+
+  it "should have a valid factory with qualifications" do
+    m = FactoryGirl.create( :member_with_qualifications )
+    m.should be_valid
+    m.qualifications.should_not be_empty
+  end
+
   describe '#valid?' do
     it "should validate gender against GENDER constant values" do
       m = FactoryGirl.build( :member, :gender => Member::GENDER[ :male ] )

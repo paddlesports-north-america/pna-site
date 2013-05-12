@@ -9,6 +9,8 @@ class Member < ActiveRecord::Base
 
   has_and_belongs_to_many :centers
 
+  has_many :qualifications
+
   attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name, :middle_name
 
   validates :first_name, :last_name, :birthdate, :presence => true

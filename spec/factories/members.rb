@@ -34,6 +34,12 @@ FactoryGirl.define do
         FactoryGirl.create( :address, addressable: member, country: FactoryGirl.create( :country_with_states ) )
       end
     end
+
+    factory :member_with_qualifications do
+      after( :create ) do |member|
+        FactoryGirl.create( :qualification, member: member )
+      end
+    end
   end
 
   factory :member_with_centers, parent: :member_with_contact_info do

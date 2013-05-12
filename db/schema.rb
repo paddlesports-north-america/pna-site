@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512120135) do
+ActiveRecord::Schema.define(:version => 20130512133131) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address1"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20130512120135) do
   add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
   add_index "addresses", ["country_id"], :name => "index_addresses_on_country_id"
   add_index "addresses", ["state_id"], :name => "index_addresses_on_state_id"
+
+  create_table "awards", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "awards", ["name"], :name => "index_awards_on_name"
 
   create_table "centers", :force => true do |t|
     t.string   "name"
@@ -127,6 +135,20 @@ ActiveRecord::Schema.define(:version => 20130512120135) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "qualifications", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "award_id"
+    t.date     "printed_on"
+    t.date     "awarded_on"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "qualifications", ["award_id"], :name => "index_qualifications_on_award_id"
+  add_index "qualifications", ["course_id"], :name => "index_qualifications_on_course_id"
+  add_index "qualifications", ["member_id"], :name => "index_qualifications_on_member_id"
 
   create_table "states", :force => true do |t|
     t.string   "name"
