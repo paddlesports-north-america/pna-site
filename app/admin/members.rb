@@ -1,4 +1,5 @@
 ActiveAdmin.register Member do
+  menu :priority => 1
 
   form do |f|
     f.inputs do

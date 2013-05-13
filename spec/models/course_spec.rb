@@ -72,6 +72,25 @@ describe Course do
       course.save
       CourseCoach.where( :course_id => course.id, :is_director => true ).count.should == 1
     end
+
+    it "should accept course_director_id via mass assignment" do
+      director = FactoryGirl.create( :member )
+      provider = FactoryGirl.create( :member )
+      program = Program.first
+
+      course = Course.create({
+          :date => Date.today,
+          :program_id => program.id,
+          :course_provider_id => provider.id,
+          :course_director_id => director.id
+      })
+
+      course.reload
+
+      course.course_director.should == director
+      course.course_director_id.should == director.id
+      course.coaches.should_not be_empty
+    end
   end
 
 
