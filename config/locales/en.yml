@@ -3,6 +3,10 @@
 
 en:
   pna:
+    name: Name
+    pna_number: PNA Number
+    bcu_number: BCU Number
+    coach: Coach
     genders:
       male: Male
       female: Female

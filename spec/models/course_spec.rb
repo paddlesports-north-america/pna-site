@@ -59,6 +59,7 @@ describe Course do
     end
 
     it "should accept a member and create a new course_coach" do
+      @course.save
       before_count = @course.course_coaches.length
       @course.course_director = FactoryGirl.create( :member )
       @course.course_coaches.length.should == before_count + 1
@@ -93,7 +94,18 @@ describe Course do
     end
   end
 
-
+  describe "#assisting_coaches" do
+    it "should accept assisting coach ids via mass assignment" do
+      course = FactoryGirl.create( :course_with_director )
+      coaches = []
+      3.times do
+        coaches << FactoryGirl.create( :member )
+      end
+      course.update_attributes( { :assisting_coach_ids => coaches.map{ |c| c.id } } )
+      course.reload
+      course.coaches.length.should == 5 # it comes with 1 and we added 3 + course director
+    end
+  end
 
   describe "#valid?" do
     it "should require program" do
