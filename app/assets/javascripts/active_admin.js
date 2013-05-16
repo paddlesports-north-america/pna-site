@@ -26,6 +26,7 @@ $( document ).ready(function(){
   });
 
   setChosen();
+  $( 'div.has_many > a.button' ).on( 'click', function(){ setChosen(); });
 
 });
 

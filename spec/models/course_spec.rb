@@ -45,6 +45,14 @@ describe Course do
     course.course_coaches.should_not be_empty
   end
 
+  it "should have many course participants" do
+    @course.should have_many( :course_participants )
+  end
+
+  it "should have mnay students through course participants" do
+    @course.should have_many( :students ).through( :course_participants )
+  end
+
   describe '#course_director' do
 
     it "should have a valid factory with a course director" do
@@ -103,7 +111,7 @@ describe Course do
       end
       course.update_attributes( { :assisting_coach_ids => coaches.map{ |c| c.id } } )
       course.reload
-      course.coaches.length.should == 5 # it comes with 1 and we added 3 + course director
+      course.coaches.length.should == 4 # it comes with 1, which gets deleted, and we added 3 + course director
     end
   end
 

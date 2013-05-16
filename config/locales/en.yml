@@ -3,10 +3,30 @@
 
 en:
   pna:
+    yes: Yes
+    not_printed: Not Printed
     name: Name
+    manage: Manage
+    qualification: Qualification
+    member_has_no_qualifications: This member has no registered qualifications
+    phone_number: Phone Number
+    email_address: Email Address
+    mailing_address: Mailing Address
     pna_number: PNA Number
     bcu_number: BCU Number
     coach: Coach
+    student: Student
+    result: Result
+    pass: Pass
+    fail: Fail
+    training_history: Training History
+    coaching_history: Coaching History
+    course: Course
+    course_director: Course Director
+    date: Date
+    complete: Complete
+    printed: Printed
     genders:
       male: Male
       female: Female
+

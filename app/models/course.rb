@@ -3,6 +3,10 @@ class Course < ActiveRecord::Base
 
   has_region
 
+  scope :upcoming, where( 'date >= ?', Date.today )
+  scope :past, where( 'date < ?', Date.today )
+  scope :calendar, where( 'show_on_calendar = ? and date >= ?', true, Date.today)
+
   belongs_to :program
   belongs_to :course_provider, :class_name => 'Member'
   belongs_to :center
@@ -10,9 +14,14 @@ class Course < ActiveRecord::Base
   has_many :course_coaches, :dependent => :delete_all, :validate => true
   has_many :coaches, :through => :course_coaches, :source => :member
 
+  has_many :course_participants, :dependent => :delete_all
+  # has_many :students, :through => :course_participants, :source => :member
+  accepts_nested_attributes_for :course_participants
+
   attr_accessible :date, :venue, :program_id, :course_provider_id,
                   :center_id, :state_id, :country_id, :course_director_id,
-                  :show_on_calendar, :assisting_coach_ids
+                  :show_on_calendar, :assisting_coach_ids,
+                  :course_participants_attributes
 
   attr_writer :course_director_id
   attr_writer :assisting_coach_ids
@@ -38,8 +47,10 @@ class Course < ActiveRecord::Base
   end
 
   def course_director=(member)
-    self.course_coaches.where( { :is_director => true } ).delete_all
-    self.course_coaches.create( { :member_id => member.id, :is_director => true } )
+    unless member == course_director
+      self.course_coaches.where( { :is_director => true } ).delete_all
+      self.course_coaches.create( { :member_id => member.id, :is_director => true } )
+    end
   end
 
   def assisting_coach_ids
@@ -48,7 +59,10 @@ class Course < ActiveRecord::Base
 
   def set_coaches
     unless @assisting_coach_ids.nil?
-      @assisting_coach_ids.each { |id|
+      original = self.course_coaches.where( :is_director => false ).pluck( :member_id )
+      self.course_coaches.where( :member_id => original - @assisting_coach_ids ).delete_all
+      add = @assisting_coach_ids - original
+      add.each { |id|
         self.course_coaches.create( { :member_id => id } )
       }
     end
