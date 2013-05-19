@@ -26,6 +26,8 @@ en:
     date: Date
     complete: Complete
     printed: Printed
+    line_items: Line Items
+    total: Total
     genders:
       male: Male
       female: Female
