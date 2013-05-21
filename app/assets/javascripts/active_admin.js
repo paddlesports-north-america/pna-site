@@ -7,10 +7,8 @@ var states;
 
 $( document ).ready(function(){
 
-  if( !mobile )
-  {
-    setDatePickers();
-  }
+
+  setDatePickers();
 
   // Filter states when country select changes
   $( 'form' ).on( {
@@ -28,10 +26,22 @@ $( document ).ready(function(){
   setChosen();
   $( 'div.has_many > a.button' ).on( 'click', function(){ setChosen(); });
 
+  $( '.has_many.addresses a.button').on( 'click', function(){
+    console.log("HI");
+    states = $( '[data-type="state_select"]').html();
+    filterStateSelect( $( '.has_many.addresses fieldset').last() );
+  });
+
+  $( '.has_many.memberships a.button' ).on( 'click', function(){ setDatePickers(); });
 });
 
 function setDatePickers()
 {
+  if( mobile )
+  {
+    return;
+  }
+
   $( 'input[type="date"]' ).addClass( 'datepicker' );
   $( 'input[type="date"]' ).attr( 'type', 'text' );
 

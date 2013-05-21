@@ -122,7 +122,14 @@ namespace :import do
           })
         end
 
-        # Qualifications
+        # reset sequence tables so we don't have problems later
+        # This is a postgres issue, unfortunately
+        ActiveRecord::Base.connection.tables.each do |t|
+          ActiveRecord::Base.connection.reset_pk_sequence!(t)
+        end
+
+        # Set version information
+        Version.all.each{ |v| v.update_attributes( :whodunnit => '1' ) }
 
       end
     end

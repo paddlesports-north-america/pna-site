@@ -3,9 +3,9 @@ class Course < ActiveRecord::Base
 
   has_region
 
-  scope :upcoming, where( 'date >= ?', Date.today )
-  scope :past, where( 'date < ?', Date.today )
-  scope :calendar, where( 'show_on_calendar = ? and date >= ?', true, Date.today)
+  scope :upcoming, where( 'start_date >= ?', Date.today )
+  scope :past, where( 'start_date < ?', Date.today )
+  scope :calendar, where( 'show_on_calendar = ? and start_date >= ?', true, Date.today)
 
   belongs_to :program
   belongs_to :course_provider, :class_name => 'Member'
@@ -18,7 +18,7 @@ class Course < ActiveRecord::Base
   # has_many :students, :through => :course_participants, :source => :member
   accepts_nested_attributes_for :course_participants
 
-  attr_accessible :date, :venue, :program_id, :course_provider_id,
+  attr_accessible :start_date, :end_date, :venue, :program_id, :course_provider_id,
                   :center_id, :state_id, :country_id, :course_director_id,
                   :show_on_calendar, :assisting_coach_ids,
                   :course_participants_attributes
@@ -29,7 +29,12 @@ class Course < ActiveRecord::Base
   after_save :set_course_director
   after_save :set_coaches
 
-  validates :program, :course_provider, :date, :presence => true
+  validates :program, :course_provider, :start_date, :presence => true
+  validate :end_date_after_start_date
+
+  def end_date_after_start_date
+    errors.add( :end_date ) unless start_date.nil? || end_date.nil? || end_date >= start_date
+  end
 
   def course_director_id
     @course_director_id || CourseCoach.where( { :course_id => self.id, :is_director => true } ).pluck( :member_id ).first

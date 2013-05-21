@@ -128,10 +128,22 @@ describe Course do
       @course.errors.should include( :course_provider )
     end
 
-    it "should require date" do
-      @course.date = nil
+    it "should require start_date" do
+      @course.start_date = nil
       @course.should_not be_valid
-      @course.errors.should include( :date )
+      @course.errors.should include( :start_date )
+    end
+
+    it "should not require an end date" do
+      @course.end_date = nil
+      @course.should be_valid
+    end
+
+    it "should require end date to be after start date" do
+      @course.start_date = 1.day.from_now.to_date
+      @course.end_date = 1.day.ago.to_date
+      @course.should_not be_valid
+      @course.errors.should include( :end_date )
     end
 
     it "should not require center" do

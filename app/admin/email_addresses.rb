@@ -5,8 +5,7 @@ ActiveAdmin.register EmailAddress do
 
   form do |f|
     f.inputs do
-      f.input :label
-      f.input :address
+      email_address_inputs f
     end
     f.actions
   end

@@ -2,6 +2,7 @@ class InvoiceDecorator < Draper::Decorator
   decorates :invoice
   delegate_all
   decorates_association :line_items
+  decorates_association :payments
 
   def total
     h.number_to_currency( source.total )

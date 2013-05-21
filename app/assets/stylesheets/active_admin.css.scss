@@ -42,4 +42,10 @@ body.active_admin {
       width: 226px;
     }
   }
+
+  .chzn-choices {
+    .search-field {
+      input.default { box-shadow: none; }
+    }
+  }
 }

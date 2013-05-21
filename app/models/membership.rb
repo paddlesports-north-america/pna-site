@@ -8,4 +8,8 @@ class Membership < ActiveRecord::Base
   validates :expiration_date, :organization, :presence => false
 
   validates :organization, :inclusion => { :in => Membership::ORGANIZATION.values }
+
+  def to_s
+    id.to_s
+  end
 end

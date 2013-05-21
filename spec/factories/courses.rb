@@ -3,7 +3,8 @@
 FactoryGirl.define do
   factory :course do
     program
-    date "2013-10-11"
+    start_date "2013-10-11"
+    end_date "2013-11-11"
     country
     venue "Someplace Awesome"
     course_provider factory: :member

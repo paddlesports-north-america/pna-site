@@ -19,7 +19,11 @@ class Member < ActiveRecord::Base
 
   has_many :invoices, :dependent => :delete_all
 
-  attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name, :middle_name
+  attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name,
+                  :middle_name, :addresses_attributes, :phone_numbers_attributes,
+                  :email_addresses_attributes, :memberships_attributes
+
+  accepts_nested_attributes_for :addresses, :phone_numbers, :email_addresses, :memberships
 
   validates :first_name, :last_name, :birthdate, :presence => true
   validates :gender, :inclusion => { :in => Member::GENDER.values }

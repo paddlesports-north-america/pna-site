@@ -7,8 +7,11 @@ en:
     not_printed: Not Printed
     name: Name
     manage: Manage
+    membership: Membership
+    member: Member
+    non_member: Non-Member
     qualification: Qualification
-    member_has_no_qualifications: This member has no registered qualifications
+    member_has_no: This member has no %s.
     phone_number: Phone Number
     email_address: Email Address
     mailing_address: Mailing Address
@@ -28,7 +31,36 @@ en:
     printed: Printed
     line_items: Line Items
     total: Total
+    create: Click here to create one.
+    exp_date: Expiration Date
+    payment: Payment
+    no_payments: No payments registered for this invoice
+    no_members: There are no members registered.
+    program_types:
+        other: Other
+        leadership: Leadership
+        coaching: Coaching
+        performance: Performance
+        safety: Safety and Rescue
     genders:
       male: Male
       female: Female
-
+    payment_sources:
+        check: Check
+        credit: Credit Card
+        cash: Cash
+    hints:
+        label: 'Home, Work, etc.'
+        payment:
+            type: 'Check, Credit Card, or Cash'
+            number: Enter the check number or the last 4 digits of the credit card number.
+            exp_date: Expiration date required for Credit Cards.
+            billing_name: Enter the name on the card or check.
+            amount: Total amount for this payment.
+        course:
+            coaches: List any additional coaches.
+        fee_form: This is where you process fee forms.
+    missing:
+        phone_number: There are no phone numbers listed for this member. %s now.
+        coaches: There are no other coaches listed for this course. Edit the course to add additional coaches.
+        students: There are no students registered for this course. Edit the course to add students.

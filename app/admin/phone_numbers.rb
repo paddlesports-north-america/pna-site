@@ -5,9 +5,7 @@ ActiveAdmin.register PhoneNumber do
 
   form do |f|
     f.inputs do
-      f.input :label
-      f.input :number
-      f.input :ext
+      phone_number_inputs f
     end
     f.actions
   end

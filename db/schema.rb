@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518140707) do
+ActiveRecord::Schema.define(:version => 20130521180813) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,7 +123,6 @@ ActiveRecord::Schema.define(:version => 20130518140707) do
 
   create_table "courses", :force => true do |t|
     t.integer  "program_id"
-    t.date     "date"
     t.integer  "country_id"
     t.integer  "state_id"
     t.string   "venue"
@@ -132,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20130518140707) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.boolean  "show_on_calendar",   :default => true
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
   add_index "courses", ["center_id"], :name => "index_courses_on_center_id"
@@ -153,8 +154,10 @@ ActiveRecord::Schema.define(:version => 20130518140707) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "payable_type"
+    t.integer  "payable_id"
   end
 
   add_index "invoices", ["member_id"], :name => "index_invoices_on_member_id"
@@ -195,6 +198,19 @@ ActiveRecord::Schema.define(:version => 20130518140707) do
 
   add_index "memberships", ["member_id"], :name => "index_memberships_on_member_id"
 
+  create_table "payments", :force => true do |t|
+    t.string   "source"
+    t.string   "number"
+    t.date     "exp_date"
+    t.float    "amount"
+    t.string   "billing_name"
+    t.integer  "invoice_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"
+
   create_table "phone_numbers", :force => true do |t|
     t.string   "label"
     t.string   "number"
@@ -209,8 +225,10 @@ ActiveRecord::Schema.define(:version => 20130518140707) do
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "award_id"
+    t.string   "program_type"
   end
 
   create_table "qualifications", :force => true do |t|

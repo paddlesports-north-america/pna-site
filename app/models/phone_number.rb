@@ -4,10 +4,14 @@ class PhoneNumber < ActiveRecord::Base
   belongs_to :phoneable, :polymorphic => true
   attr_accessible :ext, :label, :number, :phoneable_id, :phoneable_type
 
-  validates :number, :phoneable, :presence => true
+  validates :number, :presence => true
   validate :phone_number_is_valid
 
   before_save :set_formated_number
+
+  def to_s
+    number
+  end
 
   def phone_number_is_valid
     unless Phoner::Phone.valid?( number )

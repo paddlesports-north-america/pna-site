@@ -16,6 +16,7 @@ PaddleSportsNorthAmerica::Application.routes.draw do
       resources :phone_numbers
       resources :email_addresses
     end
+
   end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
