@@ -1,4 +1,7 @@
 class CourseParticipant < ActiveRecord::Base
+
+  RESULT = { :pass => 'pass', :fail => 'fail', :defered => 'defered', :other => 'other' }
+
   belongs_to :course
   belongs_to :member
 
@@ -11,6 +14,7 @@ class CourseParticipant < ActiveRecord::Base
 
   accepts_nested_attributes_for :invoice
   validates :member, :presence => true
+  validates :result, :inclusion => { :in => CourseParticipant::RESULT.values }
 
   private
 
@@ -19,7 +23,7 @@ class CourseParticipant < ActiveRecord::Base
   end
 
   def assign_qualifications
-    if result && prerequisites_checked && course.program.has_award?
+    if result == RESULT[:pass] && prerequisites_checked && course.program.has_award?
       member.qualifications.create( { :course_id => course.id, :award_id => course.program.award.id } )
     end
   end

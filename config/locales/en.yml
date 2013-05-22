@@ -42,6 +42,11 @@ en:
         coaching: Coaching
         performance: Performance
         safety: Safety and Rescue
+    course_results:
+        pass: Pass
+        fail: Fail
+        defered: Defered
+        other: Other
     genders:
       male: Male
       female: Female

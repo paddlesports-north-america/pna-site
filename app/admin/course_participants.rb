@@ -11,7 +11,7 @@ ActiveAdmin.register CourseParticipant do
   form do |f|
     f.inputs do
       f.input :member, :input_html => { "data-hook" => "choose" }
-      f.input :result
+      f.input :result, :as => :select, :collection => CourseParticipant::RESULT.inject({}) { |m,(k,v)| m.merge( { t("pna.course_results.#{v}" ) => v } ) }
       f.input :prerequisites_checked
     end
 
