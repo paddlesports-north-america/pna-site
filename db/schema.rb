@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522123843) do
+ActiveRecord::Schema.define(:version => 20130523133949) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -151,6 +151,16 @@ ActiveRecord::Schema.define(:version => 20130522123843) do
   end
 
   add_index "email_addresses", ["emailable_id", "emailable_type"], :name => "index_email_addresses_on_emailable_id_and_emailable_type"
+
+  create_table "fees", :force => true do |t|
+    t.string   "description"
+    t.float    "amount"
+    t.string   "category"
+    t.integer  "feeable_id"
+    t.string   "feeable_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "invoices", :force => true do |t|
     t.integer  "member_id"
