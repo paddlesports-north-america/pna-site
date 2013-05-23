@@ -45,7 +45,6 @@ module Pna
           :dependent => :delete_all,
           :validate => true
       end
-
     end
 
   end

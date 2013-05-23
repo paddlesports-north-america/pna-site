@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522122818) do
+ActiveRecord::Schema.define(:version => 20130522123843) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -197,6 +197,18 @@ ActiveRecord::Schema.define(:version => 20130522122818) do
   end
 
   add_index "memberships", ["member_id"], :name => "index_memberships_on_member_id"
+
+  create_table "notes", :force => true do |t|
+    t.text     "body"
+    t.integer  "noteable_id"
+    t.string   "noteable_type"
+    t.integer  "admin_user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "notes", ["admin_user_id"], :name => "index_notes_on_admin_user_id"
+  add_index "notes", ["noteable_type", "noteable_id"], :name => "index_notes_on_noteable_type_and_noteable_id"
 
   create_table "payments", :force => true do |t|
     t.string   "source"

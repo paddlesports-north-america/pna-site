@@ -8,6 +8,16 @@ ActiveAdmin.register CourseParticipant do
     default_actions
   end
 
+  show do
+    attributes_table do
+      row :course
+      row :member
+      row :result
+      row :prerequisites_checked
+      row :note
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :member, :input_html => { "data-hook" => "choose" }
@@ -15,7 +25,13 @@ ActiveAdmin.register CourseParticipant do
       f.input :prerequisites_checked
     end
 
-    f.inputs "Invoice" do
+    f.inputs "Note" do
+      f.semantic_fields_for :note do |n|
+        n.input :body
+      end
+    end
+
+    f.inputs "Invoice", "data-hook" => 'optional' do
       f.semantic_fields_for :invoice do |i|
         i.has_many :line_items do |l|
           line_item_inputs l
@@ -34,6 +50,7 @@ ActiveAdmin.register CourseParticipant do
     def new
       @course_participant = CourseParticipant.new({ :course_id => params[ :course_id ] })
       @course_participant.build_invoice
+      @course_participant.build_note( { :admin_user_id => current_admin_user.id } )
       desc = "#{Course.find(params[:course_id]).program.name}: Course # #{params[:course_id]}"
       @course_participant.invoice.line_items.build( { :description => desc })
       @course_participant.invoice.payments.build

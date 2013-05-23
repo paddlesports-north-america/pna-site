@@ -33,6 +33,7 @@ $( document ).ready(function(){
   });
 
   $( '.has_many.memberships a.button' ).on( 'click', function(){ setDatePickers(); });
+
 });
 
 function setDatePickers()

@@ -5,16 +5,24 @@ class CourseParticipant < ActiveRecord::Base
   belongs_to :course
   belongs_to :member
 
+  has_one :note, :as => :noteable, :dependent => :delete
   has_one :invoice, :as => :payable
 
-  attr_accessible :member_id, :course_id, :prerequisites_checked, :result, :invoice_attributes
+  attr_accessible :member_id, :course_id, :prerequisites_checked, :result,
+                  :invoice_attributes, :note_attributes
 
   before_validation :set_invoice_member
   after_create :assign_qualifications
 
   accepts_nested_attributes_for :invoice
+  accepts_nested_attributes_for :note
+
   validates :member, :presence => true
   validates :result, :inclusion => { :in => CourseParticipant::RESULT.values }
+
+  def to_s
+    member.to_s
+  end
 
   private
 
