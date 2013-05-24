@@ -2,7 +2,10 @@ ActiveAdmin.register Invoice do
   decorate_with InvoiceDecorator
   config.batch_actions = false
 
+  form :partial => "forms/invoice"
+
   form do |f|
+
     f.inputs do
       f.input :member, :input_html => { "data-hook" => "choose" }
     end

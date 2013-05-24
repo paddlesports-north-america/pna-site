@@ -36,6 +36,16 @@ en:
     payment: Payment
     no_payments: No payments registered for this invoice
     no_members: There are no members registered.
+    first_aid_certification: First Aid Certification
+    first_aid_types:
+        first_aid: First Aid
+        cpr: CPR
+    first_aid_levels:
+        four_hour: Four Hour
+        six_hour: Six Hour
+        eight_hour: Eight Hour
+        two_day: Two Day
+        other: Other / Legacy
     program_types:
         other: Other
         leadership: Leadership

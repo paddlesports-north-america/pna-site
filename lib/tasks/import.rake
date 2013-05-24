@@ -4,15 +4,54 @@ namespace :import do
     AdminUser.first
   end
 
+  def parse_file( path, &block )
+    require 'CSV'
+
+    File.open( path, 'r').each_with_index do |line,index|
+      next if index == 0
+      CSV.parse( line ) do |data|
+        begin
+          block.call( data )
+        rescue Exception => e
+          puts "Failed on line #{index}"
+          puts data.inspect
+          puts e.message
+          puts e.backtrace
+        end
+      end
+    end
+  end
+
+  task :test, [ :path ] => :environment do |t,args|
+    parse_file args[ :path ] do |d|
+      puts d.inspect
+    end
+  end
+
+  desc "import product data"
+  task :products, [ :path ] => :environment do |t,args|
+    parse_file args[ :path ] do |data|
+      fee = Fee.new
+      fee.id        = data[0]
+      fee.amount    = data[2]
+      fee.category  = data[5]
+
+      desc = data[1]
+      desc = desc.gsub(/([0-9])\*T/, '\1 Star Training')
+      desc = desc.gsub(/([0-9])\*/, '\1 Star')
+      desc = desc.gsub(/L([0-9])/, 'Level \1')
+      desc = desc.gsub(/WW/, 'White Water')
+      desc = desc.gsub(/MWE/, 'Moderate Water Endorsement')
+
+      fee.description = desc
+      fee.save!
+    end
+  end
+
   desc "Imports member data from csv"
   task :members, [ :path ] => :environment do |t,args|
-    require 'CSV'
-    failed_imports = 0
-
-    File.open( args[ :path ], 'r' ).each_with_index do |line,index|
-      next if index == 0
-
-      CSV.parse(line) do |data|
+    ActiveRecord::Base.transaction do
+      parse_file args[ :path ] do |data|
         if Member.exists?({ :id => data[ 0 ]})
           member = Member.find( data[ 0 ] )
         else
@@ -33,6 +72,24 @@ namespace :import do
         comment.author = AdminUser.first
         comment.resource = member
         comment.save
+
+        unless data[39].blank? || data[40].blank?
+          member.first_aid_certifications.create({
+            :certification_level => FirstAidCertification::LEVEL[ :other ],
+            :certification_type => FirstAidCertification::TYPE[ :first_aid ],
+            :provider => data[39],
+            :date => data[40] #Date.strptime( data[40], '%m/%d/%y' )
+          })
+        end
+
+        unless data[41].blank? || data[42].blank?
+          member.first_aid_certifications.create({
+            :certification_level => FirstAidCertification::LEVEL[ :other ],
+            :certification_type => FirstAidCertification::TYPE[ :cpr ],
+            :provider => data[41],
+            :date => data[42] #Date.strptime( data[42], '%m/%d/%y' )
+          })
+        end
 
         #PNA membership info
         unless data[3].blank?
@@ -122,16 +179,16 @@ namespace :import do
           })
         end
 
-        # reset sequence tables so we don't have problems later
-        # This is a postgres issue, unfortunately
-        ActiveRecord::Base.connection.tables.each do |t|
-          ActiveRecord::Base.connection.reset_pk_sequence!(t)
-        end
-
-        # Set version information
-        Version.all.each{ |v| v.update_attributes( :whodunnit => '1' ) }
-
       end
     end
-  end
-end
+    # reset sequence tables so we don't have problems later
+    # This is a postgres issue, unfortunately
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
+
+    # Set version information
+    Version.all.each{ |v| v.update_attributes( :whodunnit => '1' ) }
+  end # end of members
+
+end # end of namespace

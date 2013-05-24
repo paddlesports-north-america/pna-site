@@ -58,6 +58,7 @@ ActiveAdmin.register Member do
       li link_to manage_txt( t('pna.email_address').pluralize ), admin_member_email_addresses_path( member )
       li link_to manage_txt( t('pna.mailing_address').pluralize ), admin_member_addresses_path( member )
       li link_to manage_txt( t('pna.qualification').pluralize ), admin_member_qualifications_path( member )
+      li link_to manage_txt( t('pna.first_aid_certification').pluralize ), admin_member_first_aid_certifications_path( member )
     end
   end
 
@@ -125,6 +126,21 @@ ActiveAdmin.register Member do
       end
 
       column do
+
+        panel t('pna.first_aid_certification').pluralize do
+          if member.first_aid_certifications.empty?
+            para "#{t('pna.member_has_no') % t('pna.first_aid_certification').pluralize}"
+            para link_to t('pna.create'), new_admin_member_first_aid_certification_path( member )
+          else
+            table_for member.first_aid_certifications do
+              column :certification_type
+              column :certification_level
+              column :provider
+              column :date
+            end
+            para link_to "#{t('pna.manage')} #{t('pna.first_aid_certification').pluralize}", admin_member_first_aid_certifications_path( member )
+          end
+        end
 
         panel t('pna.qualification').pluralize do
           if member.qualifications.empty?

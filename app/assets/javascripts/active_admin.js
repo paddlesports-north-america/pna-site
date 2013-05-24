@@ -4,6 +4,7 @@
 
 var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 var states;
+var costs;
 
 $( document ).ready(function(){
 
@@ -13,8 +14,11 @@ $( document ).ready(function(){
   // Filter states when country select changes
   $( 'form' ).on( {
     change: function(){ filterStateSelect( $( this ).parents( 'fieldset' ).first() ); }
-  }, '[data-type="country_select"]')
+  }, '[data-type="country_select"]');
 
+  $( 'form' ).on({
+    change: function(){ updateCost($( this ).parents( 'fieldset' ) ); }
+  }, '[data-target="line-item-fee"]');
   // Get states list
   states = $( '[data-type="state_select"]').html();
 
@@ -57,6 +61,12 @@ function setDatePickers()
 
     $( this ).datepicker( options )
   });
+}
+
+function updateCost( fieldset )
+{
+  var id = $( this ).children( '[data-target="line-item-fee"]').val();
+  alert( id );
 }
 
 function filterStateSelect(fieldset)

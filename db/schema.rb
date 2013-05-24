@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523133949) do
+ActiveRecord::Schema.define(:version => 20130523191818) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -156,11 +156,21 @@ ActiveRecord::Schema.define(:version => 20130523133949) do
     t.string   "description"
     t.float    "amount"
     t.string   "category"
-    t.integer  "feeable_id"
-    t.string   "feeable_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  create_table "first_aid_certifications", :force => true do |t|
+    t.string   "provider"
+    t.date     "date"
+    t.string   "certification_type"
+    t.string   "certification_level"
+    t.integer  "member_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "first_aid_certifications", ["member_id"], :name => "index_first_aid_certifications_on_member_id"
 
   create_table "invoices", :force => true do |t|
     t.integer  "member_id"
@@ -174,11 +184,11 @@ ActiveRecord::Schema.define(:version => 20130523133949) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "invoice_id"
-    t.string   "description"
     t.integer  "quantity"
     t.float    "cost"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "description"
   end
 
   add_index "line_items", ["invoice_id"], :name => "index_line_items_on_invoice_id"
