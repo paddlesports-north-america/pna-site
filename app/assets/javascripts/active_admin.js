@@ -122,18 +122,21 @@ function productAutocompleteFormat( item )
 
 function setChosen()
 {
-  var opts = {
-    width: "76%",
-    allowClear: true,
-    placeholder: "Select an option"
-  }
 
   $('[data-hook="choose"]').not('.select2-offscreen' ).each( function(){
 
-    if( $( this ).attr( 'data-autocomplete' ) )
+    var opts = {
+      width: "76%",
+      allowClear: true,
+      placeholder: "Select an option"
+    }
+
+    if( typeof $( this ).attr( 'data-autocomplete' ) != 'undefined' )
     {
+      console.log( $( this ).attr( 'id' ) );
 
       $( this ).attr( 'type', 'hidden' );
+
       opts.minimumInputLength = 2;
       opts.ajax = {
         url: $( this ).attr( 'data-source' ) + "/autocomplete.json",
@@ -146,6 +149,11 @@ function setChosen()
         {
           return { results: data };
         }
+      }
+
+      if( typeof $( this ).attr( 'multiple') != 'undefined' )
+      {
+        opts.multiple = $( this ).attr( 'multiple' );
       }
 
       if( $( this ).attr( 'data-format' ) != "" )
@@ -166,15 +174,15 @@ function setChosen()
         }
       }
 
-      if( $( this ).attr( 'data-callback') )
-      {
-        $( this ).on({
-          change: function(){
-            window[ $( this ).attr( 'data-callback' ) ]( this, $( this ).select2( 'data' ) );
-          }
-        });
-      }
+    }
 
+    if( $( this ).attr( 'data-callback') )
+    {
+      $( this ).on({
+        change: function(){
+          window[ $( this ).attr( 'data-callback' ) ]( this, $( this ).select2( 'data' ) );
+        }
+      });
     }
 
     $( this ).select2( opts );

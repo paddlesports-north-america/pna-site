@@ -10,16 +10,27 @@ ActiveAdmin.register Course do
   form do |f|
     f.inputs do
       f.input :program, :input_html => { "data-hook" => "choose" }
-      f.input :course_provider, :input_html => { "data-hook" => "choose" }
-      f.input :course_director_id, :as => :select, :input_html => { "data-hook" => "choose" }, :collection => Member.order( :last_name )
+      f.input :course_provider_id,
+              :as => :string, :input_html => member_autocomplete_options
+      f.input :course_director_id,
+              :as => :string, :input_html => member_autocomplete_options
       f.input :center, :input_html => { "data-hook" => "choose" }
       f.input :venue
-      f.input :start_date, :as => :datepicker, :required => true, :input_html => { :class => 'start_date' }
-      f.input :end_date, :as => :datepicker, :required => false, :input_html => { :class => 'end_date' }
+      f.input :start_date, :as => :datepicker, :required => true,
+              :input_html => { :class => 'start_date' }
+      f.input :end_date, :as => :datepicker, :required => false,
+              :input_html => { :class => 'end_date' }
       f.input :show_on_calendar
-      f.input :country_id, :as => :country, :priority_countries => PRIORITY_COUNTRIES, :input_html => { 'data-type' => 'country_select' }
-      f.input :state, :as => :select, :collection => option_groups_from_collection_for_select( Country.order(:name), :states, :name, :id, :name ), :input_html => { 'data-type' => 'state_select' }
-      f.input :assisting_coach_ids, :as => :select, :collection => Member.order( :last_name ), :label => t('pna.coach').pluralize, :input_html => { :multiple => true, "data-hook" => "choose" }, :hint => t('pna.hints.course.coaches')
+      f.input :country_id, :as => :country,
+              :priority_countries => PRIORITY_COUNTRIES,
+              :input_html => { 'data-type' => 'country_select' }
+      f.input :state, :as => :select,
+              :collection => option_groups_from_collection_for_select( Country.order(:name), :states, :name, :id, :name ),
+              :input_html => { 'data-type' => 'state_select' }
+      f.input :assisting_coach_ids, :as => :string,
+              :label => t('pna.coach').pluralize,
+              :input_html => member_autocomplete_options.merge( { :multiple => true } ),
+              :hint => t('pna.hints.course.coaches')
     end
 
     # f.has_many :course_participants do |cp|

@@ -5,7 +5,7 @@ ActiveAdmin.register Center do
     f.inputs do
       f.input :name
       f.input :url
-      f.input :member_ids, :as => :select, :collection => Member.all, :input_html => { "data-hook" => "choose", :multiple => true }
+      f.input :member_tokens, :as => :string, :input_html => { :multiple => true }.merge( member_autocomplete_options )
     end
 
     f.inputs do
