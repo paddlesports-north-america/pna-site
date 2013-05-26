@@ -6,27 +6,29 @@ ActiveAdmin.register Invoice do
 
   form do |f|
 
-    f.inputs do
-      f.input :member_id, :input_html => member_autocomplete_options
-    end
+    # f.inputs do
+    #   f.input :member_id, :input_html => member_autocomplete_options
+    # end
 
-    f.inputs do
-      f.has_many :line_items do |l|
-        l.input :product_id, :input_html => { "data-hook" => "choose", "data-autocomplete" => true, "data-source" => admin_products_path, "data-callback" => 'setCostField', "data-format" => "productAutocompleteFormat" }
-        l.input :cost
-        l.input :quantity
-      end
-    end
+    # f.inputs do
+    #   f.has_many :line_items do |l|
+    #     l.input :product_id, :input_html => { "data-hook" => "choose", "data-autocomplete" => true, "data-source" => admin_products_path, "data-callback" => 'setCostField', "data-format" => "productAutocompleteFormat" }
+    #     l.input :cost
+    #     l.input :quantity
+    #   end
+    # end
 
-    f.inputs do
-      f.has_many :payments do |p|
-        p.input :source, :as => :select, :collection => Payment::SOURCE.inject({}) { |m,(k,v)| m.merge( { t("pna.payment_sources.#{k.to_s}") => v} ) }, :hint => t('pna.hints.payment.type')
-        p.input :number, :hint => t('pna.hints.payment.number')
-        p.input :exp_date, :hint => t('pna.hints.payment.exp_date'), :discard_day => true
-        p.input :billing_name, :hint => t('pna.hints.payment.billing_name')
-        p.input :amount, :hint => t('pna.hints.payment.amount')
-      end
-    end
+    # f.inputs do
+    #   f.has_many :payments do |p|
+    #     p.input :source, :as => :select, :collection => Payment::SOURCE.inject({}) { |m,(k,v)| m.merge( { t("pna.payment_sources.#{k.to_s}") => v} ) }, :hint => t('pna.hints.payment.type')
+    #     p.input :number, :hint => t('pna.hints.payment.number')
+    #     p.input :exp_date, :hint => t('pna.hints.payment.exp_date'), :discard_day => true
+    #     p.input :billing_name, :hint => t('pna.hints.payment.billing_name')
+    #     p.input :amount, :hint => t('pna.hints.payment.amount')
+    #   end
+    # end
+
+    invoice_inputs( f )
 
     f.actions
   end

@@ -8,7 +8,7 @@ class LineItem < ActiveRecord::Base
 
   # @TODO move to decorator
   def description
-    product.description
+    product.description unless product.nil?
   end
 
   def total
