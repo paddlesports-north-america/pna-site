@@ -1,5 +1,9 @@
 module ActiveAdmin::ViewsHelper
 
+  def member_autocomplete_options
+    { "data-hook" => "choose", "data-autocomplete" => true, "data-source" => admin_members_path, "data-format" => "memberAutocompleteFormat" }
+  end
+
   def address_inputs(f)
     f.input :address1
     f.input :address2

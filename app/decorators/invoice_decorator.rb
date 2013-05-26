@@ -9,7 +9,7 @@ class InvoiceDecorator < Draper::Decorator
   end
 
   def line_item_list
-    list = source.line_items.map { |l| "<li>#{l.description}</li>"}
+    list = source.line_items.map { |l| "<li>#{l.product.description}</li>"}
     "<ul>#{list.join('')}</ul>".html_safe
   end
 end

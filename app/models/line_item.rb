@@ -1,10 +1,18 @@
 class LineItem < ActiveRecord::Base
   belongs_to :invoice
-  attr_accessible :cost, :description, :quantity, :invoice_id
+  belongs_to :product
 
-  validates :cost, :description, :quantity, :presence => true
+  attr_accessible :cost, :quantity, :invoice_id, :product_id
+
+  validates :cost, :quantity, :presence => true
+
+  # @TODO move to decorator
+  def description
+    product.description
+  end
 
   def total
     quantity * cost
   end
+
 end

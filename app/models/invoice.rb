@@ -14,4 +14,8 @@ class Invoice < ActiveRecord::Base
   def total
     line_items.inject(0) { |s,l| s += l.total }
   end
+
+  def to_s
+    id
+  end
 end

@@ -7,12 +7,12 @@ ActiveAdmin.register Invoice do
   form do |f|
 
     f.inputs do
-      f.input :member, :input_html => { "data-hook" => "choose" }
+      f.input :member_id, :input_html => member_autocomplete_options
     end
 
     f.inputs do
       f.has_many :line_items do |l|
-        l.input :description
+        l.input :product_id, :input_html => { "data-hook" => "choose", "data-autocomplete" => true, "data-source" => admin_products_path, "data-callback" => 'setCostField', "data-format" => "productAutocompleteFormat" }
         l.input :cost
         l.input :quantity
       end
@@ -78,6 +78,16 @@ ActiveAdmin.register Invoice do
         column :total
       end
     end
+  end
+
+  controller do
+
+    def new
+      @invoice = Invoice.new
+      @invoice.line_items.build
+      new!
+    end
+
   end
 
 end
