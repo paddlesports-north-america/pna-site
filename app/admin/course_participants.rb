@@ -20,7 +20,7 @@ ActiveAdmin.register CourseParticipant do
 
   form do |f|
     f.inputs do
-      f.input :member, :input_html => { "data-hook" => "choose" }
+      f.input :member_id, :as => :string, :input_html => member_autocomplete_options
       f.input :result, :as => :select, :collection => CourseParticipant::RESULT.inject({}) { |m,(k,v)| m.merge( { t("pna.course_results.#{v}" ) => v } ) }
       f.input :prerequisites_checked
     end
@@ -51,9 +51,8 @@ ActiveAdmin.register CourseParticipant do
       @course_participant = CourseParticipant.new({ :course_id => params[ :course_id ] })
       @course_participant.build_invoice
       @course_participant.build_note( { :admin_user_id => current_admin_user.id } )
-      desc = "#{Course.find(params[:course_id]).program.name}: Course # #{params[:course_id]}"
-      @course_participant.invoice.line_items.build( { :description => desc })
-      @course_participant.invoice.payments.build
+      # @course_participant.invoice.line_items.build()
+      # @course_participant.invoice.payments.build
       new!
     end
 

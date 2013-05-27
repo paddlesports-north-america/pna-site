@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522123843) do
+ActiveRecord::Schema.define(:version => 20130526131416) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -152,6 +152,18 @@ ActiveRecord::Schema.define(:version => 20130522123843) do
 
   add_index "email_addresses", ["emailable_id", "emailable_type"], :name => "index_email_addresses_on_emailable_id_and_emailable_type"
 
+  create_table "first_aid_certifications", :force => true do |t|
+    t.string   "provider"
+    t.date     "date"
+    t.string   "certification_type"
+    t.string   "certification_level"
+    t.integer  "member_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "first_aid_certifications", ["member_id"], :name => "index_first_aid_certifications_on_member_id"
+
   create_table "invoices", :force => true do |t|
     t.integer  "member_id"
     t.datetime "created_at",   :null => false
@@ -164,11 +176,11 @@ ActiveRecord::Schema.define(:version => 20130522123843) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "invoice_id"
-    t.string   "description"
     t.integer  "quantity"
     t.float    "cost"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "product_id"
   end
 
   add_index "line_items", ["invoice_id"], :name => "index_line_items_on_invoice_id"
@@ -234,6 +246,14 @@ ActiveRecord::Schema.define(:version => 20130522123843) do
   end
 
   add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"
+
+  create_table "products", :force => true do |t|
+    t.string   "description"
+    t.float    "amount"
+    t.string   "category"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "programs", :force => true do |t|
     t.string   "name"

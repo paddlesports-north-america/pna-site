@@ -59,14 +59,15 @@ class Course < ActiveRecord::Base
   end
 
   def assisting_coach_ids
-    @assisting_coach_ids || self.course_coaches.where( :is_director => false ).pluck( :member_id )
+    @assisting_coach_ids || [self.course_coaches.where( :is_director => false ).pluck( :member_id ).join(',')]
   end
 
   def set_coaches
     unless @assisting_coach_ids.nil?
+      acids = @assisting_coach_ids.first.split(',')
       original = self.course_coaches.where( :is_director => false ).pluck( :member_id )
-      self.course_coaches.where( :member_id => original - @assisting_coach_ids ).delete_all
-      add = @assisting_coach_ids - original
+      self.course_coaches.where( :member_id => original - acids ).delete_all
+      add = acids - original
       add.each { |id|
         self.course_coaches.create( { :member_id => id } )
       }
