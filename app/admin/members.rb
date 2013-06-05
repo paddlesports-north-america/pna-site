@@ -172,7 +172,7 @@ ActiveAdmin.register Member do
             table_for member.coached_courses do
               column t('pna.course') do |c| link_to c.course.program.name, admin_course_path( c.course ) end
               column t('pna.course_director') do |c| link_to c.course.course_director, admin_member_path( c.course.course_director ) end
-              column t('pna.date') do |c| c.course.date end
+              column t('pna.date') do |c| c.course.start_date end
             end
           end
         end
