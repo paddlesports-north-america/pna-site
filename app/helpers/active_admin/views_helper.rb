@@ -31,6 +31,12 @@ module ActiveAdmin::ViewsHelper
     f.input :sent
   end
 
+  def note_inputs(f)
+    f.semantic_fields_for :note do |n|
+      n.input :body
+    end
+  end
+
   def invoice_inputs(f)
     f.inputs do
       f.input :member_id, :input_html => member_autocomplete_options

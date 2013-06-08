@@ -59,6 +59,8 @@ ActiveAdmin.register Member do
       li link_to manage_txt( t('pna.mailing_address').pluralize ), admin_member_addresses_path( member )
       li link_to manage_txt( t('pna.qualification').pluralize ), admin_member_qualifications_path( member )
       li link_to manage_txt( t('pna.first_aid_certification').pluralize ), admin_member_first_aid_certifications_path( member )
+      li link_to manage_txt( t('pna.coaching_registration').pluralize ), admin_member_coaching_registrations_path( member )
+      # li link_to manage_txt( t('pna.leadership_registration').pluralize ), admin_member_leadership_registrations_path( member )
     end
   end
 

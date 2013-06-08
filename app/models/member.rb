@@ -20,6 +20,9 @@ class Member < ActiveRecord::Base
 
   has_many :invoices, :dependent => :delete_all
 
+  has_many :coaching_registrations
+  has_many :leadership_registrations
+
   attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name,
                   :middle_name, :addresses_attributes, :phone_numbers_attributes,
                   :email_addresses_attributes, :memberships_attributes

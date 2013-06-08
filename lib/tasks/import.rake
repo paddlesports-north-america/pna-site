@@ -31,7 +31,7 @@ namespace :import do
   desc "import product data"
   task :products, [ :path ] => :environment do |t,args|
     parse_file args[ :path ] do |data|
-      fee = Fee.new
+      fee = Product.new
       fee.id        = data[0]
       fee.amount    = data[2]
       fee.category  = data[5]

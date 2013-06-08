@@ -25,13 +25,11 @@ ActiveAdmin.register CourseParticipant do
       f.input :prerequisites_checked
     end
 
-    f.inputs "Note" do
-      f.semantic_fields_for :note do |n|
-        n.input :body
-      end
+    f.inputs t('pna.note') do
+      note_inputs f
     end
 
-    f.inputs "Invoice", "data-hook" => 'optional' do
+    f.inputs t('pna.invoice'), "data-hook" => 'optional' do
       f.semantic_fields_for :invoice do |i|
         i.has_many :line_items do |l|
           line_item_inputs l

@@ -4,6 +4,7 @@
 en:
   pna:
     yes: Yes
+    note: Note
     not_printed: Not Printed
     name: Name
     manage: Manage
@@ -34,9 +35,12 @@ en:
     create: Click here to create one.
     exp_date: Expiration Date
     payment: Payment
+    invoice: Invoice
     no_payments: No payments registered for this invoice
     no_members: There are no members registered.
     first_aid_certification: First Aid Certification
+    coaching_registration: Coaching Registration
+    leadership_registration: Leadership Registration
     first_aid_types:
         first_aid: First Aid
         cpr: CPR
