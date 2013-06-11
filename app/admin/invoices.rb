@@ -1,6 +1,7 @@
 ActiveAdmin.register Invoice do
   decorate_with InvoiceDecorator
   config.batch_actions = false
+  menu :priority => 3
 
   form :partial => "forms/invoice"
 

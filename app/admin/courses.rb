@@ -1,5 +1,5 @@
 ActiveAdmin.register Course do
-
+  menu :priority => 2
   config.batch_actions = false
 
   scope :all, :default => true
