@@ -4,6 +4,7 @@
 en:
   pna:
     yes: Yes
+    no: No
     note: Note
     not_printed: Not Printed
     name: Name
@@ -39,6 +40,7 @@ en:
     no_payments: No payments registered for this invoice
     no_members: There are no members registered.
     first_aid_certification: First Aid Certification
+    registration: Registration
     coaching_registration: Coaching Registration
     leadership_registration: Leadership Registration
     first_aid_types:

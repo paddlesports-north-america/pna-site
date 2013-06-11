@@ -2,7 +2,7 @@ class LeadershipRegistration < Registration
 
   after_initialize :set_prerequisites
 
-  serialized_attr_accessor :relevant_leadership_training, :relevant_safety_training, :first_aid, :registration_fee
+  prereq_accessor :relevant_leadership_training, :relevant_safety_training, :first_aid, :registration_fee
 
   def set_prerequisites
     self.prerequisites = {

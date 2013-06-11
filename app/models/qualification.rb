@@ -1,4 +1,5 @@
 class Qualification < ActiveRecord::Base
+
   belongs_to :member
   belongs_to :award
   belongs_to :course

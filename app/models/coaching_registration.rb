@@ -19,4 +19,7 @@ class CoachingRegistration < Registration
     } if self.new_record?
   end
 
+  def to_s
+    award.name
+  end
 end

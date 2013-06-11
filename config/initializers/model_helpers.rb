@@ -1,3 +1,5 @@
 ActiveSupport.on_load(:active_record) do
-  include Pna::ModelHelpers
+  include Pna::HasRegion
+  include Pna::HasContactInfo
+  include Pna::HasNote
 end

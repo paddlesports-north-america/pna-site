@@ -48,6 +48,12 @@ ActiveAdmin.register Member do
 
     end
 
+    f.inputs t('pna.note') do
+      f.semantic_fields_for :note do |n|
+        n.input :body
+      end
+    end
+
     f.actions
   end
 
@@ -60,7 +66,7 @@ ActiveAdmin.register Member do
       li link_to manage_txt( t('pna.qualification').pluralize ), admin_member_qualifications_path( member )
       li link_to manage_txt( t('pna.first_aid_certification').pluralize ), admin_member_first_aid_certifications_path( member )
       li link_to manage_txt( t('pna.coaching_registration').pluralize ), admin_member_coaching_registrations_path( member )
-      # li link_to manage_txt( t('pna.leadership_registration').pluralize ), admin_member_leadership_registrations_path( member )
+      li link_to manage_txt( t('pna.leadership_registration').pluralize ), admin_member_leadership_registrations_path( member )
     end
   end
 
@@ -78,6 +84,7 @@ ActiveAdmin.register Member do
           row :last_name
           row :gender
           row :birthdate
+          row :note
         end
 
         panel t('pna.phone_number').pluralize do
@@ -175,6 +182,15 @@ ActiveAdmin.register Member do
               column t('pna.course') do |c| link_to c.course.program.name, admin_course_path( c.course ) end
               column t('pna.course_director') do |c| link_to c.course.course_director, admin_member_path( c.course.course_director ) end
               column t('pna.date') do |c| c.course.start_date end
+            end
+          end
+        end
+
+        unless member.leadership_registrations.empty? && member.coaching_registrations.empty?
+          panel t('pna.registration' ).pluralize do
+            table_for Registration.where( :member_id => member.id ) do
+              column :award
+              column :created_at
             end
           end
         end

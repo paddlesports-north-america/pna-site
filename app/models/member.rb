@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
 
   has_contact_info
 
+  has_note
+
   GENDER = { :male => 'm', :female => 'f' }
 
   has_and_belongs_to_many :centers

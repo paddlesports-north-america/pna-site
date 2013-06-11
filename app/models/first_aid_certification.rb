@@ -1,4 +1,5 @@
 class FirstAidCertification < ActiveRecord::Base
+  has_note
 
   TYPE = {
     :first_aid => "First Aid",
@@ -15,5 +16,8 @@ class FirstAidCertification < ActiveRecord::Base
 
   belongs_to :member
 
-  attr_accessible :certification_level, :certification_type, :date, :provider, :member_id
+  # has_one :note, :as => :noteable
+  # after_initialize lambda { self.note ||= Note.new }
+
+  attr_accessible :certification_level, :certification_type, :date, :provider, :member_id #, :note
 end

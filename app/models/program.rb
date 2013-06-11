@@ -1,18 +1,18 @@
 class Program < ActiveRecord::Base
 
-  PROGRAM_TYPES = { :other => "other", :leadership => "leadership", :coaching => "coaching", :performance => "performance", :safety => "safety" }
-
   belongs_to :award
 
   attr_accessible :name, :award_id, :program_type, :award_attributes
   accepts_nested_attributes_for :award
 
   validates :name, :presence => true
+  validates :program_type, :inclusion => { :in => Pna::ProgramType::ALL }
 
-  scope :coaching, where( :program_type => Program::PROGRAM_TYPES[ :coaching ] )
-  scope :performance, where( :program_type => Program::PROGRAM_TYPES[ :performance ] )
-  scope :leadership, where( :program_type => Program::PROGRAM_TYPES[ :leadership ] )
-  scope :other, where( :program_type => Program::PROGRAM_TYPES[ :other ] )
+  scope :coaching, where( :program_type => Pna::ProgramType::COACHING )
+  scope :performance, where( :program_type => Pna::ProgramType::PERFORMANCE )
+  scope :leadership, where( :program_type => Pna::ProgramType::LEADERSHIP )
+  scope :safety, where( :program_type => Pna::ProgramType::SAFETY )
+  scope :other, where( :program_type => Pna::ProgramType::OTHER )
 
   def has_award?
     !award.nil?

@@ -70,7 +70,7 @@ module ActiveAdmin::ViewsHelper
   end
 
   def manage_txt(obj)
-    "#{t('pna.manage')} #{obj}"
+    "#{obj}"
   end
 
 end
