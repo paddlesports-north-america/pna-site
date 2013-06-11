@@ -14,7 +14,7 @@ Program.create( { :name => '4 Star White Water Training', :program_type => Pna::
 Program.create( { :name => '4 Star White Water Assessment', :program_type => Pna::ProgramType::LEADERSHIP, :award_attributes => { :name => '4 Star White Water Leader', :award_type => Pna::ProgramType::LEADERSHIP } } )
 Program.create( { :name => '4 Star Surf Training', :program_type => Pna::ProgramType::LEADERSHIP } )
 Program.create( { :name => '4 Star Surf Assessment', :program_type => Pna::ProgramType::LEADERSHIP, :award_attributes => { :name => '4 Star Surf Leader', :award_type => Pna::ProgramType::LEADERSHIP } } )
-Program.create( { :name => 'Coastal Navigation', :program_type => PPna::ProgramType::OTHER, :award_attributes => { :name => 'Coastal Navigation and Tidal Planning' } } )
+Program.create( { :name => 'Coastal Navigation', :program_type => Pna::ProgramType::OTHER, :award_attributes => { :name => 'Coastal Navigation and Tidal Planning' } } )
 Program.create( { :name => 'White Water Safety and Rescue', :program_type => Pna::ProgramType::SAFETY, :award_attributes => { :name => 'White Water Safety and Rescue' } } )
 Program.create( { :name => '5 Star Sea Training', :program_type => Pna::ProgramType::PERFORMANCE } )
 Program.create( { :name => '5 Star Sea Assessment', :program_type => Pna::ProgramType::PERFORMANCE, :award_attributes => { :name => '5 Star Sea Leader', :award_type => Pna::ProgramType::PERFORMANCE } } )
