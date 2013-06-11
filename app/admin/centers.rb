@@ -1,4 +1,6 @@
 ActiveAdmin.register Center do
+  menu :parent => 'Settings'
+
   decorate_with CenterDecorator
 
   form do |f|

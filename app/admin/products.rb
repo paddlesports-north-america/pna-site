@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-
+  menu :parent => 'Settings'
 
   controller do
     def autocomplete

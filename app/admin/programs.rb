@@ -1,4 +1,5 @@
 ActiveAdmin.register Program do
+  menu :parent => 'Settings'
 
   config.batch_actions = false
 
