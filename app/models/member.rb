@@ -31,7 +31,7 @@ class Member < ActiveRecord::Base
 
   accepts_nested_attributes_for :addresses, :phone_numbers, :email_addresses, :memberships
 
-  validates :first_name, :last_name, :birthdate, :presence => true
+  validates :first_name, :last_name, :presence => true
   validates :gender, :inclusion => { :in => Member::GENDER.values }
 
   validate :birthdate_in_the_past

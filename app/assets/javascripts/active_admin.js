@@ -47,7 +47,10 @@ $( document ).ready(function(){
     }
   }, '.chzn-search input' );
 
-  $( 'div.has_many > a.button' ).on( 'click', function(){ setChosen(); });
+  $( 'div.has_many > a.button' ).on( 'click', function(){
+    setChosen();
+    $( this ).parents( 'div.has_many' ).find( 'input' ).first().focus();
+  });
 
   $( '.has_many.addresses a.button').on( 'click', function(){
     console.log("HI");
