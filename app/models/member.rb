@@ -40,6 +40,10 @@ class Member < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def pna_number
+    self.id
+  end
+
   private
   def birthdate_in_the_past
     unless birthdate.nil? || birthdate < Date.today

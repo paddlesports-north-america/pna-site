@@ -4,6 +4,9 @@ ActiveAdmin.register Member do
 
   menu :priority => 1
 
+  preserve_default_filters!
+  filter :id, :label => 'PNA Number'
+
   controller do
     def autocomplete
       respond_with Member.where( "lower( concat( first_name, ' ', last_name ) ) like ? OR cast( id as text ) like ?", "%#{params[ :q ].downcase}%", "%#{params[ :q ].downcase}%" ), :location => nil

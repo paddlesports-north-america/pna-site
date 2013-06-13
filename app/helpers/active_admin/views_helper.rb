@@ -25,7 +25,8 @@ module ActiveAdmin::ViewsHelper
   end
 
   def membership_inputs(f)
-    f.input :organization, :as => :select, :collection => Membership::ORGANIZATION
+    f.input :organization, :as => :select, :collection => Membership::ORGANIZATION, :include_blank => false
+    f.input :membership_type, :include_blank => false
     f.input :expiration_date, :as => :datepicker, :input_html => { 'data-years' => "c-1:c+5" }
     f.input :printed_on, :as => :datepicker, :input_html => { 'data-years' => "c-1:c+5" }
     f.input :sent

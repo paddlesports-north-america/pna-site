@@ -78,7 +78,11 @@ class Course < ActiveRecord::Base
     self.course_coaches.where( :is_director => false ).map { |c| c.member }
   end
 
-  # def to_s
-  #   # "#{program.name}: ##{id}"
-  # end
+  def to_s
+    unless program.nil?
+      "#{program.name}: ##{id}"
+    else
+      "##{id}"
+    end
+  end
 end

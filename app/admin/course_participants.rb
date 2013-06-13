@@ -1,6 +1,10 @@
 ActiveAdmin.register CourseParticipant do
   belongs_to :course
 
+  action_item do
+    link_to "Add Another Particiipant", new_admin_course_course_participant_path( Course.find( params[ :course_id ] ) )
+  end
+
   index do
     selectable_column
     column :member
