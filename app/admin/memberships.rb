@@ -19,10 +19,19 @@ ActiveAdmin.register Membership do
     end
   end
 
+  action_item :only => :show do
+    link_to 'Print', admin_member_membership_print_path( params[ :member_id ], params[ :id ] )
+  end
+
   controller do
     def new
       @membership = Membership.new :organization => Membership::ORGANIZATION[ :pna ], :membership_type => MembershipType.find_by_name( 'Adult' )
       new!
+    end
+
+    def print
+      output = MembershipPdf.new( :page_size => MembershipPdf::PAGE_SIZE, :margin_left => MembershipPdf::MARGIN, :margin_right => MembershipPdf::MARGIN, :margin_top => 0, :margin_bottom => 0 ).to_pdf( Membership.find( params[ :membership_id ] ) )
+      send_data output, :filename => "membership-#{params[:member_id]}", :type => "application/pdf", :disposition => "inline"
     end
   end
 end

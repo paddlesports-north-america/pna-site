@@ -12,6 +12,15 @@ PaddleSportsNorthAmerica::Application.routes.draw do
       resources :addresses
       resources :phone_numbers
       resources :email_addresses
+
+      resources :memberships do
+        get 'print' => 'memberships#print'
+      end
+
+      resources :qualifications do
+        get 'print' => 'qualifications#print'
+      end
+
     end
 
     resources :centers do
