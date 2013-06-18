@@ -5,5 +5,5 @@ class Pna::ProgramType
   PERFORMANCE = 'performance'
   SAFETY = 'safety'
   ENDORSEMENT = 'endorsement'
-  ALL = [ OTHER, LEADERSHIP, COACHING, PERFORMANCE, SAFETY ]
+  ALL = [ OTHER, LEADERSHIP, COACHING, PERFORMANCE, SAFETY, ENDORSEMENT ]
 end
