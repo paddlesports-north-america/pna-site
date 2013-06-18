@@ -37,7 +37,7 @@ ActiveAdmin.register Qualification do
 
       clazz = "#{award.award_type.humanize}Pdf".constantize
 
-      output = clazz.new( :page_size => clazz::PAGE_SIZE, :margin => clazz::MARGIN, :template => File.join( Rails.root, '..', 'reference', 'star.pdf') ).to_pdf( args )
+      output = clazz.new( :page_size => clazz::PAGE_SIZE, :margin => clazz::MARGIN ).to_pdf( args )
       send_data output, :filename => "#{member.id}-#{qualification.id}.pdf", :type => "application/pdf", :disposition => "inline"
     end
 
