@@ -23,7 +23,7 @@ class CoachingPdf < Prawn::Document
     end
 
     bounding_box( [ 2.85.in, 2.85.in ], :width => 2.45.in, :height => 1.in ) do
-      text "ABCD1234", :align => :center, :character_spacing => 1.25
+      text "#{params[ :member ].id.to_s.rjust( 4, '0' )}#{params[:course].id.to_s.rjust(4,'0')}", :align => :center, :character_spacing => 1.25
     end
     render
   end

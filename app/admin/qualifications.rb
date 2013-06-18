@@ -21,18 +21,23 @@ ActiveAdmin.register Qualification do
 
     def print
       member = Member.find( params[ :member_id ] )
+
       qualification = Qualification.find( params[ :qualification_id ] )
+      qualification.printed_on = Date.today
+      qualification.save
+
       award = qualification.award
 
       args = {
         :award => award.name,
         :member => member,
-        :date => qualification.awarded_on
+        :date => qualification.awarded_on,
+        :course => qualification.course
       }
 
       clazz = "#{award.award_type.humanize}Pdf".constantize
 
-      output = clazz.new( :page_size => clazz::PAGE_SIZE, :margin => clazz::MARGIN, :template => File.join( Rails.root, '..', 'reference', 'coaching.pdf' ) ).to_pdf( args )
+      output = clazz.new( :page_size => clazz::PAGE_SIZE, :margin => clazz::MARGIN, :template => File.join( Rails.root, '..', 'reference', 'star.pdf') ).to_pdf( args )
       send_data output, :filename => "#{member.id}-#{qualification.id}.pdf", :type => "application/pdf", :disposition => "inline"
     end
 

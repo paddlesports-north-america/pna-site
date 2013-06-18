@@ -27,6 +27,12 @@ class PerformancePdf < Prawn::Document
       text params[ :date ].strftime( '%B %d, %Y'), :align => :left
     end
 
+    bounding_box([ 5, 60 ], :width => 3.in, :height => 50 ) do
+      font File.join( Rails.root, 'fonts', 'Arial.ttf' )
+      font_size 8
+      text "Certificate # #{params[ :member ].id.to_s.rjust(4,'0')}-#{params[:date].strftime('%m%d%y')}-#{params[ :course ].id.to_s.rjust(4, '0')}"
+    end
+
     bounding_box( [ 0.25.in, 10.8.in ], :width => 7.in, :height => 6.in ) do
 
       bounding_box( [ 0, 6.in ], :width => 4.75.in, :height => 6.in ) do
