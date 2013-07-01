@@ -6,5 +6,5 @@ begin
     [ 'Mexico', Country.find_by_name( 'Mexico' ).id ]
   ] #Country.where( :name => [ 'United States', 'Canada', 'Mexico' ] ).map { |c| [ c.name, c.id ] }
 rescue
-  Rails.log.warn "Failed to initialize countries constant"
+  Rails.logger.warn "Failed to initialize countries constant"
 end
