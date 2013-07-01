@@ -9,12 +9,12 @@ class EndorsementPdf < Prawn::Document
 
     font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )
 
-    bounding_box( [ 0,5.6.in ], :width => 6.in, :height => 3.in ) do
+    bounding_box( [ 0.in,5.6.in ], :width => 5.75.in, :height => 3.in ) do
       font_size 24
       text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :center
     end
 
-    bounding_box( [ 0, 4.5.in ], :width => 6.in, :height => 2.in ) do
+    bounding_box( [ 0, 4.5.in ], :width => 5.75.in, :height => 2.in ) do
       font_size 16
       text params[ :award ], :align => :center
     end

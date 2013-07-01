@@ -34,7 +34,7 @@ ActiveAdmin.register Membership do
       membership.printed_on = Date.today
       membership.save
 
-      output = MembershipPdf.new( :page_size => MembershipPdf::PAGE_SIZE, :margin_left => MembershipPdf::MARGIN, :margin_right => MembershipPdf::MARGIN, :margin_top => 0, :margin_bottom => 0 ).to_pdf( membership )
+      output = MembershipPdf.new( :page_size => MembershipPdf::PAGE_SIZE, :margin_left => MembershipPdf::MARGIN, :margin_right => MembershipPdf::MARGIN, :margin_bottom => 0 ).to_pdf( membership )
       send_data output, :filename => "membership-#{params[:member_id]}", :type => "application/pdf", :disposition => "inline"
     end
   end

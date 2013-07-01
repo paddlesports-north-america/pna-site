@@ -2,36 +2,12 @@ class PerformancePdf < Prawn::Document
 
   require 'prawn/measurement_extensions'
 
-  PAGE_SIZE = [ 8.in, 11.75.in ]
-  MARGIN = 0.40.in
+  PAGE_SIZE = [ 8.25.in, 11.625.in ]
+  MARGIN = 0.in
 
   def to_pdf( params )
-    font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )
-    font_size 36
 
-    move_down 6.40.in
-
-    text params[ :award ].gsub( /Star\s/, '' ), :align => :right
-
-    move_down 1.40.in
-
-    font_size 22
-
-    indent( 320 ) do
-      text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
-    end
-
-    move_down 1.30.in - 10
-    font_size 12
-    bounding_box([ 400, 78 ], :width => 800, :height => 40 ) do
-      text params[ :date ].strftime( '%B %d, %Y'), :align => :left
-    end
-
-    bounding_box([ 5, 60 ], :width => 3.in, :height => 50 ) do
-      font File.join( Rails.root, 'fonts', 'Arial.ttf' )
-      font_size 8
-      text "Certificate # #{params[ :member ].id.to_s.rjust(4,'0')}-#{params[:date].strftime('%m%d%y')}-#{params[ :course ].id.to_s.rjust(4, '0')}"
-    end
+    image "#{Rails.root}/public/bw-logo.png", position: 5.85.in, vposition: 0.35.in, height: 1.75.in
 
     bounding_box( [ 0.25.in, 10.8.in ], :width => 7.in, :height => 6.in ) do
 
@@ -69,7 +45,7 @@ class PerformancePdf < Prawn::Document
         text "Also visit BCU UK (Canoe England) at www.bcu.org.uk."
       end
 
-      bounding_box( [ 5.in, 6.in ], :width => 2.in, :height => 6.in ) do
+      bounding_box( [ 5.5.in, 6.in ], :width => 2.in, :height => 6.in ) do
         move_down 2.in
 
         text "BCUNA"
@@ -86,6 +62,38 @@ class PerformancePdf < Prawn::Document
         text "NG13 8AP"
       end
 
+    end
+
+    font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )
+    font_size 36
+
+
+    bounding_box( [0,4.865.in], :width => 7.75.in, :height => 2.in ) do
+      font_size 42
+      text params[ :award ].gsub( /[^0-9]/, '' ), :align => :right
+      move_down 2.cm
+      font_size 28
+      text params[ :award ].gsub(/[0-9]|[Ss]tar/,'' ), :align => :right
+    end
+
+    # move_down 1.40.in
+
+    font_size 22
+
+    bounding_box( [5.in,2.875.in], :width => 3.in, :height => 2.in ) do
+      text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
+    end
+
+    # move_down 1.30.in - 10
+    font_size 12
+    bounding_box([ 6.25.in, 1.5.in ], :width => 1.75.in, :height => 40 ) do
+      text params[ :date ].strftime( '%B %d, %Y'), :align => :left
+    end
+
+    bounding_box([ 0.625.in, 1.4.in ], :width => 3.in, :height => 50 ) do
+      font File.join( Rails.root, 'fonts', 'Arial.ttf' )
+      font_size 8
+      text "Certificate # #{params[ :member ].id.to_s.rjust(4,'0')}-#{params[:date].strftime('%m%d%y')}-#{params[ :course ].id.to_s.rjust(4, '0')}"
     end
 
     render
