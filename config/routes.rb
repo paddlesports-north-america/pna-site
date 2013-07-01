@@ -33,6 +33,11 @@ PaddleSportsNorthAmerica::Application.routes.draw do
   end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
+  begin
+    ActiveAdmin.routes(self)
+  rescue
+    Rails.logger.warn "Failed to initialize aa routes"
+  end
 
 end
