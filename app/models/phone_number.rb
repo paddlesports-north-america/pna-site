@@ -1,5 +1,5 @@
 class PhoneNumber < ActiveRecord::Base
-  has_paper_trail
+  #has_paper_trail
 
   belongs_to :phoneable, :polymorphic => true
   attr_accessible :ext, :label, :number, :phoneable_id, :phoneable_type

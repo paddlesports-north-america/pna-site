@@ -1,7 +1,7 @@
 class Member < ActiveRecord::Base
   # include HasContactInfo
 
-  has_paper_trail
+  #has_paper_trail
 
   has_contact_info
 

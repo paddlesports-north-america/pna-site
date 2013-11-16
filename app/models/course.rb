@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  has_paper_trail
+  #has_paper_trail
 
   has_region
 

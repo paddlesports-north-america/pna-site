@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
-  has_paper_trail
+  #has_paper_trail
 
   # handles country / state associations and validation
   has_region

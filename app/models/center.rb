@@ -1,5 +1,5 @@
 class Center < ActiveRecord::Base
-  has_paper_trail
+  #has_paper_trail
 
   has_contact_info
 
