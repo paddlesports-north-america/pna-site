@@ -87,7 +87,8 @@ ActiveAdmin.register Course do
           if course.course_participants.count > 0
             table_for course.course_participants do
               column t('pna.name') do |p| link_to p.member.to_s, admin_member_path( p.member ) end
-              column t('pna.result') do |p| status_tag( p.result ? t('pna.pass') : t('pna.fail'), p.result ? :ok : :error ) end
+              # column t('pna.result') do |p| status_tag( p.result ? t('pna.pass') : t('pna.fail'), p.result ? :ok : :error ) end
+              column t( 'pna.result' ) do |p| status_tag( p.result, result_status_tag_status( p.result ) ) end
             end
           else
             para t('pna.missing.students')

@@ -74,4 +74,16 @@ module ActiveAdmin::ViewsHelper
     "#{obj}"
   end
 
+  def result_status_tag_status( result )
+    if result == CourseParticipant::RESULT[ :pass ]
+      status = :ok
+    elsif result == CourseParticipant::RESULT[ :fail ]
+      status = :error
+    else
+      status = :warning
+    end
+
+    status
+  end
+
 end
