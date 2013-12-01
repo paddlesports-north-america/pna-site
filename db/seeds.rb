@@ -10,6 +10,6 @@
 # require File.join( default_dir, 'programs.rb' )
 
 
-# AdminUser.create( { :email => 'admin@paddlesportsnorthamerica.com', :password => 'password', :password_confirmation => 'password' } )
+AdminUser.create( { :email => 'admin@paddlesportsnorthamerica.com', :password => 'password', :password_confirmation => 'password' } )
 # AdminUser.create( { :email => 'bill.akt@gmail.com', :password => 'password', :password_confirmation => 'password' } )
 # AdminUser.create( { :email => 'scottfairty@gmail.com', :password => 'password', :password_confirmation => 'password' } )

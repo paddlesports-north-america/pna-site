@@ -78,7 +78,7 @@ namespace :import do
             :certification_level => FirstAidCertification::LEVEL[ :other ],
             :certification_type => FirstAidCertification::TYPE[ :first_aid ],
             :provider => data[39],
-            :date => data[40] #Date.strptime( data[40], '%m/%d/%y' )
+            :expiration_date => data[40] #Date.strptime( data[40], '%m/%d/%y' )
           })
         end
 
@@ -87,7 +87,7 @@ namespace :import do
             :certification_level => FirstAidCertification::LEVEL[ :other ],
             :certification_type => FirstAidCertification::TYPE[ :cpr ],
             :provider => data[41],
-            :date => data[42] #Date.strptime( data[42], '%m/%d/%y' )
+            :expiration_date => data[42] #Date.strptime( data[42], '%m/%d/%y' )
           })
         end
 
