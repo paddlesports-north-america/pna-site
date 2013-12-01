@@ -50,24 +50,34 @@ module ActiveAdmin::ViewsHelper
     end
 
     f.inputs do
-      f.has_many :payments do |p|
+      f.has_many :payments , decorate: false do |p|
         payment_inputs( p )
+      end
+    end
+
+    f.inputs t('pna.note') do
+      f.semantic_fields_for :note do |n|
+        n.input :body
       end
     end
   end
 
   def payment_inputs(f)
-    f.input :source, :as => :select, :collection => Payment::SOURCE.inject({}) { |m,(k,v)| m.merge( { t("pna.payment_sources.#{k.to_s}") => v} ) }, :hint => t('pna.hints.payment.type')
+    f.input :payment_source, :as => :select, :collection => Payment::SOURCE.inject({}) { |m,v| m.merge( { t("pna.payment_sources.#{v}") => v} ) }, :hint => t('pna.hints.payment.type')
     f.input :number, :hint => t('pna.hints.payment.number')
     f.input :exp_date, :hint => t('pna.hints.payment.exp_date'), :discard_day => true
     f.input :billing_name, :hint => t('pna.hints.payment.billing_name')
     f.input :amount, :hint => t('pna.hints.payment.amount')
+
+    f.input :note_body, :as => :text, :label => t('pna.note')
   end
 
   def line_item_inputs(f)
     f.input :product_id, :input_html => { "data-hook" => "choose", "data-autocomplete" => true, "data-source" => admin_products_path, "data-callback" => 'setCostField', "data-format" => "productAutocompleteFormat" }
     f.input :cost
     f.input :quantity
+
+    f.input :note_body, :as => :text, :label => t('pna.note')
   end
 
   def manage_txt(obj)

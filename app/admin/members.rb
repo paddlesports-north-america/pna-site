@@ -13,6 +13,17 @@ ActiveAdmin.register Member do
     end
   end
 
+  index do |m|
+    selectable_column
+    column t('pna.pna_number'), :id
+    column :bcu_number
+    column :first_name
+    column :last_name
+    column :created_at
+    column :updated_at
+    actions
+  end
+
   form do |f|
     f.inputs do
       f.input :bcu_number
@@ -79,7 +90,7 @@ ActiveAdmin.register Member do
       column do
 
         attributes_table do
-          row :id
+          row t('pna.pna_number') do |m| m.id end
           row :bcu_number
           row t('pna.exp_date') do |m| status_tag( m.expiration_date.to_s, m.membership_status ) end
           row :first_name
@@ -148,7 +159,7 @@ ActiveAdmin.register Member do
               column :certification_type
               column :certification_level
               column :provider
-              column :date
+              column :expiration_date
             end
             para link_to "#{t('pna.manage')} #{t('pna.first_aid_certification').pluralize}", admin_member_first_aid_certifications_path( member )
           end
@@ -174,7 +185,7 @@ ActiveAdmin.register Member do
               column t('pna.course') do |c| link_to c.course.program.name, admin_course_path( c.course ) end
               column t('pna.course_director') do |c| link_to c.course.course_director, admin_member_path( c.course.course_director ) end
               column t('pna.date') do |c| c.course.start_date end
-              column t('pna.result') do |c| status_tag( c.result ? t('pna.pass') : t('pna.fail'), c.result ? :ok : :error ) end
+              column t( 'pna.result' ) do |p| status_tag( p.result, result_status_tag_status( p.result ) ) end
             end
           end
         end

@@ -36,6 +36,7 @@ en:
     create: Click here to create one.
     exp_date: Expiration Date
     payment: Payment
+    ballance: Ballance
     invoice: Invoice
     no_payments: No payments registered for this invoice
     no_members: There are no members registered.

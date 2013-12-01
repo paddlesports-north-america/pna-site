@@ -8,16 +8,16 @@ class CoachingRegistration < Registration
 
   prereq_accessor :relevant_star_award, :relevant_safety_training, :first_aid, :pre_req_coaching_award
 
-  after_initialize :set_prerequisites
+  # after_initialize :set_prerequisites
 
-  def set_prerequisites
-    self.prerequisites ||= {
-      :relevant_star_award => false,
-      :relevant_safety_training => false,
-      :first_aid => false,
-      :pre_req_coaching_award => false
-    } if self.new_record?
-  end
+  # def set_prerequisites
+  #   self.prerequisites ||= {
+  #     :relevant_star_award => false,
+  #     :relevant_safety_training => false,
+  #     :first_aid => false,
+  #     :pre_req_coaching_award => false
+  #   } if self.new_record?
+  # end
 
   def to_s
     award.name

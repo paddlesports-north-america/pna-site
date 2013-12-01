@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612235518) do
+ActiveRecord::Schema.define(:version => 20131201173953) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(:version => 20130612235518) do
 
   create_table "first_aid_certifications", :force => true do |t|
     t.string   "provider"
-    t.date     "date"
+    t.date     "expiration_date"
     t.string   "certification_type"
     t.string   "certification_level"
     t.integer  "member_id"
@@ -167,10 +167,11 @@ ActiveRecord::Schema.define(:version => 20130612235518) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "member_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "payable_type"
     t.integer  "payable_id"
+    t.boolean  "has_outstanding_ballance", :default => true
   end
 
   add_index "invoices", ["member_id"], :name => "index_invoices_on_member_id"
@@ -231,14 +232,14 @@ ActiveRecord::Schema.define(:version => 20130612235518) do
   add_index "notes", ["noteable_type", "noteable_id"], :name => "index_notes_on_noteable_type_and_noteable_id"
 
   create_table "payments", :force => true do |t|
-    t.string   "source"
+    t.string   "payment_source"
     t.string   "number"
     t.date     "exp_date"
     t.float    "amount"
     t.string   "billing_name"
     t.integer  "invoice_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"

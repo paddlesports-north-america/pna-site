@@ -1,4 +1,7 @@
 class LineItem < ActiveRecord::Base
+  has_note
+  has_note_attribute
+
   belongs_to :invoice
   belongs_to :product
 

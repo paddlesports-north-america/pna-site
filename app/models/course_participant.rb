@@ -12,7 +12,7 @@ class CourseParticipant < ActiveRecord::Base
                   :invoice_attributes, :note_attributes
 
   before_validation :set_invoice_member
-  after_create :assign_qualifications
+  after_save :assign_qualifications
 
   accepts_nested_attributes_for :invoice
   accepts_nested_attributes_for :note
@@ -31,8 +31,10 @@ class CourseParticipant < ActiveRecord::Base
   end
 
   def assign_qualifications
-    if result == RESULT[:pass] && prerequisites_checked && course.program.has_award?
+    if result == RESULT[:pass] && prerequisites_checked && course.program.has_award? && member.qualifications.where( :award_id => course.program.award.id ).count == 0
       member.qualifications.create( { :course_id => course.id, :award_id => course.program.award.id, :awarded_on => course.end_date || course.start_date } )
+    elsif member.qualifications.where( :award_id => course.program.award.id ).count > 0
+      member.qualifications.where( :award_id => course.program.award.id ).delete_all
     end
   end
 end

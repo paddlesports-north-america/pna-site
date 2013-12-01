@@ -19,5 +19,5 @@ class FirstAidCertification < ActiveRecord::Base
   # has_one :note, :as => :noteable
   # after_initialize lambda { self.note ||= Note.new }
 
-  attr_accessible :certification_level, :certification_type, :date, :provider, :member_id #, :note
+  attr_accessible :certification_level, :certification_type, :expiration_date, :provider, :member_id #, :note
 end

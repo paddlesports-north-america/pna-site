@@ -11,6 +11,19 @@ module Pna
         accepts_nested_attributes_for :note
         attr_accessible :note_attributes, :note
       end
+
+      def has_note_attribute
+        define_method( :note_body ) do
+          self.note.body
+        end
+
+        define_method( :note_body= ) do |val|
+          self.note ||= Note.new
+          self.note.body = val
+        end
+
+        attr_accessible :note_body
+      end
     end
   end
 end

@@ -19,7 +19,11 @@ class Registration < ActiveRecord::Base
         end
         def #{arg}=(v)
           self.prerequisites ||= {}
-          self.prerequisites[:#{arg}] = v
+          unless v.class == TrueClass || v.class == FalseClass
+            self.prerequisites[:#{arg}] = ( v == 'true' || v == '1' )
+          else
+            self.prerequisites[:#{arg}] = v
+          end
         end
         attr_accessible :#{arg}
       "

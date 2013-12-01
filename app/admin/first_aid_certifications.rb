@@ -4,7 +4,7 @@ ActiveAdmin.register FirstAidCertification do
   form do |f|
     f.inputs do
       f.input :provider
-      f.input :date, :as => :datepicker
+      f.input :expiration_date, :as => :datepicker
       f.input :certification_type, :as => :select, :collection => FirstAidCertification::TYPE.inject({}) { |m,(k,v)| m.merge( { t("pna.first_aid_types.#{k.to_s}") => v } ) }
       f.input :certification_level, :as => :select, :collection => FirstAidCertification::LEVEL.inject({}) { |m,(k,v)| m.merge( { t("pna.first_aid_levels.#{k.to_s}") => v } ) }
     end
@@ -23,7 +23,7 @@ ActiveAdmin.register FirstAidCertification do
       row :certification_type
       row :certification_level
       row :provider
-      row :date
+      row :expiration_date
       row :note
       row :created_at
       row :updated_at

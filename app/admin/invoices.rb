@@ -3,9 +3,11 @@ ActiveAdmin.register Invoice do
   config.batch_actions = false
   menu :priority => 3
 
+  # filter :with_outstanding_ballance, :as => :checkbox
+
   form :partial => "forms/invoice"
 
-  form do |f|
+  form decorate: false do |f|
 
     # f.inputs do
     #   f.input :member_id, :input_html => member_autocomplete_options
@@ -39,6 +41,9 @@ ActiveAdmin.register Invoice do
     column :member
     column :line_item_list
     column :total
+    column t('pna.ballance') do |invoice|
+      status_tag( invoice.ballance, invoice.status )
+    end
     default_actions
   end
 
@@ -50,6 +55,8 @@ ActiveAdmin.register Invoice do
           row :member
           row :total
           row :created_at
+          row :has_outstanding_ballance
+          row :note
         end
       end
 
@@ -58,11 +65,12 @@ ActiveAdmin.register Invoice do
           unless invoice.payments.empty?
             invoice.payments.each do |p|
               attributes_table_for p do
-                row :source
+                row :payment_source do |pi| I18n.t("pna.payment_sources.#{pi.payment_source}") end
                 row :number
                 row :exp_date
                 row :billing_name
                 row :amount
+                row :note
               end
             end
           else
@@ -79,6 +87,7 @@ ActiveAdmin.register Invoice do
         column :cost
         column :quantity
         column :total
+        column :note
       end
     end
   end
