@@ -1,2 +1,53 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron home">
+  <%= image_tag "hero-coach-smile.jpg" %>
+  <div class="container">
+    <h2>
+      <span class="highlight">Be Safe.</span>
+      <br />
+      <span class="highlight">Have Fun.</span>
+      <br />
+      <span class="highlight">Learn.</span>
+      <br />
+    </h2>
+    <p class="hidden-xs">
+      <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+      <br />
+      <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
+      <br />
+      <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
+    </p>
+    <p><a class="highlight" href="#">Come Join the Fun!</a></p>
+  </div>
+
+</div>
+
+<div class="well">
+  <div class="container">
+    <h2>Paddlesports North America promotes paddler education, safety and stewardship of the environment throughout North America.</h2>
+  </div>
+</div>
+
+<div class="container body-copy">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>For Paddlers</h3>
+      <%= image_tag( 'for_paddlers.jpg', :class => "img-responsive home-promo" ) %>
+      <p>Morbi sollicitudin, arcu non pellentesque vulputate, lectus tellus pulvinar erat, quis dictum sem lectus in diam. Nam dapibus faucibus dolor bibendum aliquam. Mauris sollicitudin tincidunt enim vitae sagittis. Morbi non tellus bibendum, feugiat dui a, rhoncus quam.</p>
+      <p class="pull-right"><a href="#">Learn More</a></p>
+    </div>
+    <div class="clearfix visible-sm visible-xs"></div>
+    <div class="col-md-4">
+      <h3>For Coaches</h3>
+      <%= image_tag( 'for_coaches.jpg', :class => "img-responsive home-promo" ) %>
+      <p>Nulla sollicitudin, velit eu sollicitudin adipiscing, mauris ligula vulputate mauris, a porttitor est justo vel ligula. Aenean sed auctor orci. Nunc id tortor nisl. Pellentesque vitae lorem egestas, luctus tellus sit amet, pulvinar odio. Morbi sollicitudin, arcu non pellentesque vulputate, lectus tellus pulvinar erat.</p>
+      <a class="pull-right" href="#">Learn More</a>
+    </div>
+    <div class="clearfix visible-sm visible-xs"></div>
+    <div class="col-md-4">
+      <h3>For Life</h3>
+      <%= image_tag( 'for_life.jpg', :class => "img-responsive home-promo" ) %>
+      <p>Quis dictum sem lectus in diam. Nam dapibus faucibus dolor bibendum aliquam. Morbi sollicitudin, arcu non pellentesque vulputate, lectus tellus pulvinar erat, quis dictum sem lectus in diam. Nam dapibus faucibus dolor bibendum aliquam.</p>
+      <a class="pull-right" href="#">Learn More</a>
+    </div>
+  </div>
+</div>

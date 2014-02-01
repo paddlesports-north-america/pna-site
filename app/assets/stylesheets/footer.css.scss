@@ -1,0 +1,27 @@
+footer {
+  margin-top: 40px;
+  background: #585f69;
+  color: $pna-light;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  a { color: $brand-primary; }
+  .media .glyphicon {
+    font-size: 32px;
+  }
+  h5 {
+    // border-bottom: solid 1px $pna-blue;
+    a { color: $pna-light; }
+    a:hover { text-decoration: none; }
+  }
+
+  .social { margin-top: 10px; }
+
+}
+
+.subfooter {
+  background: #383d43;
+  color: $brand-primary;
+  padding: 20px 0;
+  border-top: $pna-med 1px solid;
+  p { padding: 0; }
+}

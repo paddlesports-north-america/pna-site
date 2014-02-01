@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap
+//= require_self
+$( document ).ready( function(){
+  $( document ).on( 'affixed.bs.affix', function(){
+    $( this ).css( "position", "fixed" );
+  });
+});

@@ -1,0 +1,31 @@
+.sidenav .nav{
+  li a {
+    color: $pna-med;
+    border-left: solid 1px $pna-light;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 14px;
+  }
+
+  li.active > a, li > a:hover {
+    color: $brand-primary;
+    background:none;
+    border-left: solid 1px $brand-primary;
+  }
+
+  li > ul {
+    display: none;
+    li a, li.active a, li a:hover {
+      padding-left: 24px;
+    }
+  }
+  li.active > ul { display: inherit; }
+}
+.sidenav.affix {
+  position: fixed !important;
+  top: 100px;
+}
+.sidenav.affixed-bottom { position: absolute; }
+.sidenav {
+  max-width: 185px;
+}

@@ -9,29 +9,110 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
 */
-.brand {
-  float: left;
-  padding-right: 8px;
+
+/* PNA colors */
+$pna-dark: #4C4D4F;
+$pna-med: #8A807F;
+$pna-med-light: #E7E7E7;
+$pna-light: #FFF;
+$pna-orange: #F06F13; //#FF7614;
+$pna-blue: #24b3e3; //#7cc9e3; //#6c91c6; //#2F70D5;
+
+$brand-primary: $pna-blue;
+$brand-secondary: $pna-orange;
+$body-bg: $pna-light;
+$text-color: $pna-dark;
+$link-hover-color: $brand-secondary;
+
+$grid-float-breakpoint: 992px;
+
+$border-radius-base: 0px;
+
+@import "bootstrap";
+@import "navbar";
+@import "sidenav";
+@import "jumbotron";
+@import "footer";
+
+body { padding-top: 86px;}
+
+h3, h4 {
+  border-bottom: 1px solid $brand-secondary;
+  padding-bottom: 4px;
 }
-ul.nav {
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 0;
+h3 {
+  margin-top: 35px;
 }
-ul.nav li {
-  display: inline;
+img.home-promo { margin-bottom: 20px; }
+.body-copy {
+  margin-top: 40px;
 }
-#flash_notice, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
+
+.sponsor {
+  margin-bottom: 20px;
 }
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+
+.leftrail {
+  text-align: right;
+  p {
+    margin-bottom: 40px;
+  }
 }
-#flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
+
+section {
+  padding-top: 86px;
+  margin-top: -86px;
 }
+
+@media (max-width: $screen-md-max) {
+  body { padding-top: 75px; }
+}
+
+@media (max-width: $grid-float-breakpoint ) {
+  body { padding-top: 51px; }
+}
+
+@media (max-width: $screen-sm-max) {
+  .leftrail { text-align: left; }
+
+  table {
+    display: block;
+    width: 100%;
+    border: 0;
+    caption { display: block; }
+    thead {
+      display: none;
+      visibility: hidden;
+    }
+    tbody, tr, th, td {
+      border: 0;
+      display: block;
+      padding: 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    tr {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    td[data-title]:before {
+      content: attr(data-title) ":\00A0";
+      font-weight: bold;
+    }
+
+    td:empty {
+      display: none;
+    }
+  }
+}
+
+
+
+
+
+
+
+
