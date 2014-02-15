@@ -60,6 +60,11 @@ img.home-promo { margin-bottom: 20px; }
   }
 }
 
+.img-inline-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
 section {
   padding-top: 86px;
   margin-top: -86px;
@@ -74,7 +79,10 @@ section {
 }
 
 @media (max-width: $screen-sm-max) {
-  .leftrail { text-align: left; }
+  .leftrail {
+    text-align: left;
+    padding-right: 10px;
+  }
 
   table {
     display: block;
