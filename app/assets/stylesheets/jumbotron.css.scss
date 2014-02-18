@@ -3,10 +3,30 @@
   max-height: 250px;
   position: relative;
   margin-bottom: 0px;
+  padding: 0px;
+
+  .carousel-caption {
+    top: 0px;
+    vertical-align: middle;
+    .caption-wrap {
+      display: table;
+      width: 100%;
+      height: 100%;
+      .caption-cell {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .carousel-caption.right {
+    text-align: right;
+  }
+  .carousel-caption.left {
+    text-align: left;
+  }
+
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
     min-width: 100%;
     min-height: 250px;
     z-index: 0;
@@ -49,6 +69,10 @@
 .jumbotron.home {
   max-height: 500px;
   text-align: right;
+  .carousel-caption {
+    max-height: 500px;
+    min-height: 250px;
+  }
 }
 
 @media (max-width: $screen-sm-min )

@@ -1,27 +1,105 @@
-<div class="jumbotron home">
-  <%= image_tag "hero-coach-smile.jpg" %>
-  <div class="container">
-    <h2>
-      <span class="highlight">Be Safe.</span>
-      <br />
-      <span class="highlight">Have Fun.</span>
-      <br />
-      <span class="highlight">Learn.</span>
-      <br />
-    </h2>
-    <p class="hidden-xs">
-      <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-      <br />
-      <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
-      <br />
-      <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
-      <br />
-    </p>
-    <p><a class="highlight" href="#">Come Join the Fun!</a>
-    <br />
-    </p>
+<div class="jumbotron home carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag "hero-coach-smile.jpg" %>
+      <div class="carousel-caption right">
+        <div class="caption-wrap">
+          <div class="caption-cell">
+             <h2>
+              <span class="highlight">Be Safe.</span>
+              <br />
+              <span class="highlight">Have Fun.</span>
+              <br />
+              <span class="highlight">Learn.</span>
+              <br />
+            </h2>
+            <p class="hidden-xs">
+              <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              <br />
+              <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
+              <br />
+              <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
+              <br />
+            </p>
+            <p><a class="highlight" href="#">Come Join the Fun!</a>
+            <br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag "hero-werner.jpg" %>
+      <div class="carousel-caption left">
+        <div class="caption-wrap">
+          <div class="caption-cell">
+            <h2>
+              <span class="highlight">Thank You</span>
+              <br />
+              <span class="highlight">Sponsors</span>
+              <br />
+            </h2>
+            <p class="hidden-xs">
+              <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              <br />
+              <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
+              <br />
+              <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
+              <br />
+            </p>
+            <p><a class="highlight" href="#">Learn about our Founding Sponsors!</a>
+            <br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag "hero-mist.jpg" %>
+      <div class="carousel-caption">
+        <div class="caption-wrap">
+          <div class="caption-cell">
+             <h2>
+              <span class="highlight">Something</span>
+              <br />
+              <span class="highlight">Else</span>
+              <br />
+            </h2>
+            <p class="hidden-xs">
+              <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              <br />
+              <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
+              <br />
+              <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
+              <br />
+            </p>
+            <p><a class="highlight" href="#">What should we put here?</a>
+            <br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>
 
 <div class="well">
