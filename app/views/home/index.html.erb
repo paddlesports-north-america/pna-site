@@ -1,9 +1,9 @@
-<div class="jumbotron home carousel slide" data-ride="carousel">
+<div id="home-hero-slider" class="jumbotron home carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  <ol class="carousel-indicators visible-lg visible-xl">
+    <li data-target="#home-hero-slider" data-slide-to="0" class="active"></li>
+    <li data-target="#home-hero-slider" data-slide-to="1"></li>
+    <li data-target="#home-hero-slider" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -21,7 +21,7 @@
               <span class="highlight">Learn.</span>
               <br />
             </h2>
-            <p class="hidden-xs">
+            <p class="hidden-xs hidden-sm">
               <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
               <br />
               <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
@@ -29,34 +29,7 @@
               <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
               <br />
             </p>
-            <p><a class="highlight" href="#">Come Join the Fun!</a>
-            <br />
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="item">
-      <%= image_tag "hero-werner.jpg" %>
-      <div class="carousel-caption left">
-        <div class="caption-wrap">
-          <div class="caption-cell">
-            <h2>
-              <span class="highlight">Thank You</span>
-              <br />
-              <span class="highlight">Sponsors</span>
-              <br />
-            </h2>
-            <p class="hidden-xs">
-              <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-              <br />
-              <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
-              <br />
-              <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
-              <br />
-            </p>
-            <p><a class="highlight" href="#">Learn about our Founding Sponsors!</a>
+            <p class="hero-link"><a class="highlight" href="#">Come Join the Fun!</a>
             <br />
             </p>
           </div>
@@ -66,16 +39,16 @@
 
     <div class="item">
       <%= image_tag "hero-mist.jpg" %>
-      <div class="carousel-caption">
+      <div class="carousel-caption left">
         <div class="caption-wrap">
           <div class="caption-cell">
-             <h2>
-              <span class="highlight">Something</span>
+            <h2>
+              <span class="highlight">Thank You</span>
               <br />
-              <span class="highlight">Else</span>
+              <span class="highlight">Sponsors</span>
               <br />
             </h2>
-            <p class="hidden-xs">
+            <p class="hidden-xs hidden-sm">
               <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
               <br />
               <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
@@ -83,7 +56,39 @@
               <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
               <br />
             </p>
-            <p><a class="highlight" href="#">What should we put here?</a>
+            <p class="hero-link"><a class="highlight" href="/about#sponsors">Learn about our Founding Sponsors!</a>
+            <br />
+            </p>
+            <!-- <div class="pull-right">
+              <ul class="nav">
+                <li></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag "hero-wawa.jpg" %>
+      <div class="carousel-caption right">
+        <div class="caption-wrap">
+          <div class="caption-cell">
+             <h2>
+              <span class="highlight">World Class</span>
+              <br />
+              <span class="highlight">Coaching</span>
+              <br />
+            </h2>
+            <p class="hidden-xs hidden-sm">
+              <span class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+              <br />
+              <span class="highlight">Nunc sollicitudin pulvinar turpis, non pharetra est ornare non.</span>
+              <br />
+              <span class="highlight">Praesent vel ante arcu. Aenean non malesuada nisl.</span>
+              <br />
+            </p>
+            <p class="hero-link"><a class="highlight" href="/about">Learn more about the BCU and PNA!</a>
             <br />
             </p>
           </div>
@@ -94,10 +99,10 @@
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+  <a class="left carousel-control" href="#home-hero-slider" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+  <a class="right carousel-control" href="#home-hero-slider" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
@@ -119,10 +124,26 @@
 <div class="container body-copy">
   <div class="row">
     <div class="col-md-4">
-      <h3>For Paddlers</h3>
-      <%= image_tag( 'for_paddlers.jpg', :class => "img-responsive home-promo" ) %>
-      <p>Morbi sollicitudin, arcu non pellentesque vulputate, lectus tellus pulvinar erat, quis dictum sem lectus in diam. Nam dapibus faucibus dolor bibendum aliquam. Mauris sollicitudin tincidunt enim vitae sagittis. Morbi non tellus bibendum, feugiat dui a, rhoncus quam.</p>
-      <p class="pull-right"><a href="#">Learn More</a></p>
+      <h3>Latest News</h3>
+      <div class="media">
+        <a class="pull-left" href="#">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading"><a href="#">News heading</a></h5>
+          <p>Nam ullamcorper tincidunt urna, nec elementum libero pretium eget. Donec eu elit ac mauris mattis egestas. Phasellus lacinia leo eu rhoncus venenatis.</p>
+        </div>
+      </div>
+
+      <div class="media">
+        <a class="pull-left" href="#">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading"><a href="#">News heading</a></h5>
+          <p>Nam ullamcorper tincidunt urna, nec elementum libero pretium eget. Donec eu elit ac mauris mattis egestas. Phasellus lacinia leo eu rhoncus venenatis.</p>
+        </div>
+      </div>
     </div>
     <div class="clearfix visible-sm visible-xs"></div>
     <div class="col-md-4">

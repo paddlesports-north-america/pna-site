@@ -32,24 +32,26 @@
     z-index: 0;
   }
   p { margin-bottom: 15px; }
+
   .highlight {
     background: image-url('bg_blue_80t.png') repeat;
     color: $pna-light;
   }
 
-  h2 .highlight {
+  h2 {
     display: inline-block;
     margin-bottom: 2px;
     font-size: 50px;
     line-height: 63px;
-    padding: 0 10px;
+    .highlight { padding: 0 10px; }
   }
 
-  p .highlight {
+  p {
     font-size: 22px;
     line-height: 30px;
-    padding: 0 5px;
+    .highlight { padding: 0 5px; }
   }
+
   a.highlight {
     background: image-url('bg_orange_t.png') repeat;
     padding: 10px;
@@ -59,12 +61,16 @@
     position:relative;
     color: $pna-light;
     z-index: 1000;
+    height: 250px;
     p {
       max-width: 650px;
       margin-left:auto;
     }
   }
 }
+ .jumbotron.interior img {
+    position: absolute;
+  }
 
 .jumbotron.home {
   max-height: 500px;
@@ -73,12 +79,35 @@
     max-height: 500px;
     min-height: 250px;
   }
+  div.container {
+    height: auto;
+  }
 }
 
 @media (max-width: $screen-sm-min )
 {
-  .jumbotron h2 .highlight {
+
+  #home-hero-slider.jumbotron .carousel-inner > .item > img,
+  #home-hero-slider.jumbotron .carousel-inner > .item > a > img {
+    max-width: $screen-sm-min;
+    width: auto;
+  }
+}
+
+@media (max-width: $screen-md-max )
+{
+  .jumbotron h2 {
     font-size: 40px;
-    line-height: 53px;
+    line-height: 50px;
+  }
+
+  .jumbotron p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .jumbotron p.hero-link {
+    line-height: 48px;
+    margin-top: 10px;
   }
 }
