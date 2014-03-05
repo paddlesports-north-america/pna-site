@@ -40,8 +40,11 @@ body.home.landing {
       margin-right: auto;
     }
     form { margin-top: 50px;}
-    .form-inline .form-group { width: 250px;}
-
+    .form-inline .form-group {
+      width: 250px;
+      input { float: left; }
+    }
+    .button { padding: 7px 12px; }
     label {
       display: block;
       font-size: 13px;
