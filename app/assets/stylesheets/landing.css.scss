@@ -79,6 +79,11 @@ body.home.landing {
     width:100%;
     border-bottom: solid 1px $pna-med;
   }
+
+  address {
+    font-size: 14px;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: $screen-sm-max) {
