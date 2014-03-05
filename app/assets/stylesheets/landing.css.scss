@@ -1,0 +1,97 @@
+body.home.landing {
+  background: #1a191e image-url("wawa-mist.jpg") 0 0 no-repeat fixed;
+  background-size: cover;
+  .logo {
+    width:225px;
+    height:41px;
+    margin: 0;
+    background: image-url("logo-text-white.png") no-repeat top left;
+  }
+  .seo {
+    width:1px;
+    height:1px;
+    position:absolute;
+    top:auto;
+    left:-10000px;
+    overflow:hidden;
+  }
+  .jumbotron {
+    padding: 40px 0;
+    background: none;
+    max-height: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    color: $pna-light;
+    font-size: 16px;
+    div.container p {
+      font-size:27px;
+      margin-top: 20px;
+      max-width: 550px;
+      margin-right: auto;
+      line-height: 34px;
+    }
+    .sponsors {
+      margin-top: 50px;
+    }
+    img {
+      min-width: 0;
+      min-height: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    form { margin-top: 50px;}
+    .form-inline .form-group { width: 250px;}
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 17px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      width: 250px;
+    }
+  }
+  .body-copy {
+    background: $pna-light;
+    border-top: solid 2px $pna-dark;
+    // color: #fff;
+    font-size:20px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    h2 {
+      // text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      // border-bottom:
+    }
+  }
+
+  .top-bar {
+    background: #383D43;
+    padding: 10px 0;
+    position: absolute;
+    top:0;
+    width:100%;
+    border-bottom: solid 1px $pna-med;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  body.home.landing .jumbotron {
+    div.container {
+      height: auto !important;
+    }
+    .sponsors div {
+      margin-bottom: 20px;
+    }
+  }
+  @media (max-width: $screen-xs-max)
+  {
+    .form-group {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

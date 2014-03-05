@@ -27,6 +27,9 @@
         border: none;
       }
     }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
   }
   .navbar-util .navbar-nav {
     .active a, .active a:hover, a:hover {

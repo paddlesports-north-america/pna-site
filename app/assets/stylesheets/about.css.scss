@@ -1,0 +1,22 @@
+
+.board-img {
+  padding: 3px;
+  border: 1px solid $pna-dark;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+h3.media-heading {
+  border: none;
+}
+
+.sponsor-imgs {
+  margin-top: 16px;
+}
+
+@media (min-width: $screen-sm-max ) {
+  .board-img {
+    margin-left: -160px;
+    margin-top: -38px;
+  }
+}
