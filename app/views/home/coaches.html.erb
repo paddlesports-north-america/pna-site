@@ -1,0 +1,459 @@
+<%= render "shared/jumbotron", :image => 'hero-coaches.jpg', :text => ['Info', 'For Coaches'] %>
+
+<div class="container body-copy">
+  <div class="row">
+    <div class="col-md-2" data-hook="sidebar">
+      <!-- Left Sidebar -->
+
+    </div><!-- ./sidebar -->
+
+    <div class="col-md-7" data-hook="content">
+      <!-- Main Content Area -->
+      <!-- <section id="awards">
+
+      </section> --><!-- ./awards -->
+      <p>Most files below are in PDF format Version 8. All of these forms are updated periodically. Please use the most up to date forms. All paperwork needs to be printed at a high resolution on white paper. <a href="/contact">Contact us</a> if you need any of the forms/booklets mailed instead of downloaded.</p>
+      <section id="syllabi">
+        <h2>Syllabi</h2>
+
+        <span class="section" id="paddlepower">
+          <h3>Paddlepower &amp; Cross Stream Challenge</h3>
+          <div class="list-group">
+            <%= link_to "Cross Stream Challenge Information", s3_url( 'downloads/crossstream-challenge.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Paddlepower Information", s3_url( 'downloads/paddlepower.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+        </span>
+
+        <span class="section" id="star-syllabi">
+          <h3>Star Awards</h3>
+          <div class="list-group">
+            <%= link_to "Paddlesport Start", s3_url( 'downloads/bcu-paddlesport-start-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "1 Star Syllabus", s3_url( 'downloads/bcu-1-star-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "1 Star Trainer Notes", s3_url( 'downloads/bcu-1-star-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "1 Star Assessor Notes", s3_url( 'downloads/bcu-1-star-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "2 Star Syllabus", s3_url( 'downloads/bcu-2-star-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "2 Star Trainer Notes", s3_url( 'downloads/bcu-2-star-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "2 Star Assessor Notes", s3_url( 'downloads/bcu-2-star-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Freestyle Kayak Syllabus", s3_url( 'downloads/3-star-freestyle-kayak-syllabi-v3-0-oct13.pdf' ), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Freestyle Canoe Syllabus", s3_url( 'downloads/3-star-freestyle-canoe-syllabi-v3-0-oct13.pdf' ), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Freestyle Training Notes", s3_url( 'downloads/bcu-3-star-freestyle-training-notes-v3-0-oct13.pdf' ), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Freestyle Assessment Notes", s3_url( 'downloads/bcu-3-star-freestyle-assessment-notes-v3-0-oct13.pdf' ), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Open Canoe Syllabus", s3_url( 'downloads/bcu-3-star-open-canoe-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Open Canoe Trainer Notes", s3_url( 'downloads/bcu-3-star-open-canoe-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Open Canoe Assessor Notes", s3_url( 'downloads/bcu-3-star-open-canoe-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Sea Syllabus", s3_url( 'downloads/bcu-3-star-sea-kayak-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Sea Trainer Notes", s3_url( 'downloads/bcu-3-star-sea-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Sea Assessor Notes", s3_url( 'downloads/bcu-3-star-sea-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Surf Syllabus", s3_url( 'downloads/bcu-3-star-surf-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Surf Trainer Notes", s3_url( 'downloads/bcu-3-star-surf-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Surf Assessor Notes", s3_url( 'downloads/bcu-3-star-surf-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Touring Canoe Syllabus", s3_url( 'downloads/bcu-3-star-touring-canoe-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Touring Canoe Trainer Notes", s3_url( 'downloads/bcu-3-star-touring-canoe-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Touring Canoe Assessor Notes", s3_url( 'downloads/bcu-3-star-touring-canoe-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star Touring Kayak Syllabus", s3_url( 'downloads/bcu-3-star-touring-kayak-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Touring Kayak Trainer Notes", s3_url( 'downloads/bcu-3-star-touring-kayak-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star Touring Kayak Assessor Notes", s3_url( 'downloads/bcu-3-star-touring-kayak-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star WW Kayak Syllabus", s3_url( 'downloads/bcu-3-star-white-water-kayak-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star WW Kayak Trainer Notes", s3_url( 'downloads/bcu-3-star-white-water-kayak-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star WW Kayak Assessor Notes", s3_url( 'downloads/bcu-3-star-white-water-kayak-assessment-notes-v3-2-april14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "3 Star WW OC1 Syllabus", s3_url( 'downloads/bcu-3-star-white-water-oc1-syllabi-v3-1  -feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star WW OC1 Trainer Notes", s3_url( 'downloads/bcu-3-star-white-water-oc1-training-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "3 Star WW OC1 Assessor Notes", s3_url( 'downloads/bcu-3-star-white-water-oc1-assessment-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star Freestyle Leader Syllabus", s3_url( 'downloads/bcu-4-star-freestyle-canoe-leader-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Freestyle Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-freestyle-leader-training-notes-v3-0-oct13-(2).pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Freestyle Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-freestyle-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star Open Canoe Leader Syllabus", s3_url( 'downloads/bcu-4-star-open-canoe-leader-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Open Canoe Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-open-canoe-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Open Canoe Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-open-canoe-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star Sea Leader Syllabus", s3_url( 'downloads/bcu-4-star-sea-kayak-leader-syllabi-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Sea Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-sea-leader-training-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Sea Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-sea-leader-assessment-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star Surf Leader Syllabus", s3_url( 'downloads/bcu-4-star-surf-leader-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Surf Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-surf-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Surf Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-surf-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star Touring Leader Syllabus", s3_url( 'downloads/bcu-4-star-touring-leader-syllabi-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Touring Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-touring-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star Touring Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-touring-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star WW Kayak Leader Syllabus", s3_url( 'downloads/bcu-4-star-white-water-kayak-leader-syllabi-v3-1-mar14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star WW Kayak Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-white-water-kayak-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star WW Kayak Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-white-water-kayak-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "4 Star WW OC1 Leader Syllabus", s3_url( 'downloads/bcu-4-star-white-water-oc1-leader-syllabi-v3-1-mar14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star WW OC1 Leader Trainer Notes", s3_url( 'downloads/bcu-4-star-white-water-oc1-leader-training-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "4 Star WW OC1 Leader Assessor Notes", s3_url( 'downloads/bcu-4-star-white-water-oc1-leader-assessment-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "5 Star Open Canoe Leader Syllabus", s3_url( 'downloads/bcu-5-star-open-canoe-leader-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star Open Canoe Leader Trainer Notes", s3_url( 'downloads/bcu-5-star-open-canoe-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star Open Canoe Leader Assessor Notes", s3_url( 'downloads/bcu-5-star-open-canoe-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "5 Star Sea Leader Syllabus", s3_url( 'downloads/bcu-5-star-sea-kayak-leader-syllabi-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star Sea Leader Assessor Notes", s3_url( 'downloads/bcu-5-star-sea-leader-assessment-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "5 Star Surf Leader Syllabus", s3_url( 'downloads/bcu-5-star-surf-leader-syllabi-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star Surf Leader Trainer Notes", s3_url( 'downloads/bcu-5-star-surf-leader-training-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star Surf Leader Assessor Notes", s3_url( 'downloads/bcu-5-star-surf-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "5 Star WW Kayak Leader Syllabus", s3_url( 'downloads/bcu-5-star-white-water-kayak-leader-syllabi-v3-1-mar14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star WW Kayak Leader Trainer Notes", s3_url( 'downloads/bcu-5-star-white-water-kayak-leader-training-notes-v3-1-nov13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star WW Kayak Leader Assessor Notes", s3_url( 'downloads/bcu-5-star-white-water-kayak-leader-assessment-notes-v3-0-oct13.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "5 Star WW OC1 Leader Syllabus", s3_url( 'downloads/bcu-5-star-white-water-oc1-leader-syllabi-v3-1-mar14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star WW OC1 Leader Trainer Notes", s3_url( 'downloads/bcu-5-star-white-water-oc1-leader-training-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "5 Star WW OC1 Leader Assessor Notes", s3_url( 'downloads/bcu-5-star-white-water-oc1-leader-assessment-notes-v3-1-feb14.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "BCU Star Award Review Update - August 2013", s3_url( 'downloads/bcu-star-award-review-update-august-2013.pdf'), :class => "list-group-item", :target => "_blank" %>
+            <%= link_to "BCU Star Award Guidance Notes", s3_url( 'downloads/bcu-star-award-guidance-notes.pdf'), :class => "list-group-item", :target => "_blank" %>
+          </div>
+
+        </span><!-- ./star awards -->
+
+        <span class="section" id="safety-syllabi">
+          <h3>Safety Syllabi &amp; Notes</h3>
+          <div class="list-group">
+            <%= link_to "Foundation Safety &amp; Rescue Training Syllabus", s3_url( 'downloads/bcu-fsrt-syllabus-v2-0.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Foundation Safety &amp; Rescue Training Course Notes", s3_url( 'downloads/bcu-fsrt-course-notes-v2-0.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+        </span>
+
+        <span class="section" id="navigation-syllabi">
+          <h3>Navigation Syllabi &amp; Notes</h3>
+          <div class="list-group">
+            <%= link_to "Coastal Navigation &amp; Tidal Planning Syllabus", s3_url( 'downloads/bcu-cntp-syllabus-v2-0-jan2013.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Coastal Navigation &amp; Tidal Planning Notes", s3_url( 'downloads/bcu-cntp-trainers-notes-v2-0-jan2013.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "Open Water Navigation &amp; Tidal Planning Syllabus", s3_url( 'downloads/bcu-owntp-syllabus-v2-0-jan2013.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Open Water Navigation &amp; Tidal Planning Notes", s3_url( 'downloads/bcu-owntp-trainers-notes-v2-0-jan2013.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+        </span>
+
+        <span class="section" id="coaching-information">
+          <h3>Coaching Information</h3>
+          <div class="list-group">
+            <%= link_to "Level 1 Pre-Course Information", s3_url( 'downloads/l1-pre-course-information.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Level 1 Course Guide", s3_url( 'downloads/l1-course-guides.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "Level 2 Pre-Course Information", s3_url( 'downloads/l2-pre-course-information.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Level 2 Course Guide", s3_url( 'downloads/l2-course-guides.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <div class="list-group-item well">
+              <p>There is information on the <a href="http://www.canoe-england.org.uk/coaching/information-for-bcu-ukcc-level-2-trainees/" target="_blank">Canoe England Website</a> specifically designed to help BCU (UKCC) Level 2 Trainee&apos;s complete their Assessment Portfolio.</p>
+            </div>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "Moderate Water Endorsement Course Guide", s3_url( 'downloads/level-2-mw-course-guide-v3-june--09.pdf'), :class => 'list-group-item', :target => '_blank' %>
+            <%= link_to "Advanced Water Endorsement Course Guide", s3_url( 'downloads/awe-course-guide-v1-1.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "Level 3 Registration Prerequisites", s3_url( 'downloads/l3-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+
+          <div class="list-group">
+            <%= link_to "Coaching Foundation Modules", s3_url( 'downloads/foundation-modules-summary.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          </div>
+        </span>
+      </section><!-- ./syllabi -->
+
+      <section id="leadership">
+        <h2>Star Leadership Information</h2>
+        <div class="list-group">
+          <%= link_to "Leadership Registration Guidance Notes", s3_url( 'downloads/leadership-registration-guidance-notes.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Leadership Registration (LR) Form", s3_url( 'downloads/lr-form.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <div class="list-group-item well">
+            <p>All candidates wishing to attend a BCU 4 or 5 Star Leader Assessment will be required to have registered with BCUNA. Candidates should allow three weeks to complete the registration process. To register for a course please complete the Leadership Registration Form (LR Form) above and return it to BCUNA, with the necessary fee. Registration will be required for both 4 and 5 Star Assessment and will be the start of the validating process of your qualification.</p>
+          </div>
+          <%= link_to "Coaching &amp; Leadership Prerequisites", s3_url( 'downloads/coaching-leadership-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+      </section><!-- ./literature -->
+
+      <section id="first-aid">
+        <h2>First Aid Requirements</h2>
+        <div class="list-group">
+          <a class="list-group-item" href="#" target="_blank">First Aid Policy Document</a>
+        </div>
+
+        <p>All active Coaches have a responsibility to maintain a current first aid award, to ensure they can look after paddlers in their care. Coaches sign a declaration upon registration for our Coaching qualifications accepting this responsibility. Holding a valid first aid award is also part of the BCU Coach Update Scheme; Coaches who meet these requirements are recognised by the BCU as being active and up-to-date.</p>
+        <p>In order to meet these requirements all BCU Coaches (except BCU UKCC Level 1) need a recognised first aid certificate recorded on their Home Nation Association membership record. Please see below for contact details. All first aid training needs to be delivered by a recognised provider and include within the syllabus general first aid and CPR (Cardiopulmonary Resuscitation). If a First Aid Course is not included on our recognised list, a copy of the syllabus will need to be submitted along with details of the course length and the training provider to the British Canoe Union for approval.</p>
+
+        <p>The minimum requirements for course length are listed below*</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Old System</th>
+              <th>New System</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Level 1</td>
+              <td>4 Hours</td>
+              <td>6 Hours (Recommended)</td>
+            </tr>
+            <tr>
+              <td>Level 2</td>
+              <td>4 Hours</td>
+              <td>8 Hours</td>
+            </tr>
+            <tr>
+              <td>Moderate Water Endorsement</td>
+              <td>N/A</td>
+              <td>8 Hours</td>
+            </tr>
+            <tr>
+              <td>Level 3</td>
+              <td>8 Hours</td>
+              <td><em>Not Yet Applicable</em></td>
+            </tr>
+            <tr>
+              <td>Level 4</td>
+              <td>8 Hours</td>
+              <td><em>Not Yet Applicable</em></td>
+            </tr>
+            <tr>
+              <td>Level 5/td>
+              <td>2 Day</td>
+              <td><em>Not Yet Applicable</em></td>
+            </tr>
+            <tr>
+              <td>4 Star Leader</td>
+              <td>N/A</td>
+              <td>2 Day</td>
+            </tr>
+            <tr>
+              <td>5 Star Leader</td>
+              <td>8 Hour</td>
+              <td>2 Day</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><em>*From 1st January 2010 this will be training contact time, NOT course length.</em></p>
+        <p>There is often confusion around the 4, 6, and 8 hour courses, with many people told the course is &apos;one day&apos; and they think this is OK as the 8 hour requirement. Please help coaches ensure they access an appropriate length course. We check training contact time.</p>
+        <p><strong>Please Note:</strong> An up-to-date first aid certificate must be seen every three years by the home nation. In addition, for any first aid certificates that have been issued outside the UK, please contact the home nation.</p>
+
+        <p>First Aid and CPR certification are only accepted from the following organizations:</p>
+        <div class="list-group">
+          <a href="http://www.red-cross.org" target="_blank" class="list-group-item">Red Cross</a>
+          <a href="http://www.heart.org" target="_blank" class="list-group-item">American Heart</a>
+          <a href="http://www.soloschools.com" target="_blank" class="list-group-item">SOLO</a>
+          <a href="http://www.nsp.org" target="_blank" class="list-group-item">National Ski Patrol</a>
+          <a href="http://www.wildmed.com" target="_blank" class="list-group-item">Wilderness Medical Associates</a>
+          <a href="http://www.nsc.org" target="_blank" class="list-group-item">National Safety Council</a>
+          <a href="http://www.padi.org" target="_blank" class="list-group-item">PADI</a>
+          <a href="http://www.abem.org" target="_blank" class="list-group-item">Board of Emergency Medicine</a>
+          <a href="http://www.hsi.com/medicfirstaid/programs/" target="_blank" class="list-group-item">Medic First Aid</a>
+          <div class="list-group-item well">
+            <p>PNA will not accept First Aid or CPR from on-line certifiers.</p>
+          </div>
+        </div>
+
+        <p>Any coach who has a first aid qualification recorded on their membership record, will not need to provide new evidence until their current certificate expires, and we accept that some of these may have qualifications that are less than ideal.</p>
+        <p>To support coaches who hold a first aid award, but have not yet sent us a copy, we will offer some leniency over what we accept up until 1st Jan 2010. We don&apos;t want coaches who have accidently done a course that is not acceptable, to go and have to do another. We are working to ensure that we are doing everything we can to inform coaches of our requirements over the next few months. We will be publishing an article in October CoDe to inform Coaches of the changes and will create a document that we can circulate to new coaches etc.</p>
+      </section><!-- ./first aid -->
+
+      <section id="coaching-registration">
+        <h2>Coaching Registration Information</h2>
+
+        <div class="list-group">
+          <%= link_to "Notes for candidates wishing to apply to become a BCU Coach", s3_url( 'downloads/coach-registration-guidance-notes.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Coaching System Diagram", s3_url( 'downloads/coaching-diagram.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Coaching Registration (CR) Form", s3_url( 'downloads/cr-form.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Central Registration Information", s3_url( 'downloads/central-registration-ukcc.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Coaching &amp; Leadership Prerequisites", s3_url( 'downloads/coaching-leadership-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Level 3 Registration Prerequisites", s3_url( 'downloads/l3-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Level 2 Alternatives to BCU Foundation Modules", s3_url( 'downloads/coaching-leadership-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "How to complete the L2 Assessment Portfolio", s3_url( 'downloads/l3-registration-prerequisites.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Coach Medical Declaration", s3_url( 'downloads/coach-medical-declaration-form-v1-0.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <a class="list-group-item" href="http://www.canoe-england.org.uk/about/safeguarding-and-protecting-children-and-vulnerable-adults/" target="_blank">Child Protection &amp; CRB</a>
+        </div>
+      </section>
+
+      <section id="statement-of-physical-competence">
+        <h2>Statement of Physical Competence</h2>
+        <p><strong>Candidates who sign an application form for a course leading to a BCU qualification have agreed to the following:</strong></p>
+        <p><em>I understand that in law I have a &apos;duty of care&apos; to others, and this duty of care is enhanced with regard to my responsibility to those whom I teach because of the training and any qualification which I may receive.</em></p>
+        <p><em>I declare that to the best of my knowledge and belief I am physically fit, and do not have any *condition which may impair my ability to be responsible for the overall safety of canoeists in my charge.</em></p>
+        <p><em>I do not have *diabetes or *epilepsy, and understand that in the event of any change to my fitness to be responsible for the safety of others, I must declare the fact to the Director of Coaching of the BCU.</em></p>
+        <p><strong>*</strong>The declaring of an impairment does not necessarily debar a person from holding a coaching qualification. The BCU does its utmost to ensure that only common sense conditions are placed on those who may not be able to fulfil all the requirements, both stated and implicit, for the holding of a coaching qualification. Please send sae to the BCU Office for a copy of the policy statement giving the terms of reference under which qualifications may be awarded or continue to be held.</p>
+      </section>
+
+      <section id="coach-paperwork">
+        <h2>Coach Paperwork &amp; Forms</h2>
+
+        <div class="list-group">
+          <%= link_to "Paperwork Flow", s3_url( 'downloads/paperwork-flow.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <p class="list-group-item">Course Notification</p>
+          <div class="list-group-item well">
+            <p>Coaches can submit 1-5 Star programs, FSRT/Canoe Safety, Safety Programs, Paddlesport Start, Paddle Power programs, Cross Stream Challenge programs in addition to Coach Education programs. Only official BCU training or assessments will be listed.</p>
+            <p>All programs above 2 Star require Course Notification. This includes all safety and coach education programs.</p>
+            <p>For Course Notification E-mail the following to <a href="mailto:info@paddlesportsnorthamerica.org" target="_blank">paddlesportsnorthamerica.org</a>:</p>
+            <ul>
+              <li>Program Title</li>
+              <li>Program Date</li>
+              <li>Coach Name</li>
+              <li>Provider Number</li>
+              <li>If the program requires more than one coach include the name and provider number of second coach.</li>
+              <li>Venue</li>
+            </ul>
+            <p>If you want the program listed on the calendar page also include the following information:</p>
+            <ul>
+              <li>Center Name or Coach Name to be listed and the website to link to.</li>
+              <li>State where program will be offered.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Course Report", s3_url( 'downloads/course-report.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Program Fee Form", s3_url( 'downloads/2013-program-fee-form.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Course Schedule", s3_url( 'downloads/course-schedule.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "BCU Environment Definitions", s3_url( 'downloads/bcu-environmental-definitions.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <a class="list-group-item" target="_blank" href="#">
+            BCU Safety Training Course Administration
+          </a>
+          <%= link_to "BCU Environment Definitions", s3_url( 'downloads/bcu-environmental-definitions.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Star Award Guidance Notes", s3_url( 'downloads/star-award-guidance-notes.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Star Award Trainer and Assesor Guide", s3_url( 'downloads/star-award-trainer-and-assessor-guide.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Staffing Requirements", s3_url( 'downloads/staffing-levels-&-ratios.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "UK and North American Course Provider Form", s3_url( 'downloads/na-provider-form.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "Become a Training Provider", s3_url( 'downloads/become-a-training-provider.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Foundation Module Administration", s3_url( 'downloads/foundation-module-administration.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "1-3 Star Crib Cards", s3_url( 'downloads/1-3-star-crib-cards.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Coach Log Book", s3_url( 'downloads/bcu-coaches-logbook.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "BCU Courses which Automatically Upate a Coach", s3_url( 'downloads/courses-that-update-coaches.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Coach Self Assessment Form", s3_url( 'downloads/coach-self-assessment-form.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Injury Prevention Booklet", s3_url( 'downloads/injury-prevention.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "The Canoeist and the Swimming Pool", s3_url( 'downloads/swimming-pool.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Injury Prevention Booklet", s3_url( 'downloads/injury-prevention.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+        <div class="list-group">
+          <%= link_to "AB Enquiries and Appeals Procedure", s3_url( 'downloads/ab-enquiries-and-appeals-procedures.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "AB Equal Opportunities Policy", s3_url( 'downloads/ab-equal-opportunities-policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "AB Malpractice Reporting Procedures", s3_url( 'downloads/ab-malpractice-reporting-procedures.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "AB Reasonable Adjustments Policy", s3_url( 'downloads/ab-reasonable-adjustments-policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Special Considerations Policy", s3_url( 'downloads/ab-special-consideration-policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+          <%= link_to "Appeals Procedure", s3_url( 'downloads/appeals-procedure.pdf'), :class => 'list-group-item', :target => '_blank' %>
+        </div>
+
+      </section>
+    </div><!-- ./content -->
+
+    <div class="col-md-2 com-md-offset-1" data-hook="sidenav">
+      <!-- right side nav -->
+      <div class="sidenav hidden-sm hidden-xs scrollspy" data-spy="affix" data-offset-top="276" data-offset-bottom="360">
+        <ul class="nav">
+          <!-- <li><a href="#awards">Awards</a></li> -->
+          <li>
+            <a href="#syllabi">Syllabi</a>
+            <ul class="nav">
+              <li><a href="#paddlepower">Youth Awards</a></li>
+              <li><a href="#star-syllabi">Star Awards</a></li>
+              <li><a href="#safety-syllabi">Safety Syllabi</a></li>
+              <li><a href="#navigation-syllabi">Navigation Syllabi</a></li>
+              <li><a href="#coaching-information">Coaching Information</a></li>
+            </ul>
+          </li>
+          <li><a href="#leadership">Leadership Information</a></li>
+          <li><a href="#first-aid">First Aid Requirements</a></li>
+          <li><a href="#coaching-registration">Coaching Registration</a></li>
+          <li><a href="#statement-of-physical-competence">Statement of Physical Competence</a></li>
+          <li><a href="#coach-paperwork">Coach Paperwork &amp; Forms</a></li>
+        </ul><!-- ./nav -->
+      </div><!-- ./scrollspy -->
+    </div><!-- ./sidenav -->
+  </div>
+</div>

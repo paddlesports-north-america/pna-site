@@ -20,18 +20,16 @@
           <span class="icon-bar"></span>
         </button>
 
-        <%= link_to image_tag(t(:pna_logo), :alt => t(:pna), :class => 'img-responsive'), root_path, :class => 'navbar-brand' %>
+        <%= link_to image_tag(t('pna.logo'), :alt => t('pna.name'), :class => 'img-responsive'), root_path, :class => 'navbar-brand' %>
       </div>
       <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="<%= "active" if current_page?(controller: 'home', action: 'about') %>"><%= link_to t('nav.about'), '/about' %></li>
           <li class="<%= "active" if current_page?(controller: 'home', action: 'calendar') %>"><%= link_to t('nav.calendar'), '/calendar' %></li>
-          <li><%= link_to t('nav.for_paddlers'), '#' %></li>
-          <li><%= link_to t('nav.for_coaches'), '#' %></li>
-          <li><%= link_to t('nav.membership'), '#' %></li>
-          <li><%= link_to t('nav.contact'), '#' %></li>
-          <li class="hidden-md hidden-lg"><%= link_to t('nav.log_in'), '#' %></li>
-          <li class="hidden-md hidden-lg"><%= link_to t('nav.language'), '#' %></li>
+          <li class="<%= "active" if current_page?(controller: 'home', action: 'paddlers') %>"><%= link_to t('nav.for_paddlers'), '/for-paddlers' %></li>
+          <li class="<%= "active" if current_page?(controller: 'home', action: 'coaches') %>"><%= link_to t('nav.for_coaches'), '/for-coaches' %></li>
+          <li class="<%= "active" if current_page?(controller: 'home', action: 'membership') %>"><%= link_to t('nav.membership'), '/membership' %></li>
+          <li class="<%= "active" if current_page?(controller: 'home', action: 'contact') %>"><%= link_to t('nav.contact'), '/contact' %></li>
         </ul>
       </div>
     </div>

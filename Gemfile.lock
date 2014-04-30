@@ -102,6 +102,9 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     fastercsv (1.5.5)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     has_scope (0.5.1)
@@ -250,6 +253,7 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   email_validator
   factory_girl_rails (>= 4.2.0)
+  figaro
   jquery-rails
   meta_search
   paper_trail

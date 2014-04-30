@@ -14,4 +14,17 @@ class HomeController < ApplicationController
 
   def calendar
   end
+
+  def paddlers
+  end
+
+  def coaches
+  end
+
+  def membership
+  end
+
+  def contact
+  end
+
 end

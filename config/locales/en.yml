@@ -1,3 +1,4 @@
 en:
-  pna: Paddlesports North America
-  pna_logo: logo-text-dark.en.png
+  pna:
+    name: Paddlesports North America
+    logo: logo-text-dark.en.png
