@@ -1,14 +1,17 @@
 PaddleSportsNorthAmerica::Application.routes.draw do
 
-  root :to => "home#landing"
+  root :to => "home#index"
 
   get 'home' => "home#index"
   get 'about' => "home#about"
   get 'calendar' => "home#calendar"
-  get 'for-paddlers' => "home#paddlers"
-  get 'for-coaches' => "home#coaches"
+  get 'coaches' => "home#paddlers"
+  get 'documents' => "home#coaches"
   get 'membership' => "home#membership"
-  get 'contact' => "home#contact"
+
+  get 'contact' => "contact#index"
+  post 'contact' => "contact#index"
+  get 'contact/thank-you' => "contact#thank_you"
 
   # Active Admin has poor support for polymorphic relationships
   # so we have to declare our routes manually

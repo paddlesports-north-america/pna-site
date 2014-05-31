@@ -1,0 +1,63 @@
+<%= render 'shared/jumbotron', :image => 'hero-contact.jpg', :text => ['Contact Us'] %>
+
+
+<div class="container body-copy">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>All forms or other paperwork should be sent to:</h3>
+      <div >
+        <address>
+          <strong>Paddlesports North America, Inc.</strong><br />
+          1228 1/2 North Washington<br />
+          Lansing Michigan, 48906<br />
+        </address>
+      </div>
+
+      <div>
+        <p><strong>Email: </strong><a href="mailto:info@paddlesportsnorthamerica.org" target="_blank">info@paddlesportsnorthamerica.org</a></p>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h2>Send us a Message</h2>
+      <% if defined?( @notice ) %>
+        <div class="alert alert-success">
+          <p class="text-center"><%= @notice %></p>
+        </div>
+      <% end %>
+      <%= form_for( @message, :url => "/contact" ) do |f| %>
+
+        <% if @message.errors.any? %>
+        <div class="alert alert-danger">
+          <p class="lead">There was a problem with your message:</p>
+          <ul>
+          <% @message.errors.full_messages.each do |err| %>
+            <li><%= err %></li>
+          <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label( :name, 'Name:', :class => 'control-label') %>
+          <%= f.text_field( :name, :placeholder => "Enter Your Name", :class => 'form-control' ) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label( :email, 'Email:', :class => 'control-label') %>
+          <%= f.text_field( :email, :placeholder => "Enter Your Email Address", :class => 'form-control' ) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label( :number, 'BCU / PNA Number (optional):', :class => 'control-label') %>
+          <%= f.text_field( :number, :placeholder => "Enter Your BCU or PNA Number", :class => 'form-control' ) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_area( :content, :placeholder => "How can we help you?", :class => 'form-control', :rows => 8 ) %>
+        </div>
+
+        <%= f.submit( 'Submit', :class => 'btn btn-success') %>
+      <% end %>
+    </div>
+  </div>
+</div>

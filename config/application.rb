@@ -74,5 +74,15 @@ module PaddleSportsNorthAmerica
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
+
+    config.action_mailer.smtp_settings = {
+        :address   => ENV[ 'MANDRILL_SMTP_SERVER' ],
+        :port      => 25,
+        :enable_starttls_auto => true,
+        :user_name => ENV[ 'MANDRILL_SMTP_USER' ],
+        :password  => ENV[ 'MANDRILL_API_KEY' ],
+        :authentication => 'login',
+        :domain => 'paddlesportsnorthamerica.org'
+    }
   end
 end

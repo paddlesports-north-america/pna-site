@@ -4,7 +4,30 @@
 <div class="container body-copy">
   <div class="row">
     <div class="col-md-7 col-md-offset-2">
-      <p>hi</p>
+      <div class="well">
+        <p class="lead">To become a PNA member, or to renew your membership, fill out the membership form and send along with payment to:</p>
+        <div class="col-md-6">
+          <address>
+            <strong>Paddlesports North America, Inc.</strong><br />
+            P.O. Box 477<br />
+            Keeseville, NY 12944<br />
+          </address>
+        </div>
+        <div class="col-md-6 text-right">
+          <%= link_to 'Download Now', s3_url('downloads/membership.pdf'), :class => 'btn btn-large btn-success' %>
+        </div>
+        <span class="clearfix"></span>
+      </div>
+
+      <h3>Reinstatement</h3>
+      <p>Where individual membership has lapsed, BCU/SCA/WCA/CANI Coaching Service qualifications can be restored on the following basis:</p>
+      <p>If the membership is allowed to lapse for a period of less than 3 years the coach can reactivate qualifications by paying the current year’s membership plus an administration fee and completing the coach update requirements pertaining at the time.</p>
+      <p>If the lapsed period exceeds 3 years, the coach must pay the current years membership fee, reinstatement administration fee, plus a $50.00 fee to cover revalidation.  This will be in the form of an action plan plus a workshop or working alongside a course provider. (As deemed by their National Coaching Officer)*. Costs for workshops will be extra.</p>
+      <p>If the member is a coach and holds assessor status, re-instatement of the Assessor status held would not be automatic. Re-instatement of assessor status as appropriate (possibly at a lower level) would be re-activated on application via an agreed action plan and possible charge.</p>
+      <p>A decision on an application for assessor re-instatement and any associated action plan would depend on the number of years of lapsed membership.</p>
+      <p>*(In order to complete this process the party concerned is advised to contact their Coaching Office to initiate the process).</p>
+      <p>Coaching qualifications are only valid whilst the member holds a current first aid award.  For levels 1 and 2 coaches, this needs to be four hours training including CPR. For level 3 coaches and above eight hours including CPR/EAV.  This information is held on the database.  Please forward a copy of your first aid certificate with your re-instatement application.</p>
+      <%= link_to 'Download the Reinstatement Form', s3_url('downlaods/reinstatement.pdf'), :class => 'btn btn-large btn-success' %>
     </div>
   </div>
 </div>
