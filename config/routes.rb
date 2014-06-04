@@ -1,6 +1,6 @@
 PaddleSportsNorthAmerica::Application.routes.draw do
 
-  root :to => "home#index"
+  root :to => "home#landing"
 
   get 'home' => "home#index"
   get 'about' => "home#about"

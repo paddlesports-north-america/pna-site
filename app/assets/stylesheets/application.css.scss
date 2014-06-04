@@ -79,6 +79,11 @@ span.section {
   padding-top: 83px;
 }
 
+.semi-lead {
+  @extend .lead;
+  font-size: 18px;
+}
+
 @media (max-width: $screen-md-max) {
   body { padding-top: 75px; }
 }
