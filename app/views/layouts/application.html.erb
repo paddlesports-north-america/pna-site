@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Paddlesportsnorthamerica" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Paddlesportsnorthamerica" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Paddlesports North America" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Paddlesports North America promotes paddler education, safety and stewardship of the environment throughout North America." %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
 
@@ -12,7 +12,10 @@
     <%= javascript_include_tag "http://code.jquery.com/ui/1.10.2/jquery-ui.js" %>
 
     <%= csrf_meta_tags %>
+
     <%= yield(:head) %>
+
+    <meta property="og:image"content="https://s3.amazonaws.com/paddlesportsnorthamerica/assets/circle-text-logo-170.png" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
