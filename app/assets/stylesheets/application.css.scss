@@ -79,6 +79,9 @@ span.section {
   padding-top: 83px;
 }
 
+.lead {
+  letter-spacing: 1px;
+}
 .semi-lead {
   @extend .lead;
   font-size: 18px;
@@ -96,6 +99,10 @@ span.section {
   .leftrail {
     text-align: left;
     padding-right: 10px;
+  }
+
+  .leftrail:first-child {
+    margin-top: 0px;
   }
 
   table {
