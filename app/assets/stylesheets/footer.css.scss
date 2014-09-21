@@ -22,8 +22,13 @@ footer {
 
 .subfooter {
   background: #383d43;
-  color: $brand-primary;
   padding: 20px 0;
   border-top: $pna-med 1px solid;
-  p { padding: 0; }
+  p {
+    color: $brand-primary;
+    padding: 0;
+  }
+  p.small {
+      color: $pna-light;
+    }
 }
