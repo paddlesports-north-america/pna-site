@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Paddlesports North America" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Paddlesports North America promotes paddler education, safety and stewardship of the environment throughout North America." %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-
-    <!-- @TODO: Replace with a trimmed down version when we know what we need -->
-    <%= stylesheet_link_tag "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" %>
-    <%= javascript_include_tag "http://code.jquery.com/ui/1.10.2/jquery-ui.js" %>
-
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-
-    <%= render 'layouts/og_meta' %>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    <%= render :partial => 'layouts/head' %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>" data-spy="scroll" data-target=".scrollspy">
       <div class="top-bar">
