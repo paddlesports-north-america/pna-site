@@ -18,4 +18,10 @@ $( document ).ready( function(){
   $( document ).on( 'affixed.bs.affix', function(){
     $( this ).css( "position", "fixed" );
   });
+
+  // $( '.sidenav a' ).on( 'click', function(e){
+  //   e.preventDefault();
+  //   $($(this).attr('href'))[0].scrollIntoView();
+  //   scrollBy(0, -100);
+  // });
 });
