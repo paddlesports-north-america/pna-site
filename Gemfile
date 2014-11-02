@@ -4,7 +4,7 @@ source 'http://gemcutter.org'
 gem 'rails', '3.2.12'
 
 gem 'activeadmin'
-gem "meta_search"
+gem "meta_search", '>= 1.1.0.pre'
 gem 'draper', '~> 1.0'
 
 # gem 'sass-rails', '>= 3.2'
@@ -12,22 +12,22 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 
 gem 'yaml_db'
 
-gem 'country-select'
-gem 'email_validator'
+gem 'country-select', '~> 1.1.1'
+gem 'email_validator', '~> 1.4.0'
 gem 'phone'
 
-gem 'paper_trail'
+gem 'paper_trail', '~> 2.7.1'
 
-gem 'prawn'
+gem 'prawn', '~> 0.12.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'select2-rails'
+  gem 'select2-rails', '~> 3.4.1'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.2.1'
 
 gem "thin", ">= 1.5.0", :group => [:development, :test]
 gem "unicorn", ">= 4.3.1", :group => :production
@@ -43,7 +43,7 @@ gem 'shoulda-matchers', :group => :test
 
 gem "quiet_assets", ">= 1.0.2", :group => :development
 
-gem "better_errors", ">= 0.7.2", :group => :development
-gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
+gem "better_errors", "~> 0.7.2", :group => :development
+gem "binding_of_caller", "~> 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 
 gem "figaro"

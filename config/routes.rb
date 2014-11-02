@@ -18,7 +18,7 @@ PaddleSportsNorthAmerica::Application.routes.draw do
 
   namespace :admin do
     get 'members/autocomplete' => 'members#autocomplete'
-
+    # get '', to: 'dashboard#index', as: '/' 
     resources :members do
       resources :addresses
       resources :phone_numbers
@@ -43,12 +43,12 @@ PaddleSportsNorthAmerica::Application.routes.draw do
     get 'products/autocomplete' => 'products#autocomplete'
   end
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  begin
+  # begin
     ActiveAdmin.routes(self)
-  rescue
-    Rails.logger.warn "Failed to initialize aa routes"
-  end
+  # rescue
+    # Rails.logger.warn "Failed to initialize aa routes"
+  # end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
 end
