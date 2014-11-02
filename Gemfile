@@ -3,7 +3,8 @@ source 'http://gemcutter.org'
 
 gem 'rails', '3.2.12'
 
-gem 'activeadmin'
+gem 'activeadmin', :github => 'activeadmin/activeadmin', :branch => '0-6-stable'
+gem 'inherited_resources', '~> 1.4.0'
 gem "meta_search", '>= 1.1.0.pre'
 gem 'draper', '~> 1.0'
 

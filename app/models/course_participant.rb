@@ -33,7 +33,7 @@ class CourseParticipant < ActiveRecord::Base
   def assign_qualifications
     if result == RESULT[:pass] && prerequisites_checked && course.program.has_award? && member.qualifications.where( :award_id => course.program.award.id ).count == 0
       member.qualifications.create( { :course_id => course.id, :award_id => course.program.award.id, :awarded_on => course.end_date || course.start_date } )
-    elsif member.qualifications.where( :award_id => course.program.award.id ).count > 0
+    elsif course.program.has_award? && member.qualifications.where( :award_id => course.program.award.id ).count > 0
       member.qualifications.where( :award_id => course.program.award.id ).delete_all
     end
   end

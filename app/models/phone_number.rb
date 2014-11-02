@@ -43,8 +43,7 @@ class PhoneNumber < ActiveRecord::Base
     def north_american_countries
       [
         'United States',
-        'Canada',
-        'Mexico'
+        'Canada'
       ]
     end
 
