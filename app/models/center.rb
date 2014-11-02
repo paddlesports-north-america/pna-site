@@ -12,11 +12,28 @@ class Center < ActiveRecord::Base
 
   validates :name, :url, :presence => true
 
+  before_save :format_url
+
   def member_tokens
     member_ids.join(',')
   end
 
   def member_tokens=(tokens)
     self.members = Member.where( :id => tokens.first.gsub( /[^0-9,]/,'' ).split(',') )
+  end
+
+  def formated_url
+    unless self.url[/http:\/\//] || self.url[/https:\/\//]
+      "http://#{self.url}"
+    else
+      self.url
+    end
+  end
+
+  private
+  def format_url
+    unless self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+      self.url = "http://#{self.url}"
+    end
   end
 end

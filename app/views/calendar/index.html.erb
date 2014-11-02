@@ -1,0 +1,49 @@
+<%= render 'shared/jumbotron', :image => 'calendar_hero.jpg', :text => ['PNA', 'Calendar'] %>
+
+<div class="container body-copy">
+  <div class="row">
+    <div class="col-md-2 leftrail">
+      <p>Check the <a href="/coaches">Coaches Page</a> for a list of Coaches who run British Canoeing programs as well as other paddlesports training programs.</p>
+      <h4>Course Notifications and Calendar Listings</h4>
+      <p>Coaches can submit official British Canoeing trainings and assessments to be listed. Please <a href="/contact">contact PNA for details</a>.</p>
+    </div>
+
+    <div class="col-md-7">
+      <% @courses.each do |m,c| %>
+      <section id="<%= m.strftime('%B').downcase %>">
+          <h2><%= m.strftime('%B %Y' ) %></h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Program</th>
+                <th>Location</th>
+                <th>Coach / Center</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% c.each do |course| %>
+              <tr>
+                <td data-title="Date"><%= course_dates( course ) %></td>
+                <td data-title="Program"><%= course.program.name %></td>
+                <td data-title="Location"><%= "#{course.state.abbr unless course.state.nil?} #{course.country.iso unless course.country.iso == 'US' || course.country.nil?}"  %></td>
+                <td data-title="Coach or Center"><%= link_to course.center.name, course.center.formated_url, :target => "_blank" unless course.center.nil? %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </section>
+      <% end %>
+    </div>
+
+    <div class="col-md-2 col-md-offset-1">
+    <div class="sidenav hidden-sm hidden-xs scrollspy" data-spy="affix" data-offset-top="276" data-offset-bottom="360">
+      <ul class="nav">
+      <% @courses.keys.each do |k| %>
+        <li><%= link_to k.strftime('%B'), "##{k.strftime('%B').downcase}" %></li>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>

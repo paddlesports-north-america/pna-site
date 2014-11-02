@@ -4,7 +4,9 @@ PaddleSportsNorthAmerica::Application.routes.draw do
 
   get 'home' => "home#index"
   get 'about' => "home#about"
-  get 'calendar' => "home#calendar"
+  
+  get 'calendar' => "calendar#index", as: :calendar
+
   get 'coaches' => "home#paddlers"
   get 'documents' => "home#coaches"
   get 'membership' => "home#membership"
