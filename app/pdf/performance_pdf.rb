@@ -7,7 +7,7 @@ class PerformancePdf < Prawn::Document
 
   def to_pdf( params )
 
-    image "#{Rails.root}/public/bw-logo.png", position: 5.85.in, vposition: 0.35.in, height: 1.75.in
+    image "#{Rails.root}/public/pna-medalion.png", position: 5.85.in, vposition: 0.35.in, height: 1.75.in
 
     bounding_box( [ 0.25.in, 10.8.in ], :width => 7.in, :height => 6.in ) do
 
@@ -38,28 +38,22 @@ class PerformancePdf < Prawn::Document
           move_down 0.25.in
         end
 
-        text "Whatever type of paddling you enjoy, BCU membership offers a variety of benefits. It's easy to join, just visit www.BCUNA.com to download a membership form."
-
+        text "Whatever type of paddling you enjoy, PNA membership offers a variety of benefits."
         move_down 0.25.in
+        text "It's easy to join, just visit www.PaddlesportsNorthAmerica.org to download a membership form."
 
-        text "Also visit BCU UK (Canoe England) at www.bcu.org.uk."
+        # move_down 0.25.in
+
+        # text "Also visit BCU UK (Canoe England) at www.bcu.org.uk."
       end
 
       bounding_box( [ 5.5.in, 6.in ], :width => 2.in, :height => 6.in ) do
         move_down 2.in
-
-        text "BCUNA"
-        text "320 W. Saugerties Rd."
-        text "Saugerties, NY 12477"
-        text "845-246-6817"
-
-        move_down 0.5.in
-
-        text "Cane England"
-        text "18 Market Place"
-        text "Bingham"
-        text "Nottingham"
-        text "NG13 8AP"
+        font_size 11
+        text "Paddlesports North America"
+        text "1228 1/2 N. Washington"
+        text "Lansing MI 48906"
+        text "(515) 999-5PNA"
       end
 
     end
