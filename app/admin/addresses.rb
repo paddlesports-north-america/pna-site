@@ -2,8 +2,10 @@ ActiveAdmin.register Address do
   menu false
   config.filters = false
 
-  belongs_to :member, polymorphic: true
-  # belongs_to :center, polymorphic: true
+  controller do
+    belongs_to :member, polymorphic: true
+    belongs_to :center, polymorphic: true
+  end
 
   form do |f|
     f.inputs do
