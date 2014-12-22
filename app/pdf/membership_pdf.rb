@@ -13,7 +13,7 @@ class MembershipPdf < Prawn::Document
 
   def to_pdf( membership )
 
-    image TEMPLATE, :at => [ 0.86.in, PAGE_SIZE[1] - 0.5.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
+    image TEMPLATE, :at => [ 0.86.in, PAGE_SIZE[1] - 0.5625.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
     
     bounding_box( [ 4.5.in, 2.5.in ], :width => 2.86.in, :height => 1.61.in ) do
       
