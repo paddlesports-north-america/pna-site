@@ -3,82 +3,66 @@ class MembershipPdf < Prawn::Document
   require "prawn/measurement_extensions"
 
   PAGE_SIZE = Prawn::Document::PageGeometry::SIZES["LETTER"]
-  TEMPLATE = File.join( Rails.root, 'private', 'pna-charter-membership-bw.png' )
+  TEMPLATES = {
+                :header => File.join( Rails.root, 'private', 'pna-membership-header-bw.png' ),
+                :card => File.join( Rails.root, 'private', 'pna-charter-member-card-bw.png')
+              }
   MARGIN = -0.5.in
 
   FONT_WEIGHT = {
     :bold => File.join( Rails.root, 'fonts', 'Arial Bold.ttf'),
-    :regular => File.join( Rails.root, 'fonts', 'HelveticaNeue.ttf' )
+    :regular => File.join( Rails.root, 'fonts', 'HelveticaNeue.ttf' ),
+    :lead => File.join( Rails.root, 'fonts', 'HelveticaNeueLight.ttf')
   }
+
+  COPY = {
+    :lead => 'Thank you, for your membership.',
+    :body => [
+      'The organization serves to expand knowledge and awareness of all pad- dlesport-related activities --canoe, kayak and stand up paddleboard-- and encourages lifetime participation in the sport through delivery of long-term paddler development programs. Paddlesports North America (PNA) provides classroom education and on-water training through a series of paddlesport modules developed and continually refined by British Canoeing (BCU). The British Canoeing program is internationally recognized as the gold standard in paddlesport training. PNA coaches and invited guest British Canoeing coaches deliver paddler and coach trainings and assessments throughout North America. The organization develops, encourages, trains and supports coaches to deliver these pro- grams, and maintains all personal achievement records. PNA encourag- es people of all ages and abilities to go paddling, stressing personal safety and respect for the environment. PNA is a not-for-profit, educa- tional, public charity formed to deliver British Canoeing programs throughout North America, and is exempt from Federal income tax under section 501(c)3 of the Internal Revenue Code.',
+      'For more information on upcoming courses please check out our web- site at: http://www.paddlesportsnorthamerica.org/calendar',
+      'Your membership qualifies you as an ambassador for PNA. Please spread the word about PNA courses and help us recruit new members!'
+    ]
+  }
+  
+  COLOR = '4C4D4F'
 
   def to_pdf( membership )
 
-    image TEMPLATE, :at => [ 0.86.in, PAGE_SIZE[1] - 0.5625.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
+    image TEMPLATES[ :header ], :at => [ 0.86.in, PAGE_SIZE[1] - 0.5625.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
     
-    bounding_box( [ 4.5.in, 2.5.in ], :width => 2.86.in, :height => 1.61.in ) do
+    
+    bounding_box( [ 1.1.in, PAGE_SIZE[1] - 1.9.in ], :width => PAGE_SIZE[0] - 2.2.in ) do
       
+      make_font :lead, 21
+      text COPY[ :lead ], :align => :center, :color => COLOR
+      
+      move_down 0.25.in
+      make_font :regular, 13
+      COPY[ :body ].each do |c|
+        text c, :align => :justify, :color => COLOR
+        move_down 0.15.in
+      end
+    end
+    image TEMPLATES[ :card ], :at => [ 0.86.in, PAGE_SIZE[1] - 8.17.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
+    
+  # Member Info
+    bounding_box( [ 4.5.in, 2.5.in ], :width => 2.86.in, :height => 1.61.in ) do
       make_font :regular, 18
-      text "#{membership.type} Member", :align => :center, :color => '4C4D4F'
+      text "#{membership.type} Member", :align => :center, :color => COLOR
       
       move_down 0.26.in
       make_font :regular, 10
-      text "#{membership.member.first_name} #{membership.member.last_name}", :align => :center, :color => '4C4D4F'
+      text "#{membership.member.first_name} #{membership.member.last_name}", :align => :center, :color => COLOR
       
       # move_down 0.05.in
-      text "Valid Until #{membership.expiration_date.strftime( "%m/%d/%Y" )}", :align => :center, :color => '4C4D4F'
+      text "Valid Until #{membership.expiration_date.strftime( "%m/%d/%Y" )}", :align => :center, :color => COLOR
       
       move_down 0.15.in
       make_font :regular, 24
-      text sprintf( "%06d", membership.member.id ), :align => :center, :color => '4C4D4F'
-      
+      text sprintf( "%06d", membership.member.id ), :align => :center, :color => COLOR
     end
+  #END member info
     
-
-    # move_up 0.25.in
-
-    # make_font :regular, 18
-    # # font File.join( Rails.root, 'fonts', 'Arial.ttf' )
-    # # font_size 18
-
-    # text "Temporary BCU Membership Card", :align => :center
-
-    # move_down 0.365.in
-
-    # text "This is to certify that", :align => :center
-
-    # move_down 0.125.in
-
-    # make_font :bold, 24
-    # text "#{membership.member.first_name} #{membership.member.last_name}", :align => :center
-
-    # move_down 0.35.in
-
-    # make_font :regular, 18
-    # text "has paid for a", :align => :center
-    # text "BCU #{membership.membership_type.name.humanize} Membership", :align => :center
-
-    # move_down 0.15.in
-    # image "#{Rails.root}/public/bw-logo.png", :position => 1.3.in, height: 2.25.in
-
-    # move_down 0.255.in
-    # text "The official BCU membership card will be sent directly from the BCU. This temporary card is valid for ninety days from the date listed below.", :align => :center
-
-    # make_font :regular, 12
-
-    # move_down 0.8.in
-
-    # indent( 1.in ) {
-    #   text "Bill Lozano"
-    #   text "US North American Administrator"
-    # }
-
-    # move_down 0.1.in
-    # stroke_horizontal_rule
-    # move_down 0.1.in
-    # text membership.created_at.strftime("%B %d, %Y")
-    # move_up 14
-    # text "Number: #{membership.member.id}", :align => :right
-
     
 
     render
