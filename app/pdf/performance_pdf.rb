@@ -31,8 +31,8 @@ class PerformancePdf < Prawn::Document
             text "#{params[ :member ].first_name} #{params[ :member ].last_name}"
             text params[ :member ].addresses.first.address1
             text params[ :member ].addresses.first.address2 unless params[ :member ].addresses.first.address2.nil?
-            text "#{params[ :member ].addresses.first.city}, #{params[ :member ].addresses.first.state.abbr} #{params[ :member ].addresses.first.postal_code}"
-            text params[ :member ].addresses.first.country.iso3
+            text "#{params[ :member ].addresses.first.city}#{", " + params[ :member ].addresses.first.state.abbr if params[ :member ].addresses.first.state} #{params[ :member ].addresses.first.postal_code if params[ :member ].addresses.first.postal_code}"
+            text params[ :member ].addresses.first.country.name
           end
           font_size 12
           move_down 0.25.in
