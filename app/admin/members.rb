@@ -4,13 +4,25 @@ ActiveAdmin.register Member do
 
   menu :priority => 1
 
-  preserve_default_filters!
+  # preserve_default_filters!
   filter :id, :label => 'PNA Number'
+  filter :bcu_number
+  filter :first_name
+  filter :last_name
+  
+  filter :addresses_state, as: :select, collection: proc { State.all }, label: 'State or Province'
+  filter :addresses_country, as: :select, collection: proc { Country.order( 'name asc') }, label: 'Country'
+
+  filter :qualifications_id, as: :select, :multiple => true, collection: proc { Award.order( "name asc" ) }
 
   controller do
     def autocomplete
       respond_with Member.where( "lower( concat( first_name, ' ', last_name ) ) like ? OR cast( id as text ) like ?", "%#{params[ :q ].downcase}%", "%#{params[ :q ].downcase}%" ), :location => nil
     end
+    
+    # def scoped_collection
+    #   super.includes :memberships
+    # end
   end
 
   index do |m|
@@ -19,6 +31,7 @@ ActiveAdmin.register Member do
     column :bcu_number
     column :first_name
     column :last_name
+    column t('pna.exp_date'), sortable: :membership_expires do |m| status_tag( m.expiration_date.to_s, m.membership_status ) end
     column :created_at
     column :updated_at
     actions

@@ -12,6 +12,7 @@ class Member < ActiveRecord::Base
   has_and_belongs_to_many :centers
 
   has_many :qualifications, :dependent => :delete_all
+  
   has_many :first_aid_certifications, :dependent => :delete_all
   has_many :course_participations, :class_name => 'CourseParticipant', :dependent => :delete_all
   has_many :courses, :through => :course_participations

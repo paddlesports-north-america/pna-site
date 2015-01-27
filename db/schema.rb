@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131201173953) do
+ActiveRecord::Schema.define(:version => 20150127163134) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -134,10 +134,12 @@ ActiveRecord::Schema.define(:version => 20131201173953) do
     t.boolean  "show_on_calendar",   :default => true
     t.date     "start_date"
     t.date     "end_date"
+    t.integer  "course_number"
   end
 
   add_index "courses", ["center_id"], :name => "index_courses_on_center_id"
   add_index "courses", ["country_id"], :name => "index_courses_on_country_id"
+  add_index "courses", ["course_number"], :name => "index_courses_on_course_number", :unique => true
   add_index "courses", ["course_provider_id"], :name => "index_courses_on_course_provider_id"
   add_index "courses", ["program_id"], :name => "index_courses_on_program_id"
   add_index "courses", ["state_id"], :name => "index_courses_on_state_id"
@@ -194,8 +196,10 @@ ActiveRecord::Schema.define(:version => 20131201173953) do
     t.string   "middle_name"
     t.string   "gender"
     t.date     "birthdate"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "provider_number"
+    t.date     "membership_expires"
   end
 
   add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
@@ -309,6 +313,25 @@ ActiveRecord::Schema.define(:version => 20131201173953) do
   end
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "member_id"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",      :null => false

@@ -20,6 +20,18 @@ module Pna
           :as => :addressable,
           :dependent => :delete_all,
           :validate => true
+          
+        search_methods :addresses_state_eq
+        
+        scope :addresses_state_eq, lambda { |state_id|
+          self.joins(:addresses).where( 'addresses.state_id = ?', state_id )
+        }
+        
+        search_methods :addresses_country_eq
+        
+        scope :addresses_country_eq, lambda { |country_id|
+          self.joins(:addresses).where( 'addresses.country_id = ?', country_id )
+        }
       end
     end
   end

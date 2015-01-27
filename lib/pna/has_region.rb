@@ -14,6 +14,13 @@ module Pna
         validates :state, :presence => true, :if => Proc.new { |a| !a.country.nil? && a.country.has_states? }
 
         validate :state_against_country, :unless => Proc.new { |a| a.state.nil? || a.country.nil? }
+        
+        search_methods :state_eq
+        
+        scope :state_eq, lambda { |state_id|
+          self.joins(:state).where( 'states.id = ?', state_id )
+          # Post.joins(:categories).where("category_id = ?", category_id)
+        }
       end
 
       module RegionInstanceMethods

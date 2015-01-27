@@ -1,5 +1,7 @@
 class Membership < ActiveRecord::Base
 
+  default_scope order( 'expiration_date asc' )
+
   ORGANIZATION = { :pna => 'PNA', :bcu => 'BCU' }
 
   belongs_to :member
