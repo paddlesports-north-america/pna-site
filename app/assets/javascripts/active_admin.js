@@ -96,7 +96,7 @@ function filterStateSelect(fieldset)
     $( fieldset ).find( '[data-type="state_select"]' ).html( options );
     $( fieldset ).find( '[data-type="state_select"]' ).parent().show();
   } else {
-    $( fieldset ).find( '[data-type="state_select"]' ).empty();
+    $( fieldset ).find( '[data-type="state_select"]' ).html('<option></option>'); //.empty();
     $( fieldset ).find( '[data-type="state_select"]' ).parent().hide();
   }
 }

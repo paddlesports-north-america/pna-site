@@ -21,12 +21,22 @@ ActiveAdmin.register Course do
       f.input :end_date, :as => :datepicker, :required => false,
               :input_html => { :class => 'end_date' }
       f.input :show_on_calendar
-      f.input :country_id, :as => :country,
-              :priority_countries => PRIORITY_COUNTRIES,
-              :input_html => { 'data-type' => 'country_select' }
-      f.input :state, :as => :select,
-              :collection => option_groups_from_collection_for_select( Country.order(:name), :states, :name, :id, :name ),
-              :input_html => { 'data-type' => 'state_select' }
+      unless course.new_record?
+        f.input :country_id, :as => :country, :object => course, :method => 'country_id',
+                :priority_countries => PRIORITY_COUNTRIES,
+                :input_html => { 'data-type' => 'country_select' }
+        f.input :state, :as => :select,
+                :collection => option_groups_from_collection_for_select( Country.order(:name), :states, :name, :id, :name, course.state_id ),
+                :input_html => { 'data-type' => 'state_select' }
+      else
+        f.input :country_id, :as => :country,
+                :priority_countries => PRIORITY_COUNTRIES,
+                :input_html => { 'data-type' => 'country_select' }
+        f.input :state, :as => :select,
+                :collection => option_groups_from_collection_for_select( Country.order(:name), :states, :name, :id, :name ),
+                :input_html => { 'data-type' => 'state_select' }
+      end
+              
       f.input :assisting_coach_ids, :as => :string,
               :label => t('pna.coach').pluralize,
               :input_html => member_autocomplete_options.merge( { :multiple => true } ),
