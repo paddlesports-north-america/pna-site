@@ -9,6 +9,20 @@ class Member < ActiveRecord::Base
 
   GENDER = { :male => 'm', :female => 'f' }
 
+  scope :active, -> { 
+    joins( :memberships )
+    .where('memberships.expiration_date = (SELECT MAX(memberships.expiration_date) FROM memberships WHERE memberships.member_id = members.id)')
+    .where('memberships.expiration_date >= ?', Date.today)
+    .group('members.id')
+  }
+  scope :expired, -> {
+    joins( :memberships )
+    .where('memberships.expiration_date = (SELECT MAX(memberships.expiration_date) FROM memberships WHERE memberships.member_id = members.id)')
+    .where('memberships.expiration_date < ?', Date.today)
+    .group('members.id')
+  }
+  scope :non_member, -> { includes(:memberships).where( memberships: { member_id: nil } ) }
+  
   has_and_belongs_to_many :centers
 
   has_many :qualifications, :dependent => :delete_all

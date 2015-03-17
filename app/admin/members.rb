@@ -4,6 +4,12 @@ ActiveAdmin.register Member do
 
   menu :priority => 1
 
+  scope :all
+  scope :active
+  scope :expired
+  scope :non_member
+  # scope :expired
+
   # preserve_default_filters!
   filter :id, :label => 'PNA Number'
   filter :bcu_number
@@ -15,6 +21,8 @@ ActiveAdmin.register Member do
 
   filter :qualifications_id, as: :select, :multiple => true, collection: proc { Award.order( "name asc" ) }
 
+  filter :active
+  
   controller do
     def autocomplete
       respond_with Member.where( "lower( concat( first_name, ' ', last_name ) ) like ? OR cast( id as text ) like ?", "%#{params[ :q ].downcase}%", "%#{params[ :q ].downcase}%" ), :location => nil
