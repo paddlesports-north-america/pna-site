@@ -33,6 +33,49 @@ ActiveAdmin.register Member do
     # end
   end
 
+  csv force_quotes: true do
+    column :id
+    column :bcu_number
+    column :first_name
+    column :last_name
+    column :membership_expires
+    column( :email ) { |member| 
+      unless member.email_addresses.empty?
+        member.email_addresses.first 
+      end
+    }
+    column( :address1 ) { |member| 
+      unless member.addresses.empty?
+        member.addresses.first.address1 
+      end
+    }
+    column( :address2 ) { |member| 
+      unless member.addresses.empty?
+        member.addresses.first.address2 
+      end
+    }
+    column( :city ) { |member| 
+      unless member.addresses.empty?
+        member.addresses.first.city 
+      end
+    }
+    column( :state_or_province ) { |member| 
+      unless member.addresses.empty? || member.addresses.first.state.nil?
+        member.addresses.first.state.abbr
+      end
+    }
+    column( :postal_code ) { |member| 
+      unless member.addresses.empty?
+        member.addresses.first.postal_code
+      end
+    }
+    column( :country ) { |member| 
+      unless member.addresses.empty?
+        member.addresses.first.country.name
+      end
+    }
+  end
+
   index do |m|
     selectable_column
     column t('pna.pna_number'), :id
