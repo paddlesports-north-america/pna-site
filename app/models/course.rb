@@ -29,7 +29,7 @@ class Course < ActiveRecord::Base
   after_save :set_course_director
   after_save :set_coaches
 
-  validates :program, :course_provider, :start_date, :presence => true
+  validates :program, :course_provider, :course_director, :start_date, :presence => true
   validate :end_date_after_start_date
 
   def end_date_after_start_date
