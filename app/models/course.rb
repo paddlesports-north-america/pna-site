@@ -29,11 +29,16 @@ class Course < ActiveRecord::Base
   after_save :set_course_director
   after_save :set_coaches
 
-  validates :program, :course_provider, :course_director, :start_date, :presence => true
+  validates :program, :course_provider, :start_date, :presence => true
   validate :end_date_after_start_date
+  validate :has_course_director?
 
   def end_date_after_start_date
     errors.add( :end_date ) unless start_date.nil? || end_date.nil? || end_date >= start_date
+  end
+  
+  def has_course_director?
+    !@course_director_id.empty?
   end
 
   def course_director_id
@@ -41,7 +46,9 @@ class Course < ActiveRecord::Base
   end
 
   def set_course_director
-    unless @course_director_id.nil?
+    if @course_director_id.empty?
+      self.course_director = self.course_provider
+    else
       self.course_director = Member.find( @course_director_id )
     end
   end
@@ -58,13 +65,17 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def assisting_coach_ids=(val)
+    @assisting_coach_ids = val.reject { |v| v.empty? }.join(',')
+  end
+
   def assisting_coach_ids
-    @assisting_coach_ids || [self.course_coaches.where( :is_director => false ).pluck( :member_id ).join(',')]
+    @assisting_coach_ids || ( self.course_coaches.where( :is_director => false ).any? ? self.course_coaches.where( :is_director => false ).pluck( :member_id ).join(',') : nil ) #[self.course_coaches.where( :is_director => false ).pluck( :member_id ).join(',')]
   end
 
   def set_coaches
-    unless @assisting_coach_ids.nil?
-      acids = @assisting_coach_ids.first.split(',')
+    unless @assisting_coach_ids.empty?
+      acids = @assisting_coach_ids.split(',')
       original = self.course_coaches.where( :is_director => false ).pluck( :member_id )
       self.course_coaches.where( :member_id => original - acids ).delete_all
       add = acids - original
