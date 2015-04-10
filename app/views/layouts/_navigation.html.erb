@@ -26,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="<%= "active" if current_page?(controller: 'home', action: 'about') %>"><%= link_to t('nav.about'), '/about' %></li>
           <li class="<%= "active" if current_page?(controller: 'calendar', action: 'index') %>"><%= link_to t('nav.calendar'), calendar_path %></li>
-          <li class="<%= "active" if current_page?(controller: 'home', action: 'paddlers') %>"><%= link_to 'Coaches', '/coaches' %></li>
+          <li class="<%= "active" if current_page?(controller: 'coaches', action: 'index') %>"><%= link_to 'Coaches', '/coaches' %></li>
           <li class="<%= "active" if current_page?(controller: 'home', action: 'coaches') %>"><%= link_to 'Documents', '/documents' %></li>
           <li class="<%= "active" if current_page?(controller: 'home', action: 'membership') %>"><%= link_to t('nav.membership'), '/membership' %></li>
           <li class="<%= "active" if current_page?(controller: 'contact') %>"><%= link_to t('nav.contact'), '/contact' %></li>

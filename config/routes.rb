@@ -1,5 +1,7 @@
 PaddleSportsNorthAmerica::Application.routes.draw do
 
+  get "coaches/index"
+
   root :to => "home#landing"
 
   get 'home' => "home#index"
@@ -7,7 +9,8 @@ PaddleSportsNorthAmerica::Application.routes.draw do
   
   get 'calendar' => "calendar#index", as: :calendar
 
-  get 'coaches' => "home#paddlers"
+  #get 'coaches' => "home#paddlers"
+  get 'coaches' => "coaches#index"
   get 'documents' => "home#coaches"
   get 'membership' => "home#membership"
 
