@@ -44,6 +44,8 @@ en:
     registration: Registration
     coaching_registration: Coaching Registration
     leadership_registration: Leadership Registration
+    verified: Verified
+    unverified: Unverified
     first_aid_types:
         first_aid: First Aid
         cpr: CPR

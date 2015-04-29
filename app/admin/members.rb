@@ -238,6 +238,7 @@ ActiveAdmin.register Member do
               column t('pna.qualification') do |q| link_to q.award.name, admin_member_qualification_path( member, q ) end
               column t('pna.completed') do |q| q.awarded_on end
               column t('pna.printed') do |q| q.printed_on.nil? ? status_tag( t('pna.not_printed'), :error ) : status_tag( q.printed_on.to_s, :ok ) end
+              column t('pna.verified') do |q| q.verified ? status_tag( t('pna.verified'), :ok ) : status_tag( t('pna.unverified' ), :warning ) end
             end
             para link_to "#{t('pna.manage')} #{t('pna.qualification').pluralize}", admin_member_qualifications_path( member )
           end
