@@ -2,3 +2,12 @@ en:
   pna:
     name: Paddlesports North America
     logo: logo-text-dark.en.png
+    contact:
+      name: Paddlesports North America
+      addr_1: 124 W. Willow
+      addr_2: Lansing, MI 48906
+      phone:
+        pna: (515) 999-5PNA
+        plain: (515) 999-5762
+        compact: +15159995762
+      email: info@paddlesportsnorthamerica.org

@@ -5,11 +5,7 @@
     <div class="col-md-2 leftrail" data-hook="sidebar">
 
       <p><strong>Send all paperwork — including registration forms and fees — to PNA at:</strong></p>
-      <address>
-        <strong>Paddlesports North America</strong><br />
-        1228 ½ N. Washington<br />
-        Lansing MI 48906<br />
-      </address>
+      <%= render 'shared/pna_contact_info' %>
       <p>Please make checks payable to <em>Paddlesports North America</em>.</p>
     </div><!-- ./sidebar -->
 
@@ -472,7 +468,7 @@
           <div class="list-group-item well">
             <p>Coaches can submit 1-5 Star programs, FSRT/Canoe Safety, Safety Programs, Paddlesport Start, Paddle Power programs, Cross Stream Challenge programs in addition to Coach Education programs. Only official British Canoeing training or assessments will be listed.</p>
             <p>All programs above 2 Star require Course Notification. This includes all safety and coach education programs.</p>
-            <p>For Course Notification E-mail the following to <a href="mailto:info@paddlesportsnorthamerica.org">info@paddlesportsnorthamerica.org</a>:</p>
+            <p>For Course Notification E-mail the following to <a href="mailto:<%= t('pna.contact.email') %>"><%= t('pna.contact.email') %></a>:</p>
             <ul>
               <li>Program Title</li>
               <li>Program Date</li>
@@ -481,7 +477,7 @@
               <li>If the program requires more than one coach include the name and provider number of second coach.</li>
               <li>Venue</li>
             </ul>
-            <p>If you want the program listed on the calendar page also email <a href="mailto:info@paddlesportsnorthamerica.org">info@paddlesportsnorthamerica.org</a> and include the following information:</p>
+            <p>If you want the program listed on the calendar page also email <a href="mailto:<%= t('pna.contact.email') %>"><%= t('pna.contact.email') %></a> and include the following information:</p>
             <ul>
               <li>Center Name or Coach Name to be listed and the website to link to.</li>
               <li>State where program will be offered.</li>

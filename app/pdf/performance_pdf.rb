@@ -1,6 +1,7 @@
 class PerformancePdf < Prawn::Document
 
   require 'prawn/measurement_extensions'
+  include ActionView::Helpers::TranslationHelper
 
   PAGE_SIZE = [ 8.25.in, 11.625.in ]
   MARGIN = 0.in
@@ -50,10 +51,10 @@ class PerformancePdf < Prawn::Document
       bounding_box( [ 5.5.in, 6.in ], :width => 2.in, :height => 6.in ) do
         move_down 2.in
         font_size 11
-        text "Paddlesports North America"
-        text "1228 1/2 N. Washington"
-        text "Lansing MI 48906"
-        text "(515) 999-5PNA"
+        text t('pna.contact.name')
+        text t('pna.contact.addr_1')
+        text t('pna.contact.addr_2')
+        text t('pna.contact.phone.pna')
       end
 
     end

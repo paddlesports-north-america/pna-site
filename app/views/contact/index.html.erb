@@ -7,19 +7,19 @@
       <h3>All forms or other paperwork should be sent to:</h3>
       <div >
         <address>
-          <strong>Paddlesports North America</strong><br />
-          1228 ½ N. Washington<br />
-          Lansing, MI 48906<br />
+          <strong><%= t('pna.contact.name') %></strong><br />
+          <%= t('pna.contact.addr_1') %><br />
+          <%= t('pna.contact.addr_2') %><br />
         </address>
       </div>
 
       <div>
         <h3>All Paddlesports North America inquiries go to:</h3>
-        <p><strong>Email:</strong><br /><a href="mailto:info@paddlesportsnorthamerica.org" target="_blank">info@paddlesportsnorthamerica.org</a></p>
+        <p><strong>Email:</strong><br /><a href="mailto:<%= t('pna.contact.email') %>" target="_blank"><%= t('pna.contact.email') %></a></p>
       </div>
 
       <div>
-        <p><strong>Phone:</strong><br /><a href="tel:+15159995762">(515) 999-5PNA <br /> <em itemprop="telephone">(515) 999-5762</em></a>
+        <p><strong>Phone:</strong><br /><a href="tel:<%= t('pna.contact.phone.compact') %>"><%= t('pna.contact.phone.pna') %> <br /> <em itemprop="telephone"><%= t('pna.contact.phone.plain') %></em></a>
       </div>
     </div>
     <div class="col-md-7">

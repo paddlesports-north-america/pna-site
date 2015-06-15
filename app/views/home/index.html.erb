@@ -119,13 +119,9 @@
         <div class="media-body">
           <h5 class="media-heading">New contact information</h5>
           <p>Send all paperwork—including registration forms and fees—to PNA at:</p>
-          <address>
-            <strong>Paddlesports North America</strong><br />
-            1228 ½ N. Washington<br />
-            Lansing MI 48906<br />
-          </address>
+          <%= render 'shared/pna_contact_info' %>
           <p>Please make checks payable to <em>Paddlesports North America</em>.</p>
-          <p>If you have questions, contact us at info@paddlesportsnorthamerica.org or call us at 1.515.999.5PNA (5762)</p>
+          <p>If you have questions, contact us at <%= t('pna.contact.email') %> or call us at <%= t('pna.contact.phone.pna') %> <em>(<%= t('pna.contact.phone.plain') %>)</em></p>
         </div>
       </div>
       <div class="media">
