@@ -1,5 +1,5 @@
 <%= render 'shared/jumbotron', :image => 'hero-paddlers.jpg', :text => ['PNA', 'Coaches'] %>
-<div class="container body-copy">
+<div class="container body-copy coaches">
   <div class="row">
     <div class="col-md-2" data-hook="sidebar">
       <!-- Left Sidebar -->
@@ -47,31 +47,8 @@
       <% @coaches.each do |local,coaches| %>
         <section id="<%= local.name.to_sym %>">
           <h2><%= local.name %></h2>
-          <% coaches.each do |coach| %>
-            <address>
-              <strong><%= "#{coach.first_name} #{coach.last_name}" %></strong><br />
-              <small><em><%= coach.qualifications.map { |q| q.award.name }.join(', ') %></em></small><br />
-              
-              <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %><br />
-              
-              <% unless coach.email_addresses.empty? %>
-                <%= link_to coach.email_addresses.first.address, "mailto:#{coach.email_addresses.first.address}" %><br />
-              <% end %>
-              
-              <% unless coach.centers.empty? %>
-                <% coach.centers.each do |center| %>
-                  <% if center.url %>
-                    <%= link_to center.url, center.url, :target => "_blank"  %><br />
-                  <% end %>
-                  
-                  <% if center.phone_numbers.any? %>
-                    <%= center.phone_numbers.first.number %><br />
-                  <% end %>
-                  
-                <% end %>
-              <% end %>
-            </address>
-          <% end %>
+          <%= render :partial => 'coach', :collection => coaches %>
+          
         </section>
       <% end %>
     </div>
