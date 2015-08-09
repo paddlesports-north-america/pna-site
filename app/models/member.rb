@@ -7,6 +7,8 @@ class Member < ActiveRecord::Base
 
   has_note
 
+  before_save :update_membership_expires
+
   GENDER = { :male => 'm', :female => 'f' }
 
   scope :active, -> { 
@@ -58,6 +60,13 @@ class Member < ActiveRecord::Base
   def pna_number
     self.id
   end
+  
+  protected
+  def update_membership_expires
+    unless memberships.empty?
+      self.membership_expires = self.memberships.last.expiration_date
+    end
+  end
 
   private
   def birthdate_in_the_past
@@ -65,4 +74,6 @@ class Member < ActiveRecord::Base
       errors.add( :birthdate )
     end
   end
+  
+  
 end

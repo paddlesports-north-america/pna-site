@@ -1,5 +1,5 @@
 class Award < ActiveRecord::Base
-  attr_accessible :name, :award_type
+  attr_accessible :name, :award_type, :na_number
 
   validates :name, :presence => true
 
