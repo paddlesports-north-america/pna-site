@@ -74,6 +74,11 @@ ActiveAdmin.register Member do
         member.addresses.first.country.name
       end
     }
+    column( :qualifications ) { |member|
+      unless member.qualifications.empty?
+        member.qualifications.map { |q| q.award.name }
+      end  
+    }
   end
 
   index do |m|
