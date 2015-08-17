@@ -25,6 +25,10 @@ class Member < ActiveRecord::Base
   }
   scope :non_member, -> { includes(:memberships).where( memberships: { member_id: nil } ) }
   
+  search_methods :has_qualifications_in
+  scope :has_qualifications_in, lambda { |aids| has_qualifications( aids ) }
+  
+  
   has_and_belongs_to_many :centers
 
   has_many :qualifications, :dependent => :delete_all
@@ -52,6 +56,11 @@ class Member < ActiveRecord::Base
   validates :gender, :inclusion => { :in => Member::GENDER.values }
 
   validate :birthdate_in_the_past
+
+  def self.has_qualifications( aids )
+    uids = Qualification.where( :award_id => aids ).pluck( :member_id ).uniq
+    Member.where( :id => uids )
+  end
 
   def to_s
     "#{first_name} #{last_name}"
