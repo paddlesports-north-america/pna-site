@@ -19,7 +19,7 @@ ActiveAdmin.register Member do
   filter :addresses_state, as: :select, collection: proc { State.all }, label: 'State or Province'
   filter :addresses_country, as: :select, collection: proc { Country.order( 'name asc') }, label: 'Country'
 
-  filter :qualifications_id, as: :select, :multiple => true, collection: proc { Award.order( "name asc" ) }
+  filter :has_qualifications, as: :select, :multiple => true, collection: proc { Award.order( "name asc" ) }
 
   filter :active
   
@@ -73,6 +73,11 @@ ActiveAdmin.register Member do
       unless member.addresses.empty?
         member.addresses.first.country.name
       end
+    }
+    column( :qualifications ) { |member|
+      unless member.qualifications.empty?
+        member.qualifications.map { |q| q.award.name }
+      end  
     }
   end
 

@@ -7,6 +7,8 @@ class Member < ActiveRecord::Base
 
   has_note
 
+  before_save :update_membership_expires
+
   GENDER = { :male => 'm', :female => 'f' }
 
   scope :active, -> { 
@@ -22,6 +24,10 @@ class Member < ActiveRecord::Base
     .group('members.id')
   }
   scope :non_member, -> { includes(:memberships).where( memberships: { member_id: nil } ) }
+  
+  search_methods :has_qualifications_in
+  scope :has_qualifications_in, lambda { |aids| has_qualifications( aids ) }
+  
   
   has_and_belongs_to_many :centers
 
@@ -52,12 +58,24 @@ class Member < ActiveRecord::Base
 
   validate :birthdate_in_the_past
 
+  def self.has_qualifications( aids )
+    uids = Qualification.where( :award_id => aids ).pluck( :member_id ).uniq
+    Member.where( :id => uids )
+  end
+
   def to_s
     "#{first_name} #{last_name}"
   end
 
   def pna_number
     self.id
+  end
+  
+  protected
+  def update_membership_expires
+    unless memberships.empty?
+      self.membership_expires = self.memberships.last.expiration_date
+    end
   end
 
   private
@@ -66,4 +84,6 @@ class Member < ActiveRecord::Base
       errors.add( :birthdate )
     end
   end
+  
+  
 end

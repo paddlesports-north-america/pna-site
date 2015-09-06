@@ -15,6 +15,14 @@ body.home.landing {
     left:-10000px;
     overflow:hidden;
   }
+  .announcements {
+    div {
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 12px;
+    }
+    :last-child { border: none; }
+    
+  }
   .jumbotron {
     padding: 40px 0;
     background: none;
