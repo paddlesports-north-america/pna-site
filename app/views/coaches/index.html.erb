@@ -7,42 +7,6 @@
     </div><!-- ./sidebar -->
     
     <div class="col-md-7" data-hook="content">
-      <section id="rco">
-        <h2>Regional Coaching Officers</h2>
-        <address>
-          <strong>North East RCO</strong><br />
-          Steven Maynard<br />
-          Adirondack Experience<br />
-          Plattsburgh State University<br />
-          101 Broad Street<br />
-          Plattsburgh, NY 12901<br />
-          <a href="mailto:Steve@BCUNA.com" target="_blank">Steve@BCUNA.com</a>
-        </address>
-        <address>
-          <strong>South East RCO</strong><br />
-          Marsha Henson<br />
-          <a href="mailto:Marsha@BCUNA.com" target="_blank">Marsha@BCUNA.com</a><br />
-          Phone (912) 663-3169<br />
-        </address>
-        <address>
-          <strong>Central US RCO</strong><br />
-          Alec Bloyd-Peshkin<br />
-          <a href="mailto:Alec@BCUNA.com" target="_blank">Alec@BCUNA.com</a><br />
-          phone (708) 628-4598<br />
-        </address>
-        <address>
-          <strong>West Coast RCO</strong><br />
-          John Wallum<br />
-          <a href="mailto:John@BCUNA.com" target="_blank">John@BCUNA.com</a><br />
-          phone (360) 699-6447<br />
-        </address>
-
-        <p>The RCO is your primary source of information. If the RCO can’t immediately answer your question, the RCO will find out, or direct you to the person who will be able to provide an answer.</p>
-        <p>All forms and other paperwork should be sent to PNA. Questions as to the status of paperwork in process should be directed to the PNA administrator.</p>
-      </section>
-      
-      
-      
         
       <% @coaches.each do |local,coaches| %>
         <section id="<%= local.name.to_sym %>">
@@ -57,7 +21,6 @@
       <!-- right side nav -->
       <div class="sidenav hidden-sm hidden-xs scrollspy" data-spy="affix" data-offset-top="276" data-offset-bottom="360">
         <ul class="nav">
-          <li><a href="#rco">Regional Coaching Officers</a></li>
           <% @coaches.each do |l,c| %>
             <li><a href="#<%= l.name.to_sym %>"><%= l.name %></a></li>
           <% end %>
