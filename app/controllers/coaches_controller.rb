@@ -9,5 +9,7 @@ class CoachesController < ApplicationController
         end
       end
     }.sort_by { |k,v| k.name }
+    
+    @regions = Region.all #.order( :name )
   end
 end

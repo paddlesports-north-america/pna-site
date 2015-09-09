@@ -1,6 +1,9 @@
 class Country < ActiveRecord::Base
 
   has_many :states
+  
+  has_one :region_location, :as => :location
+  has_one :region, through: :region_location
 
   attr_accessible :iso, :iso3, :iso_name, :name, :numcode
 

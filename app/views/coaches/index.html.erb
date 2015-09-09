@@ -7,22 +7,39 @@
     </div><!-- ./sidebar -->
     
     <div class="col-md-7" data-hook="content">
-        
-      <% @coaches.each do |local,coaches| %>
-        <section id="<%= local.name.to_sym %>">
-          <h2><%= local.name %></h2>
-          <%= render :partial => 'coach', :collection => coaches %>
-          
-        </section>
-      <% end %>
+    <% @regions.each do |r| %>
+      <section id="<%= r.name.to_sym %>">
+        <h2><%= r.name %></h2>
+        <% if region_coaches_by_local(r,@coaches).any? %>
+        <% region_coaches_by_local(r,@coaches).each do |local,coaches| %>
+          <section id="<%= local.name.to_sym %>">
+            <h3><%= local.name %></h3>
+            <%= render :partial => 'coach', :collection => coaches %>
+          </section>
+        <% end %>
+        <% else %>
+          <p class="lead">There are no coaches registered in this region</p>
+        <% end %>
+      </section>
+    <% end %>
     </div>
     
     <div class="col-md-2 col-md-offset-1" data-hook="sidenav">
       <!-- right side nav -->
       <div class="sidenav hidden-sm hidden-xs scrollspy" data-spy="affix" data-offset-top="276" data-offset-bottom="360">
         <ul class="nav">
-          <% @coaches.each do |l,c| %>
-            <li><a href="#<%= l.name.to_sym %>"><%= l.name %></a></li>
+          <% @regions.each do |r| %>
+          <% if region_coaches_by_local(r,@coaches).any? %>
+            <li><a href="#<%= r.name.to_sym %>"><%= r.name %></a>
+              <ul class="nav">
+                <% r.locations.each do |l| %>
+                  <% if @coaches.flatten.include? l %>
+                  <li><a href="#<%= l.name.to_sym %>"><%= l.name %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
           <% end %>
         </ul>
       </div>
