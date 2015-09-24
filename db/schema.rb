@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150710161908) do
+ActiveRecord::Schema.define(:version => 20150924150959) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -79,17 +79,12 @@ ActiveRecord::Schema.define(:version => 20150710161908) do
 
   create_table "awards", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "award_type"
-    t.text     "description"
-    t.text     "other_prerequisites"
-    t.string   "first_aid_requirement"
-    t.string   "handle"
     t.string   "na_number"
   end
 
-  add_index "awards", ["handle"], :name => "index_awards_on_handle"
   add_index "awards", ["name"], :name => "index_awards_on_name"
 
   create_table "awards_documents", :id => false, :force => true do |t|
@@ -321,11 +316,10 @@ ActiveRecord::Schema.define(:version => 20150710161908) do
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "award_id"
     t.string   "program_type"
-    t.boolean  "is_official",  :default => false
   end
 
   create_table "qualifications", :force => true do |t|
@@ -336,12 +330,30 @@ ActiveRecord::Schema.define(:version => 20150710161908) do
     t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.boolean  "verified"
   end
 
   add_index "qualifications", ["award_id"], :name => "index_qualifications_on_award_id"
   add_index "qualifications", ["course_id"], :name => "index_qualifications_on_course_id"
   add_index "qualifications", ["member_id"], :name => "index_qualifications_on_member_id"
+
+  create_table "region_locations", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "location_id"
+    t.string   "location_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "region_locations", ["region_id"], :name => "index_region_locations_on_region_id"
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.integer  "rco_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "regions", ["rco_id"], :name => "index_regions_on_rco_id"
 
   create_table "registrations", :force => true do |t|
     t.integer  "member_id"
