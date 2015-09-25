@@ -157,7 +157,10 @@ ActiveAdmin.register Member do
 
     columns do
       column do
-
+        if member.is_coach?
+          para "This is a coach!"
+        end
+        
         attributes_table do
           row t('pna.pna_number') do |m| m.id end
           row :bcu_number

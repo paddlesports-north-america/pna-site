@@ -71,6 +71,10 @@ class Member < ActiveRecord::Base
     self.id
   end
   
+  def is_coach?
+    self.awards.where( :award_type => 'coaching' ).any?
+  end
+  
   protected
   def update_membership_expires
     unless memberships.empty?
