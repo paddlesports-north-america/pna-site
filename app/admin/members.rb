@@ -101,6 +101,9 @@ ActiveAdmin.register Member do
       f.input :last_name
       f.input :gender, :as => :select, :collection => Member::GENDER.inject({}) { |m,(k,v)| m.merge( t( "genders.#{k.to_s}" ) => v ) }
       f.input :birthdate, :as => :date_picker, :input_html => { "data-years" => "c-100:c+0" }, :hint => 'YYYY-MM-DD'
+      if member.is_coach?
+        f.input :show_on_coaches_page
+      end
     end
 
     if member.new_record?
@@ -136,7 +139,7 @@ ActiveAdmin.register Member do
         n.input :body
       end
     end
-
+    
     f.actions
   end
 
@@ -157,9 +160,6 @@ ActiveAdmin.register Member do
 
     columns do
       column do
-        if member.is_coach?
-          para "This is a coach!"
-        end
         
         attributes_table do
           row t('pna.pna_number') do |m| m.id end
@@ -171,6 +171,9 @@ ActiveAdmin.register Member do
           row :gender
           row :birthdate
           row :note
+          if member.is_coach?
+            row :show_on_coaches_page
+          end
         end
 
         panel t('pna.phone_number').pluralize do
@@ -179,6 +182,7 @@ ActiveAdmin.register Member do
               column :label
               column :number
               column :ext
+              column :public
             end
 
             para link_to "#{t('pna.manage')} #{t('pna.phone_number').pluralize}", admin_member_phone_numbers_path( member )
@@ -193,6 +197,7 @@ ActiveAdmin.register Member do
             table_for member.email_addresses do
               column :label
               column :address
+              column :public
             end
             para link_to "#{t('pna.manage')} #{t('pna.email_address').pluralize}", admin_member_email_addresses_path( member )
           else
@@ -210,6 +215,7 @@ ActiveAdmin.register Member do
               column :state
               column :postal_code
               column :country
+              column :public
             end
 
             para link_to "#{t('pna.manage')} #{t('pna.mailing_address').pluralize}", admin_member_addresses_path( member )

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150925152533) do
+ActiveRecord::Schema.define(:version => 20150927161441) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20150925152533) do
     t.string   "postal_code"
     t.integer  "addressable_id"
     t.string   "addressable_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "public",           :default => false
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
@@ -148,8 +149,9 @@ ActiveRecord::Schema.define(:version => 20150925152533) do
     t.string   "label"
     t.integer  "emailable_id"
     t.string   "emailable_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "public",         :default => false
   end
 
   add_index "email_addresses", ["emailable_id", "emailable_type"], :name => "index_email_addresses_on_emailable_id_and_emailable_type"
@@ -195,9 +197,10 @@ ActiveRecord::Schema.define(:version => 20150925152533) do
     t.string   "middle_name"
     t.string   "gender"
     t.date     "birthdate"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.date     "membership_expires"
+    t.boolean  "show_on_coaches_page", :default => false
   end
 
   add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
@@ -252,8 +255,9 @@ ActiveRecord::Schema.define(:version => 20150925152533) do
     t.string   "ext"
     t.integer  "phoneable_id"
     t.string   "phoneable_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "public",         :default => false
   end
 
   add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"

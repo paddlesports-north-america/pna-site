@@ -6,7 +6,15 @@
       <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %><br />
       
       <% unless coach.email_addresses.empty? %>
-        <%= link_to coach.email_addresses.first.address, "mailto:#{coach.email_addresses.first.address}" %><br />
+        <% coach.email_addresses.where( :public => true ).each do |e| %>
+          <%= link_to e.address, "mailto:#{e.address}" %><br />
+        <% end %>
+      <% end %>
+      
+      <% unless coach.phone_numbers.empty? %>
+        <% coach.phone_numbers.where( :public => true ).each do |p| %>
+          <%= p.to_s %>
+        <% end %>
       <% end %>
       
       <% unless coach.centers.empty? %>

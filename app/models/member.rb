@@ -49,7 +49,7 @@ class Member < ActiveRecord::Base
 
   attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name,
                   :middle_name, :addresses_attributes, :phone_numbers_attributes,
-                  :email_addresses_attributes, :memberships_attributes
+                  :email_addresses_attributes, :memberships_attributes, :show_on_coaches_page
 
   accepts_nested_attributes_for :addresses, :phone_numbers, :email_addresses, :memberships
 
