@@ -34,5 +34,17 @@ module Pna
         }
       end
     end
+    
+    def public_email_addresses
+      self.email_addresses.where( :public => true )  
+    end
+    
+    def public_phone_numbers
+      self.phone_numbers.where( :public => true )
+    end
+    
+    def public_addresses
+      self.addresses.where( :public => true )
+    end
   end
 end

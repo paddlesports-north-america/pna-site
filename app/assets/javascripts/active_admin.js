@@ -110,6 +110,7 @@ function setCostField( element, data )
 
 function memberAutocompleteFormat( item )
 {
+  console.log( 'autocomplete format')
   if( typeof item.member != 'undefined' )
   {
     item = item.member;
@@ -167,14 +168,26 @@ function setChosen()
 
       opts.initSelection = function( element, callback )
       {
-        var id = $( element ).val();
+        console.log( element );
+        var id = $( element ).val().split(",");
+        console.log( id );
+        var redata = [];
         if( id != "" )
         {
-          $.ajax({
-            url: $( element ).attr( 'data-source' ) + '/' + id + ".json",
-            dataType: 'json'
-          }).done(function( data ){ callback( data ); });
+          for( var i = 0; i < id.length; i++ ){
+            m = id[i];
+            if( m.length == 0 )
+            {
+              continue;
+            }
+            
+            $.ajax({
+              url: $( element ).attr( 'data-source' ) + '/' + m + ".json",
+              dataType: 'json'
+            }).done(function( data ){ callback( data ) }); //redata.push(data) }); 
+          }
         }
+        // callback( redata );
       }
 
     }

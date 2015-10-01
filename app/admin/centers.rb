@@ -7,7 +7,9 @@ ActiveAdmin.register Center do
     f.inputs do
       f.input :name
       f.input :url
-      f.input :member_tokens, :as => :string, :input_html => { :multiple => true }.merge( member_autocomplete_options )
+      f.input :member_tokens, :as => :string, 
+        :label => 'Associated Members',
+        :input_html => member_autocomplete_options.merge( { :multiple => true } )
     end
 
     f.inputs do

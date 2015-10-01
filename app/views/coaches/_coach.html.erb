@@ -5,14 +5,14 @@
       <h5><%= "#{coach.first_name} #{coach.last_name}" %></h5>
       <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %><br />
       
-      <% unless coach.email_addresses.empty? %>
-        <% coach.email_addresses.where( :public => true ).each do |e| %>
+      <% unless coach.public_email_addresses.empty? %>
+        <% coach.public_email_addresses.each do |e| %>
           <%= link_to e.address, "mailto:#{e.address}" %><br />
         <% end %>
       <% end %>
       
-      <% unless coach.phone_numbers.empty? %>
-        <% coach.phone_numbers.where( :public => true ).each do |p| %>
+      <% unless coach.public_phone_numbers.empty? %>
+        <% coach.public_phone_numbers.where( :public => true ).each do |p| %>
           <%= p.to_s %>
         <% end %>
       <% end %>
@@ -22,11 +22,6 @@
           <% if center.url %>
             <%= link_to center.url, center.url, :target => "_blank"  %><br />
           <% end %>
-          
-          <% if center.phone_numbers.any? %>
-            <%= center.phone_numbers.first.number %><br />
-          <% end %>
-          
         <% end %>
       <% end %>
     </address>
