@@ -11,12 +11,6 @@
         <% end %>
       <% end %>
       
-      <% unless coach.public_phone_numbers.empty? %>
-        <% coach.public_phone_numbers.where( :public => true ).each do |p| %>
-          <%= p.to_s %>
-        <% end %>
-      <% end %>
-      
       <% unless coach.centers.empty? %>
         <% coach.centers.each do |center| %>
           <% if center.url %>
@@ -24,6 +18,13 @@
           <% end %>
         <% end %>
       <% end %>
+      
+      <% unless coach.public_phone_numbers.empty? %>
+        <% coach.public_phone_numbers.where( :public => true ).each do |p| %>
+          <%= p.to_s %>
+        <% end %>
+      <% end %>
+      
     </address>
   </div>
   <div class="col-md-4">
