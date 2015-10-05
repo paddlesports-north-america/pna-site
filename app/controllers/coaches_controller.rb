@@ -8,7 +8,7 @@ class CoachesController < ApplicationController
           coach.addresses.first.country
         end
       end
-    }.sort_by { |k,v| k.name }
+    }.select{ |m| m.membership_status != :error }.sort_by { |k,v| k.name }
     
     @regions = Region.all #.order( :name )
   end

@@ -75,6 +75,16 @@ class Member < ActiveRecord::Base
     self.awards.where( :award_type => 'coaching' ).any?
   end
   
+  def membership_status
+    if memberships.empty? || memberships.last.expiration_date < Date.today
+      :error
+    elsif memberships.last.expiration_date < 30.days.from_now.to_date
+      :warning
+    else
+      :ok
+    end
+  end
+  
   protected
   def update_membership_expires
     unless memberships.empty?

@@ -14,13 +14,4 @@ class MemberDecorator < Draper::Decorator
     end
   end
 
-  def membership_status
-    if source.memberships.empty? || expiration_date < Date.today
-      :error
-    elsif expiration_date < 30.days.from_now.to_date
-      :warning
-    else
-      :ok
-    end
-  end
 end
