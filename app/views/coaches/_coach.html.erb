@@ -20,7 +20,7 @@
       <% unless coach.centers.empty? %>
         <% coach.centers.each do |center| %>
           <% if center.url %>
-            <%= link_to center.url, center.url, :target => "_blank"  %><br />
+            <%= link_to domain_name(center.url), "http://#{domain_name(center.url)}", :target => "_blank"  %><br />
           <% end %>
         <% end %>
       <% end %>
