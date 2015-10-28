@@ -25,6 +25,7 @@ class HomeController < ApplicationController
   end
   
   def candidates
+    redirect_to :about
   end
 
 end
