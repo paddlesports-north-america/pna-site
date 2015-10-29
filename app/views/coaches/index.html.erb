@@ -24,7 +24,7 @@
         <h2><%= r.name %></h2>
         <% if region_coaches_by_local(r,@coaches).any? %>
         <% region_coaches_by_local(r,@coaches).each do |local,coaches| %>
-          <section id="<%= local.name.to_sym %>">
+          <section id="<%= local.name.to_sym %>" class="state">
             <h4><%= local.name %></h4>
             <%= render :partial => 'coach', :collection => coaches %>
           </section>
