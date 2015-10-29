@@ -1,11 +1,19 @@
 
-<div class="row">
+<div class="row coach">
   <div class="col-md-4">
-    <address>
+    <!-- <address> -->
       <h5><%= "#{coach.first_name} #{coach.last_name}" %></h5>
-      <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %><br />
+      <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %>
       
-      <% unless coach.public_email_addresses.empty? %>
+    <!-- </address> -->
+  </div>
+  <div class="col-md-4">
+    <!-- <h5 class="hidden-xs hidden-sm">BC Coaching Credentials</h5> -->
+    <em><%= coach.awards.where( :award_type => 'coaching' ).map { |q| q.name }.join(', ') %></em>
+    
+  </div>
+  <div class="col-md-4">
+    <% unless coach.public_email_addresses.empty? %>
         <% coach.public_email_addresses.each do |e| %>
           <%= link_to e.address, "mailto:#{e.address}" %><br />
         <% end %>
@@ -24,16 +32,5 @@
           <%= p.to_s %>
         <% end %>
       <% end %>
-      
-    </address>
-  </div>
-  <div class="col-md-4">
-    <h5>BC Coaching Credentials</h5>
-    <small><em><%= coach.awards.where( :award_type => 'coaching' ).map { |q| q.name }.join(', ') %></em></small>
-    
-  </div>
-  <div class="col-md-4">
-    <h5>BC Awards &amp; Training</h5>
-    <small><em><%= coach.awards.where( "award_type != 'coaching'" ).map { |q| q.name }.join(', ') %></em></small>
   </div>
 </div>
