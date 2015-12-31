@@ -37,9 +37,8 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
     t.string   "postal_code"
     t.integer  "addressable_id"
     t.string   "addressable_type"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "public",           :default => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], :name => "index_addresses_on_addressable_type_and_addressable_id"
@@ -64,20 +63,6 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "assets", :force => true do |t|
-    t.string   "storage_uid"
-    t.string   "storage_name"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "storage_width"
-    t.integer  "storage_height"
-    t.float    "storage_aspect_ratio"
-    t.integer  "storage_depth"
-    t.string   "storage_format"
-    t.string   "storage_mime_type"
-    t.string   "storage_size"
-  end
-
   create_table "awards", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -87,11 +72,6 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
   end
 
   add_index "awards", ["name"], :name => "index_awards_on_name"
-
-  create_table "awards_documents", :id => false, :force => true do |t|
-    t.integer "award_id"
-    t.integer "document_id"
-  end
 
   create_table "centers", :force => true do |t|
     t.string   "name"
@@ -163,30 +143,13 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
   add_index "courses", ["program_id"], :name => "index_courses_on_program_id"
   add_index "courses", ["state_id"], :name => "index_courses_on_state_id"
 
-  create_table "documents", :force => true do |t|
-    t.string   "title"
-    t.string   "direct_upload_url",   :null => false
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
-    t.datetime "upload_updated_at"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  create_table "documents_awards", :id => false, :force => true do |t|
-    t.integer "award_id"
-    t.integer "document_id"
-  end
-
   create_table "email_addresses", :force => true do |t|
     t.string   "address"
     t.string   "label"
     t.integer  "emailable_id"
     t.string   "emailable_type"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.boolean  "public",         :default => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "email_addresses", ["emailable_id", "emailable_type"], :name => "index_email_addresses_on_emailable_id_and_emailable_type"
@@ -232,11 +195,10 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
     t.string   "middle_name"
     t.string   "gender"
     t.date     "birthdate"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.date     "membership_expires"
-    t.boolean  "show_on_coaches_page", :default => false
-    t.boolean  "is_charter_member",    :default => false
+    t.boolean  "is_charter_member",  :default => false
   end
 
   add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
@@ -291,22 +253,11 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
     t.string   "ext"
     t.integer  "phoneable_id"
     t.string   "phoneable_type"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.boolean  "public",         :default => false
-  end
-
-  add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"
-
-  create_table "prerequisites", :force => true do |t|
-    t.integer  "award_id"
-    t.integer  "requirement_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "prerequisites", ["award_id"], :name => "index_prerequisites_on_award_id"
-  add_index "prerequisites", ["requirement_id"], :name => "index_prerequisites_on_requirement_id"
+  add_index "phone_numbers", ["phoneable_id", "phoneable_type"], :name => "index_phone_numbers_on_phoneable_id_and_phoneable_type"
 
   create_table "products", :force => true do |t|
     t.string   "description"
@@ -332,29 +283,11 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
     t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.boolean  "verified"
   end
 
   add_index "qualifications", ["award_id"], :name => "index_qualifications_on_award_id"
   add_index "qualifications", ["course_id"], :name => "index_qualifications_on_course_id"
   add_index "qualifications", ["member_id"], :name => "index_qualifications_on_member_id"
-
-  create_table "region_locations", :force => true do |t|
-    t.integer  "region_id"
-    t.integer  "location_id"
-    t.string   "location_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "region_locations", ["region_id"], :name => "index_region_locations_on_region_id"
-
-  create_table "regions", :force => true do |t|
-    t.string   "name"
-    t.integer  "rco_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "registrations", :force => true do |t|
     t.integer  "member_id"
@@ -379,25 +312,6 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
   end
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
-
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.integer  "member_id"
-  end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",      :null => false

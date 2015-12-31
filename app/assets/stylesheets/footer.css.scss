@@ -18,6 +18,11 @@ footer {
   .sponsor-footer {
     .row { margin-bottom: 15px;}
   }
+
+  .bc-footer {
+    border-top: 1px dashed lighten( #585f69, 10% );
+    p { margin-top: 34px;}
+  }
 }
 
 .subfooter {
