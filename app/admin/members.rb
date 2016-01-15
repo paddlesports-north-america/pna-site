@@ -104,6 +104,7 @@ ActiveAdmin.register Member do
       if member.is_coach?
         f.input :show_on_coaches_page
       end
+      f.input :is_charter_member, :as => :boolean
     end
 
     if member.new_record?
@@ -165,6 +166,7 @@ ActiveAdmin.register Member do
           row t('pna.pna_number') do |m| m.id end
           row :bcu_number
           row t('pna.exp_date') do |m| status_tag( m.expiration_date.to_s, m.membership_status ) end
+          row :is_charter_member
           row :first_name
           row :middle_name
           row :last_name

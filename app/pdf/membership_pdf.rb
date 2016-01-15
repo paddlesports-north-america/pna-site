@@ -5,7 +5,10 @@ class MembershipPdf < Prawn::Document
   PAGE_SIZE = Prawn::Document::PageGeometry::SIZES["LETTER"]
   TEMPLATES = {
                 :header => File.join( Rails.root, 'private', 'pna-membership-header-bw.png' ),
-                :card => File.join( Rails.root, 'private', 'pna-charter-member-card-bw.png')
+                :card => {
+                  :charter => File.join( Rails.root, 'private', "pna-charter-member-card-bw.png"),
+                  :standard => File.join( Rails.root, 'private', "pna-member-card-bw.png")
+                }
               }
   MARGIN = -0.5.in
 
@@ -43,7 +46,9 @@ class MembershipPdf < Prawn::Document
         move_down 0.15.in
       end
     end
-    image TEMPLATES[ :card ], :at => [ 0.86.in, PAGE_SIZE[1] - 8.17.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
+    card = membership.member.is_charter_member? ? TEMPLATES[ :card ][ :charter ] : TEMPLATES[ :card ][ :standard ]
+    
+    image card, :at => [ 0.86.in, PAGE_SIZE[1] - 8.17.in ], :fit => [ PAGE_SIZE[ 0 ] - 0.86.in * 2, PAGE_SIZE[ 1 ] - 1.14.in ]
     
   # Member Info
     bounding_box( [ 4.5.in, 2.5.in ], :width => 2.86.in, :height => 1.61.in ) do

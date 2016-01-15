@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150927161441) do
+ActiveRecord::Schema.define(:version => 20151121170503) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -136,10 +136,12 @@ ActiveRecord::Schema.define(:version => 20150927161441) do
     t.boolean  "show_on_calendar",   :default => true
     t.date     "start_date"
     t.date     "end_date"
+    t.integer  "course_number"
   end
 
   add_index "courses", ["center_id"], :name => "index_courses_on_center_id"
   add_index "courses", ["country_id"], :name => "index_courses_on_country_id"
+  add_index "courses", ["course_number"], :name => "index_courses_on_course_number", :unique => true
   add_index "courses", ["course_provider_id"], :name => "index_courses_on_course_provider_id"
   add_index "courses", ["program_id"], :name => "index_courses_on_program_id"
   add_index "courses", ["state_id"], :name => "index_courses_on_state_id"
@@ -199,7 +201,9 @@ ActiveRecord::Schema.define(:version => 20150927161441) do
     t.date     "birthdate"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+    t.integer  "provider_number"
     t.date     "membership_expires"
+    t.boolean  "is_charter_member",    :default => false
     t.boolean  "show_on_coaches_page", :default => false
   end
 
