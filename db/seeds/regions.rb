@@ -7,7 +7,7 @@ def add_states_to_region(r, abbrs)
 end
 
 r = Region.create({ name: 'Northeast' } )
-add_states_to_region( r, %w{ CT DE ME MD MA NH NJ NY PA RI VT VA WV } )
+add_states_to_region( r, %w{ CT DC DE ME MD MA NH NJ NY PA RI VT VA WV } )
 
 
 r = Region.create({ name: 'Southeast' } )
