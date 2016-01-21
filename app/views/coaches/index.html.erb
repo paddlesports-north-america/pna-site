@@ -20,11 +20,11 @@
     <div class="col-md-7" data-hook="content">
     
     <% @regions.each do |r| %>
-      <section id="<%= r.name.to_sym %>">
+      <section id="<%= r.name.parameterize %>">
         <h2><%= r.name %></h2>
         <% if region_coaches_by_local(r,@coaches).any? %>
         <% region_coaches_by_local(r,@coaches).each do |local,coaches| %>
-          <section id="<%= local.name.to_sym %>" class="state">
+          <section id="<%= local.name.parameterize %>" class="state">
             <h4><%= local.name %></h4>
             <%= render :partial => 'coach', :collection => coaches %>
           </section>
@@ -42,11 +42,11 @@
         <ul class="nav">
           <% @regions.each do |r| %>
           <% if region_coaches_by_local(r,@coaches).any? %>
-            <li><a href="#<%= r.name.to_sym %>"><%= r.name %></a>
+            <li><a href="#<%= r.name.parameterize %>"><%= r.name %></a>
               <ul class="nav">
                 <% r.locations.each do |l| %>
                   <% if @coaches.flatten.include? l %>
-                  <li><a href="#<%= l.name.to_sym %>"><%= l.name %></a></li>
+                  <li><a href="#<%= l.name.parameterize %>"><%= l.name %></a></li>
                   <% end %>
                 <% end %>
               </ul>
