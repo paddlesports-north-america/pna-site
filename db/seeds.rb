@@ -14,4 +14,4 @@ default_dir = File.join( File.dirname( __FILE__ ), 'seeds' )
 # AdminUser.create( { :email => 'bill.akt@gmail.com', :password => 'password', :password_confirmation => 'password' } )
 # AdminUser.create( { :email => 'scottfairty@gmail.com', :password => 'password', :password_confirmation => 'password' } )
 
-require File.join( default_dir, 'regions.rb' )
+# require File.join( default_dir, 'regions.rb' )
