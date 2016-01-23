@@ -99,6 +99,7 @@ ActiveAdmin.register Member do
       f.input :first_name
       f.input :middle_name
       f.input :last_name
+      f.input :nickname
       f.input :gender, :as => :select, :collection => Member::GENDER.inject({}) { |m,(k,v)| m.merge( t( "genders.#{k.to_s}" ) => v ) }
       f.input :birthdate, :as => :date_picker, :input_html => { "data-years" => "c-100:c+0" }, :hint => 'YYYY-MM-DD'
       if member.is_coach?
@@ -170,6 +171,7 @@ ActiveAdmin.register Member do
           row :first_name
           row :middle_name
           row :last_name
+          row :nickname
           row :gender
           row :birthdate
           row :note

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151121170503) do
+ActiveRecord::Schema.define(:version => 20160123181112) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(:version => 20151121170503) do
     t.date     "membership_expires"
     t.boolean  "is_charter_member",    :default => false
     t.boolean  "show_on_coaches_page", :default => false
+    t.string   "nickname"
   end
 
   add_index "members", ["bcu_number", "first_name", "last_name"], :name => "index_members_on_bcu_number_and_first_name_and_last_name"
