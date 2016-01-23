@@ -2,7 +2,7 @@
 <div class="row coach">
   <div class="col-md-4">
     <!-- <address> -->
-      <h5><%= "#{coach.first_name} #{coach.last_name}" %></h5>
+      <h5><%= "#{coach.use_middle_name? ? coach.middle_name : coach.first_name } #{coach.last_name}" %></h5>
       <%= "#{coach.addresses.first.city}, #{coach.addresses.first.state.nil? ? coach.addresses.first.country.name : coach.addresses.first.state.name}" %>
       
     <!-- </address> -->
