@@ -5,8 +5,10 @@ ActiveAdmin.register Award do
 
   scope :all, :default => true
   scope :coaching
-  scope :safety
+  scope :performance
   scope :leadership
+  scope :endorsement
+  scope :safety
   scope :other
 
   form do |f|
