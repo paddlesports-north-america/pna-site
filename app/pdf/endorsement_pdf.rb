@@ -5,6 +5,10 @@ class EndorsementPdf < Prawn::Document
   PAGE_SIZE = [ 6.in, 8.25.in ]
   MARGIN = 0
 
+  def initialize()
+    super( :page_size => PAGE_SIZE, :margin => MARGIN )
+  end
+
   def to_pdf( params )
 
     font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )

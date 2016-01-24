@@ -5,6 +5,10 @@ class CoachingPdf < Prawn::Document
   PAGE_SIZE = [ 5.75.in, 8.25.in ]
   MARGIN = 0
 
+  def initialize()
+    super( :page_size => PAGE_SIZE, :margin => MARGIN )
+  end
+
   def to_pdf( params )
 
     bounding_box( [ 0, 5.75.in ], :width => PAGE_SIZE[0], :height => 1.5.in ) do

@@ -6,6 +6,10 @@ class PerformancePdf < Prawn::Document
   PAGE_SIZE = [ 8.25.in, 11.625.in ]
   MARGIN = 0.in
 
+  def initialize()
+    super( :page_size => PAGE_SIZE, :margin => MARGIN )
+  end
+
   def to_pdf( params )
 
     image "#{Rails.root}/public/pna-medalion.png", position: 5.85.in, vposition: 0.35.in, height: 1.75.in

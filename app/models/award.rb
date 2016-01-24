@@ -1,6 +1,7 @@
 class Award < ActiveRecord::Base
-  attr_accessible :name, :award_type, :na_number
+  attr_accessible :name, :award_type, :na_number, :print_template
 
+  validates :print_template, :inclusion => { :in => Pna::PrintTemplate::ALL }
   validates :name, :presence => true
 
   scope :coaching, where( :award_type => Pna::ProgramType::COACHING )

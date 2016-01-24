@@ -36,9 +36,9 @@ ActiveAdmin.register Qualification do
         :course => qualification.course
       }
 
-      clazz = "#{award.award_type.humanize}Pdf".constantize
-
-      output = clazz.new( :page_size => clazz::PAGE_SIZE, :margin => clazz::MARGIN ).to_pdf( args )
+      
+      output = Pna::PrintTemplate.getPdf( award.award_type, args )
+      
       send_data output, :filename => "#{member.id}-#{qualification.id}.pdf", :type => "application/pdf", :disposition => "inline"
     end
 
