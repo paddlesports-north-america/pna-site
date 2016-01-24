@@ -2,8 +2,14 @@ class Pna::ProgramType
   OTHER = 'other'
   LEADERSHIP = 'leadership'
   COACHING = 'coaching'
+  MODULE = 'module'
+  PROVIDER = 'provider'
   PERFORMANCE = 'performance'
-  SAFETY = 'safety'
+  TRAINING = 'training'
   ENDORSEMENT = 'endorsement'
-  ALL = [ OTHER, LEADERSHIP, COACHING, PERFORMANCE, SAFETY, ENDORSEMENT ]
+  LEGACY = 'legacy'
+  
+  ALL = [ PERFORMANCE, LEADERSHIP, COACHING, MODULE, PROVIDER, ENDORSEMENT, TRAINING, LEGACY, OTHER ]
+
+  SHOW_ON_COACHES_PAGE = [ COACHING, LEGACY, ENDORSEMENT, PROVIDER ]
 end

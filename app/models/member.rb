@@ -32,7 +32,7 @@ class Member < ActiveRecord::Base
   has_and_belongs_to_many :centers
 
   has_many :qualifications, :dependent => :delete_all
-  has_many :awards, through: :qualifications
+  has_many :awards, through: :qualifications, order: [ :award_type, :name ]
   
   has_many :first_aid_certifications, :dependent => :delete_all
   has_many :course_participations, :class_name => 'CourseParticipant', :dependent => :delete_all
@@ -72,7 +72,7 @@ class Member < ActiveRecord::Base
   end
   
   def is_coach?
-    self.awards.where( :award_type => 'coaching' ).any?
+    self.awards.where( :award_type => [ Pna::ProgramType::COACHING, Pna::ProgramType::LEGACY ] ).any?
   end
   
   def membership_status

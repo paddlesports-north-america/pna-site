@@ -8,11 +8,12 @@ class Program < ActiveRecord::Base
   validates :name, :presence => true
   validates :program_type, :inclusion => { :in => Pna::ProgramType::ALL }
 
-  scope :coaching, where( :program_type => Pna::ProgramType::COACHING )
-  scope :performance, where( :program_type => Pna::ProgramType::PERFORMANCE )
-  scope :leadership, where( :program_type => Pna::ProgramType::LEADERSHIP )
-  scope :safety, where( :program_type => Pna::ProgramType::SAFETY )
-  scope :other, where( :program_type => Pna::ProgramType::OTHER )
+  has_award_scope  
+  # scope :coaching, where( :program_type => Pna::ProgramType::COACHING )
+  # scope :performance, where( :program_type => Pna::ProgramType::PERFORMANCE )
+  # scope :leadership, where( :program_type => Pna::ProgramType::LEADERSHIP )
+  # scope :safety, where( :program_type => Pna::ProgramType::SAFETY )
+  # scope :other, where( :program_type => Pna::ProgramType::OTHER )
 
   def has_award?
     !award.nil?

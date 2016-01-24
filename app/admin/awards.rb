@@ -4,12 +4,18 @@ ActiveAdmin.register Award do
   config.batch_actions = false
 
   scope :all, :default => true
-  scope :coaching
-  scope :performance
-  scope :leadership
-  scope :endorsement
-  scope :safety
-  scope :other
+
+  Pna::ProgramType::ALL.each do |t|
+    scope t.to_sym
+  end
+  
+  # scope :coaching
+  # scope :provider
+  # scope :performance
+  # scope :leadership
+  # scope :endorsement
+  # scope :safety
+  # scope :other
 
   form do |f|
     f.inputs do
