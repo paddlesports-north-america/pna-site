@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160124141647) do
+ActiveRecord::Schema.define(:version => 20160125154716) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(:version => 20160124141647) do
     t.string   "award_type"
     t.string   "na_number"
     t.string   "print_template"
+    t.string   "ancestry"
   end
 
+  add_index "awards", ["ancestry"], :name => "index_awards_on_ancestry"
   add_index "awards", ["name"], :name => "index_awards_on_name"
 
   create_table "centers", :force => true do |t|
