@@ -20,7 +20,7 @@
       <% if coach.awards.where( :award_type => Pna::ProgramType::PROVIDER ).any? %>
         <li>&nbsp;</li>
         <% coach.awards.where( :award_type => Pna::ProgramType::PROVIDER ).each do |a| %>
-        <li><%= a.name %></li>
+        <li class="endorsement"><%= a.name %></li>
         <% end %>
       <% end %>
     </ul>
