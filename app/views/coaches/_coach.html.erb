@@ -11,8 +11,17 @@
     <!-- <h5 class="hidden-xs hidden-sm">BC Coaching Credentials</h5> -->
     
     <ul class="qualifications">
-      <% coach.awards.where( :award_type => Pna::ProgramType::SHOW_ON_COACHES_PAGE ).each do |a| %>
-      <li><%= a.name %></li>
+      <% coach.awards.where( :award_type => [Pna::ProgramType::COACHING, Pna::ProgramType::LEGACY ] ).each do |a| %>
+        <li><%= a.name %></li>
+      <% end %>
+      <% coach.awards.where( :award_type => Pna::ProgramType::ENDORSEMENT ).each do |a| %>
+        <li><%= a.name %></li>
+      <% end %>
+      <% if coach.awards.where( :award_type => Pna::ProgramType::PROVIDER ).any? %>
+        <li>&nbsp;</li>
+        <% coach.awards.where( :award_type => Pna::ProgramType::PROVIDER ).each do |a| %>
+        <li><%= a.name %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
