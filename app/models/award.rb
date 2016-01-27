@@ -5,6 +5,6 @@ class Award < ActiveRecord::Base
   validates :name, :presence => true
 
   has_award_scope
-  # has_ancestry
+  has_ancestry
   
 end
