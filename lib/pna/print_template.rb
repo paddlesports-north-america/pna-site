@@ -9,7 +9,7 @@ class Pna::PrintTemplate
     if ALL.include? type
       "#{type.humanize}Pdf".constantize
     else
-      raise "Invalid Template Type"
+      raise "Invalid Template Type ( #{type} )"
     end
   end
 
