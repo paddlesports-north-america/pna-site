@@ -14,6 +14,14 @@ h3.media-heading {
   margin-top: 16px;
 }
 
+
+  ul.region-locations {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+  }
+
+
 @media (min-width: $screen-sm-max ) {
   .board-img {
     margin-left: -160px;

@@ -10,6 +10,7 @@ class HomeController < ApplicationController
   end
 
   def about
+    @regions = Region.includes( :rco, region_locations: [ :location ] ).order( :name ).all
   end
 
   def paddlers

@@ -22,6 +22,29 @@
     <% @regions.each do |r| %>
       <section id="<%= r.name.parameterize %>">
         <h2><%= r.name %></h2>
+        
+        <section class="state">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>Region Includes:</h4>
+              <ul class="region-locations">
+              <% r.locations.each do |l| %>
+                <% if location_has_coaches?( l, @coaches ) %>
+                  <li class="col-md-6"><a href="#<%= l.name.parameterize %>"><%= l.name %></a></li>
+                <% else %>
+                  <li class="col-md-6"><%= l.name %></li>
+                <% end %>
+              <% end %>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h4>Regional Representative</h4>
+              <p><%= "#{r.rco.first_name} #{r.rco.last_name}" %><br /><a href="mailto:<%= r.contact %>"><%= r.contact %></a></p>
+              <p><em>To learn more about PNA Regional Representatives, <a href="/about#regional-reps">click here</a></em></p>
+            </div>
+          </div>
+        </section>
+
         <% if region_coaches_by_local(r,@coaches).any? %>
         <% region_coaches_by_local(r,@coaches).each do |local,coaches| %>
           <section id="<%= local.name.parameterize %>" class="state">

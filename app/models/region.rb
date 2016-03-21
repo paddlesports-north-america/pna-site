@@ -1,5 +1,5 @@
 class Region < ActiveRecord::Base
-  attr_accessible :name, :rco_id
+  attr_accessible :name, :rco_id, :contact
   belongs_to :rco, :class_name => :Member, :foreign_key => :rco_id
   
   has_many :region_locations, :dependent => :destroy

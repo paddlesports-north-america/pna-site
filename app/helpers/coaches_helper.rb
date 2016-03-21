@@ -12,6 +12,10 @@ module CoachesHelper
     coaches.select { |l,_| region.locations.include? l }
   end
   
+  def location_has_coaches?( location, coaches )
+    coaches.select { |c| c.include? location }.any?
+  end
+
   def domain_name(uri)
     URI.parse(uri).host[/\w+\.\w+(\.\w{2})?\Z/]
   end

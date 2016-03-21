@@ -154,6 +154,27 @@
         </span><!-- ./johnstone-wright -->
       </section><!-- ./board -->
 
+      <section id="regional-reps">
+        <h2>Regional Representatives</h2>
+        <p>The PNA Regional Representative (REP) is often your first point of contact to learn more about PNA, advance your paddling skills, find an available paddling program or just to ask a question.  PNA REPs work hard to  make sure the general public and PNA members have access to the quality training they expect from British Canoeing programs and by ensuring coaches have access to opportunities for continuing education within a defined geographic region.  Whether you are a new or experienced paddler or coach, your PNA REP can be an important resource for you.</p>
+        <% @regions.each do |region| %>
+        <h3><%= region.name %></h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="region-locations">
+            <% region.locations.each do |l| %>
+              <li class="col-md-6"><%= l.name %></li>
+            <% end %>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Regional Representative: </strong><br /><%= "#{region.rco.first_name} #{region.rco.last_name}" %></p>
+            <p><strong>Contact: </strong><br /><a href="mailto:<%= region.contact %>"><%= region.contact %></a></p>
+          </div>
+        </div>
+        <% end %>
+      </section>
+
 
       <section id="sponsors">
         <h2>Our Sponsors</h2>
@@ -216,6 +237,7 @@
                 <li><a href="#johnstone-wright">Todd A Johnstone-Wright</a></li>
               </ul>
             </li>
+            <li><a href="#regional-reps">Regional Representatives</a></li>
             <li><a href="#sponsors">Sponsors</a></li>
           </ul>
         </div>
