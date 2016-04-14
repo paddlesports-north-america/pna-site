@@ -29,7 +29,7 @@
                 <td data-title="Location"><%= "#{course.state.abbr unless course.state.nil?} #{course.country.iso unless course.country.iso == 'US' || course.country.nil?}"  %></td>
                 <td data-title="Coach or Center">
                   <% if course.center %>
-                    <%= link_to course.center.name, course.center.formated_url, :target => "_blank" unless course.center.nil? %>
+                    <%= link_to course.center.name, course.center.contact_link, :target => "_blank" unless course.center.nil? %>
                   <% elsif course.course_director.public_email_addresses.any? %>
                     <%= link_to "#{course.course_director.first_name} #{course.course_director.last_name}", "mailto:#{course.course_director.public_email_addresses.first}", :target => "_blank" %>
                   <% end %>

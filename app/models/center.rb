@@ -22,6 +22,16 @@ class Center < ActiveRecord::Base
     self.members = Member.where( :id => tokens.first.gsub( /[^0-9,]/,'' ).split(',') )
   end
 
+  def contact_link
+    if url
+      formated_url
+    elsif email_addresses.any?
+      "mailto:#{email_addresses.first.address}"
+    else
+      null
+    end
+  end
+
   def formated_url
     unless self.url[/http:\/\//] || self.url[/https:\/\//]
       "http://#{self.url}"
