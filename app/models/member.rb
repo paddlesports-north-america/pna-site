@@ -11,7 +11,7 @@ class Member < ActiveRecord::Base
 
   GENDER = { :male => 'm', :female => 'f' }
 
-  scope :active, -> { 
+  scope :active, -> {
     joins( :memberships )
     .where('memberships.expiration_date = (SELECT MAX(memberships.expiration_date) FROM memberships WHERE memberships.member_id = members.id)')
     .where('memberships.expiration_date >= ?', Date.today)
@@ -24,16 +24,16 @@ class Member < ActiveRecord::Base
     .group('members.id')
   }
   scope :non_member, -> { includes(:memberships).where( memberships: { member_id: nil } ) }
-  
+
   search_methods :has_qualifications_in
   scope :has_qualifications_in, lambda { |aids| has_qualifications( aids ) }
-  
-  
+
+
   has_and_belongs_to_many :centers
 
   has_many :qualifications, :dependent => :delete_all
   has_many :awards, through: :qualifications, order: [ :award_type, :name ]
-  
+
   has_many :first_aid_certifications, :dependent => :delete_all
   has_many :course_participations, :class_name => 'CourseParticipant', :dependent => :delete_all
   has_many :courses, :through => :course_participations
@@ -47,7 +47,7 @@ class Member < ActiveRecord::Base
   has_many :coaching_registrations
   has_many :leadership_registrations
 
-  attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name, :use_middle_name, 
+  attr_accessible :bcu_number, :birthdate, :first_name, :gender, :last_name, :use_middle_name,
                   :middle_name, :addresses_attributes, :phone_numbers_attributes,
                   :email_addresses_attributes, :memberships_attributes, :show_on_coaches_page, :is_charter_member
 
@@ -63,6 +63,12 @@ class Member < ActiveRecord::Base
     Member.where( :id => uids )
   end
 
+  def public_email_addresses
+    email_addresses.select do |e|
+      e.public?
+    end
+  end
+
   def to_s
     "#{first_name} #{last_name}"
   end
@@ -70,11 +76,11 @@ class Member < ActiveRecord::Base
   def pna_number
     self.id
   end
-  
+
   def is_coach?
     self.awards.where( :award_type => [ Pna::ProgramType::COACHING, Pna::ProgramType::LEGACY ] ).any?
   end
-  
+
   def membership_status
     if memberships.empty? || memberships.last.expiration_date < Date.today
       :error
@@ -84,7 +90,7 @@ class Member < ActiveRecord::Base
       :ok
     end
   end
-  
+
   protected
   def update_membership_expires
     unless memberships.empty?
@@ -98,6 +104,6 @@ class Member < ActiveRecord::Base
       errors.add( :birthdate )
     end
   end
-  
-  
+
+
 end
