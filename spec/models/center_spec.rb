@@ -24,7 +24,7 @@ describe Center do
     c = FactoryGirl.create( :center_with_phone_numbers )
     pid = c.phone_numbers.first.id
     c.destroy
-    PhoneNumber.exists?(pid).should_not be_true
+    PhoneNumber.exists?(pid).should be_falsey
   end
 
   it "should have many email addresses" do
@@ -41,7 +41,7 @@ describe Center do
     c = FactoryGirl.create( :center_with_email_addresses )
     eid = c.email_addresses.first.id
     c.destroy
-    EmailAddress.exists?( eid ).should_not be_true
+    EmailAddress.exists?( eid ).should be_falsey
   end
 
   it "should have many addresses" do
@@ -58,7 +58,7 @@ describe Center do
     c = FactoryGirl.create( :center_with_addresses )
     aid = c.addresses.first.id
     c.destroy
-    Address.exists?( aid ).should_not be_true
+    Address.exists?( aid ).should be_falsey
   end
 
   it "should have and belong to many members" do

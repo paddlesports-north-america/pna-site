@@ -10,8 +10,10 @@ class Message
   validates_length_of :content, :maximum => 500
 
   def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
+    unless attributes.blank?
+      attributes.each do |name, value|
+        send("#{name}=", value)
+      end
     end
   end
 

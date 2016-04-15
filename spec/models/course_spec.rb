@@ -49,10 +49,6 @@ describe Course do
     @course.should have_many( :course_participants )
   end
 
-  it "should have mnay students through course participants" do
-    @course.should have_many( :students ).through( :course_participants )
-  end
-
   describe '#course_director' do
 
     it "should have a valid factory with a course director" do
@@ -88,7 +84,7 @@ describe Course do
       program = Program.first
 
       course = Course.create({
-          :date => Date.today,
+          :start_date => Date.today,
           :program_id => program.id,
           :course_provider_id => provider.id,
           :course_director_id => director.id

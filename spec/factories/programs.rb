@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :program do
     name "A Test Program"
+    program_type Pna::ProgramType::ALL.first
   end
 end

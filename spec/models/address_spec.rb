@@ -40,10 +40,9 @@ describe Address do
       a.errors.should include( :city )
     end
 
-    it "should require a postal code" do
+    it "should not require a postal code" do
       a = FactoryGirl.build( :address, :postal_code => nil )
-      a.should_not be_valid
-      a.errors.should include( :postal_code )
+      a.should be_valid
     end
 
     it "should require addressable" do

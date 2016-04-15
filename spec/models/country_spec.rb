@@ -11,12 +11,12 @@ describe Country do
   describe "#has_states?" do
     it "should be true if the country has states" do
       c = FactoryGirl.create( :country_with_states )
-      c.has_states?.should be_true
+      c.has_states?.should be_truthy
     end
 
     it "should be false if country has no states" do
       c = FactoryGirl.create( :country )
-      c.has_states?.should_not be_true
+      c.has_states?.should be_falsey
     end
   end
 

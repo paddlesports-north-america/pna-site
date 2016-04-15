@@ -36,9 +36,9 @@ class Course < ActiveRecord::Base
   def end_date_after_start_date
     errors.add( :end_date ) unless start_date.nil? || end_date.nil? || end_date >= start_date
   end
-  
+
   def has_course_director?
-    !@course_director_id.empty?
+    !@course_director_id.blank?
   end
 
   def course_director_id
@@ -46,7 +46,7 @@ class Course < ActiveRecord::Base
   end
 
   def set_course_director
-    if @course_director_id.empty?
+    if @course_director_id.blank?
       self.course_director = self.course_provider
     else
       self.course_director = Member.find( @course_director_id )
@@ -66,7 +66,7 @@ class Course < ActiveRecord::Base
   end
 
   def assisting_coach_ids=(val)
-    @assisting_coach_ids = val.reject { |v| v.empty? }.join(',')
+    @assisting_coach_ids = val.reject { |v| v.blank? }.join(',')
   end
 
   def assisting_coach_ids
@@ -74,7 +74,7 @@ class Course < ActiveRecord::Base
   end
 
   def set_coaches
-    unless @assisting_coach_ids.empty?
+    unless @assisting_coach_ids.blank?
       acids = @assisting_coach_ids.split(',')
       original = self.course_coaches.where( :is_director => false ).pluck( :member_id )
       self.course_coaches.where( :member_id => original - acids ).delete_all

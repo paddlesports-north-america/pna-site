@@ -13,7 +13,7 @@ describe CourseCoach do
   it "should have a valid course_director factory" do
     c = FactoryGirl.build( :course_director )
     c.should be_valid
-    c.is_director.should be_true
+    c.is_director.should be_truthy
   end
 
   it "should belong to member" do

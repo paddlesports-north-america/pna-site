@@ -13,7 +13,7 @@ class CourseParticipant < ActiveRecord::Base
 
   accepts_nested_attributes_for :note
 
-  validates :member, :presence => true
+  validates :member, :course, :presence => true
   validates :result, :inclusion => { :in => CourseParticipant::RESULT.values }
 
   def to_s

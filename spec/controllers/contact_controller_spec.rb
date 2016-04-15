@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ContactController do
+describe ContactController, :type => :controller do
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -11,14 +11,14 @@ describe ContactController do
 
   describe "GET 'submit'" do
     it "returns http success" do
-      get 'submit'
+      post 'index'
       response.should be_success
     end
   end
 
   describe "GET 'thank-you'" do
     it "returns http success" do
-      get 'thank-you'
+      get 'thank_you'
       response.should be_success
     end
   end

@@ -40,7 +40,7 @@ describe Member do
     m = FactoryGirl.create( :member_with_phone_numbers )
     pid = m.phone_numbers.last.id
     m.destroy
-    PhoneNumber.exists?( pid ).should_not be_true
+    PhoneNumber.exists?( pid ).should be_falsey
   end
 
   it "should have many phone numbers" do
@@ -58,7 +58,7 @@ describe Member do
     m = FactoryGirl.create( :member_with_emails )
     eid = m.email_addresses.last.id
     m.destroy
-    EmailAddress.exists?( eid ).should_not be_true
+    EmailAddress.exists?( eid ).should be_falsey
   end
 
   it "should have and belong to many centers" do
@@ -122,12 +122,6 @@ describe Member do
     it "should not require middle name" do
       m = FactoryGirl.build( :member, :middle_name => nil )
       m.should be_valid
-    end
-
-    it "should require a birthdate" do
-      m = FactoryGirl.build( :member, :birthdate => nil )
-      m.should_not be_valid
-      m.errors.should include( :birthdate )
     end
 
     it "should require a birthdate in the past" do

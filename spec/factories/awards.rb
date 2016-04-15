@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :award do
     name "Test Award"
+    print_template Pna::PrintTemplate::ALL.first
   end
 end
