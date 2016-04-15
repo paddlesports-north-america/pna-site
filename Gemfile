@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-source 'http://gemcutter.org'
+# source 'http://gemcutter.org'
 ruby '1.9.3'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 gem 'activeadmin', :github => 'activeadmin/activeadmin', :branch => '0-6-stable'
 gem 'inherited_resources', '~> 1.4.0'
