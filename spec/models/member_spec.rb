@@ -98,11 +98,6 @@ describe Member do
     m.should have_many( :memberships )
   end
 
-  it "should have many invoices" do
-    m = FactoryGirl.build( :member )
-    m.should have_many( :invoices )
-  end
-
   describe '#valid?' do
     it "should validate gender against GENDER constant values" do
       m = FactoryGirl.build( :member, :gender => Member::GENDER[ :male ] )

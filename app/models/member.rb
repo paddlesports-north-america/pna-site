@@ -42,8 +42,6 @@ class Member < ActiveRecord::Base
 
   has_many :memberships, :dependent => :delete_all
 
-  has_many :invoices, :dependent => :delete_all
-
   has_many :coaching_registrations
   has_many :leadership_registrations
 
