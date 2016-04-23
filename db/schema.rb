@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160125154716) do
+ActiveRecord::Schema.define(:version => 20160415144500) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -173,28 +173,6 @@ ActiveRecord::Schema.define(:version => 20160125154716) do
 
   add_index "first_aid_certifications", ["member_id"], :name => "index_first_aid_certifications_on_member_id"
 
-  create_table "invoices", :force => true do |t|
-    t.integer  "member_id"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "payable_type"
-    t.integer  "payable_id"
-    t.boolean  "has_outstanding_ballance", :default => true
-  end
-
-  add_index "invoices", ["member_id"], :name => "index_invoices_on_member_id"
-
-  create_table "line_items", :force => true do |t|
-    t.integer  "invoice_id"
-    t.integer  "quantity"
-    t.float    "cost"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "product_id"
-  end
-
-  add_index "line_items", ["invoice_id"], :name => "index_line_items_on_invoice_id"
-
   create_table "members", :force => true do |t|
     t.string   "bcu_number"
     t.string   "first_name"
@@ -243,19 +221,6 @@ ActiveRecord::Schema.define(:version => 20160125154716) do
 
   add_index "notes", ["admin_user_id"], :name => "index_notes_on_admin_user_id"
   add_index "notes", ["noteable_type", "noteable_id"], :name => "index_notes_on_noteable_type_and_noteable_id"
-
-  create_table "payments", :force => true do |t|
-    t.string   "payment_source"
-    t.string   "number"
-    t.date     "exp_date"
-    t.float    "amount"
-    t.string   "billing_name"
-    t.integer  "invoice_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"
 
   create_table "phone_numbers", :force => true do |t|
     t.string   "label"
@@ -316,6 +281,7 @@ ActiveRecord::Schema.define(:version => 20160125154716) do
     t.integer  "rco_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "contact"
   end
 
   create_table "registrations", :force => true do |t|
