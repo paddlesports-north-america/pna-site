@@ -8,7 +8,10 @@ class Program < ActiveRecord::Base
   validates :name, :presence => true
   validates :program_type, :inclusion => { :in => Pna::ProgramType::ALL }
 
-  has_award_scope  
+  Pna::ProgramType::ALL.each do |t|
+    scope t.to_sym, where( :program_type => t )
+  end
+  # has_award_scope
   # scope :coaching, where( :program_type => Pna::ProgramType::COACHING )
   # scope :performance, where( :program_type => Pna::ProgramType::PERFORMANCE )
   # scope :leadership, where( :program_type => Pna::ProgramType::LEADERSHIP )

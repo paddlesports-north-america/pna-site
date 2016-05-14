@@ -4,10 +4,10 @@ ActiveAdmin.register Program do
   config.batch_actions = false
 
   scope :all, :default => true
-  scope :coaching
-  scope :safety
-  scope :leadership
-  scope :other
+
+  Pna::ProgramType::ALL.each do |t|
+    scope t.to_sym
+  end
 
   form do |f|
     f.inputs do
