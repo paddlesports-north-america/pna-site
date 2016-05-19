@@ -3,6 +3,7 @@ class Pna::PrintTemplate
   ENDORSEMENT = 'endorsement'
   PERFORMANCE = 'performance'
   MEMBERSHIP = 'membership'
+
   ALL = [COACHING, ENDORSEMENT, PERFORMANCE, MEMBERSHIP]
 
   def self.getTemplate( type )
