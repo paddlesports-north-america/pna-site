@@ -1,4 +1,4 @@
-class AttendancePdf < Prawn::Document
+class EndorsementPdf < Prawn::Document
 
   require 'prawn/measurement_extensions'
 
