@@ -15,19 +15,19 @@ ActiveAdmin.register Member do
   filter :bcu_number
   filter :first_name
   filter :last_name
-  
+
   filter :addresses_state, as: :select, collection: proc { State.all }, label: 'State or Province'
   filter :addresses_country, as: :select, collection: proc { Country.order( 'name asc') }, label: 'Country'
 
   filter :has_qualifications, as: :select, :multiple => true, collection: proc { Award.order( "name asc" ) }
 
   filter :active
-  
+
   controller do
     def autocomplete
       respond_with Member.where( "lower( concat( first_name, ' ', last_name ) ) like ? OR cast( id as text ) like ?", "%#{params[ :q ].downcase}%", "%#{params[ :q ].downcase}%" ), :location => nil
     end
-    
+
     # def scoped_collection
     #   super.includes :memberships
     # end
@@ -39,37 +39,37 @@ ActiveAdmin.register Member do
     column :first_name
     column :last_name
     column :membership_expires
-    column( :email ) { |member| 
+    column( :email ) { |member|
       unless member.email_addresses.empty?
-        member.email_addresses.first 
+        member.email_addresses.first
       end
     }
-    column( :address1 ) { |member| 
+    column( :address1 ) { |member|
       unless member.addresses.empty?
-        member.addresses.first.address1 
+        member.addresses.first.address1
       end
     }
-    column( :address2 ) { |member| 
+    column( :address2 ) { |member|
       unless member.addresses.empty?
-        member.addresses.first.address2 
+        member.addresses.first.address2
       end
     }
-    column( :city ) { |member| 
+    column( :city ) { |member|
       unless member.addresses.empty?
-        member.addresses.first.city 
+        member.addresses.first.city
       end
     }
-    column( :state_or_province ) { |member| 
+    column( :state_or_province ) { |member|
       unless member.addresses.empty? || member.addresses.first.state.nil?
         member.addresses.first.state.abbr
       end
     }
-    column( :postal_code ) { |member| 
+    column( :postal_code ) { |member|
       unless member.addresses.empty?
         member.addresses.first.postal_code
       end
     }
-    column( :country ) { |member| 
+    column( :country ) { |member|
       unless member.addresses.empty?
         member.addresses.first.country.name
       end
@@ -77,7 +77,7 @@ ActiveAdmin.register Member do
     column( :qualifications ) { |member|
       unless member.qualifications.empty?
         member.qualifications.map { |q| q.award.name }
-      end  
+      end
     }
   end
 
@@ -141,7 +141,7 @@ ActiveAdmin.register Member do
         n.input :body
       end
     end
-    
+
     f.actions
   end
 
@@ -162,7 +162,7 @@ ActiveAdmin.register Member do
 
     columns do
       column do
-        
+
         attributes_table do
           row t('pna.pna_number') do |m| m.id end
           row :bcu_number
@@ -266,7 +266,13 @@ ActiveAdmin.register Member do
           panel t('pna.training_history') do
             table_for member.course_participations do
               column t('pna.course') do |c| link_to c.course.program.name, admin_course_path( c.course ) end
-              column t('pna.course_director') do |c| link_to c.course.course_director, admin_member_path( c.course.course_director ) end
+              column t('pna.course_director') do |c|
+                if c.course.course_director
+                  link_to c.course.course_director, admin_member_path( c.course.course_director )
+                else
+                  link_to c.course.course_provider, admin_member_path( c.course.course_provider )
+                end
+              end
               column t('pna.date') do |c| c.course.start_date end
               column t( 'pna.result' ) do |p| status_tag( p.result, result_status_tag_status( p.result ) ) end
             end
@@ -277,7 +283,13 @@ ActiveAdmin.register Member do
           panel t('pna.coaching_history') do
             table_for member.coached_courses do
               column t('pna.course') do |c| link_to c.course.program.name, admin_course_path( c.course ) end
-              column t('pna.course_director') do |c| link_to c.course.course_director, admin_member_path( c.course.course_director ) end
+              column t('pna.course_director') do |c|
+                if c.course.course_director
+                  link_to c.course.course_director, admin_member_path( c.course.course_director )
+                else
+                  link_to c.course.course_provider, admin_member_path( c.course.course_provider )
+                end
+              end
               column t('pna.date') do |c| c.course.start_date end
             end
           end
