@@ -81,8 +81,8 @@ module PaddleSportsNorthAmerica
         :enable_starttls_auto => true,
         :user_name => ENV[ 'SMTP_USER' ],
         :password  => ENV[ 'SMTP_PASS' ],
-        :authentication => 'login',
-        :domain => 'gmail.com'
+        :authentication => 'plain',
+        :domain => 'paddlesportsnorthamerica.org'
     }
     config.action_mailer.raise_delivery_errors = true
   end
