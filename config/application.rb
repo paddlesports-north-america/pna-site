@@ -82,7 +82,7 @@ module PaddleSportsNorthAmerica
         :user_name => ENV[ 'SMTP_USER' ],
         :password  => ENV[ 'SMTP_PASS' ],
         :authentication => 'plain',
-        :domain => 'paddlesportsnorthamerica.org'
+        :domain => 'gmail.com'
     }
     config.action_mailer.raise_delivery_errors = true
   end
