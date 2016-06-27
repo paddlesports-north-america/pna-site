@@ -77,12 +77,13 @@ module PaddleSportsNorthAmerica
 
     config.action_mailer.smtp_settings = {
         :address   => ENV[ 'SMTP_SERVER' ],
-        :port      => 465,
+        :port      => ENV[ 'SMTP_PORT'],
         :enable_starttls_auto => true,
         :user_name => ENV[ 'SMTP_USER' ],
         :password  => ENV[ 'SMTP_PASS' ],
         :authentication => 'login',
-        :domain => 'paddlesportsnorthamerica.org'
+        :domain => 'gmail.com'
     }
+    config.action_mailer.raise_delivery_errors = true
   end
 end

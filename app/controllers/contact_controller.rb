@@ -7,6 +7,8 @@ class ContactController < ApplicationController
         @notice = "Your message has been sent! We'll get back to you as soon as we can."
         # redirect_to '/contact'
         @message = Message.new
+      else
+        @notice = "We are having trouble sending your message"
       end
     else
       @message = Message.new
