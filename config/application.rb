@@ -76,11 +76,11 @@ module PaddleSportsNorthAmerica
     config.assets.initialize_on_precompile = false
 
     config.action_mailer.smtp_settings = {
-        :address   => ENV[ 'MANDRILL_SMTP_SERVER' ],
-        :port      => 25,
+        :address   => ENV[ 'SMTP_SERVER' ],
+        :port      => 465,
         :enable_starttls_auto => true,
-        :user_name => ENV[ 'MANDRILL_SMTP_USER' ],
-        :password  => ENV[ 'MANDRILL_API_KEY' ],
+        :user_name => ENV[ 'SMTP_USER' ],
+        :password  => ENV[ 'SMTP_PASS' ],
         :authentication => 'login',
         :domain => 'paddlesportsnorthamerica.org'
     }
