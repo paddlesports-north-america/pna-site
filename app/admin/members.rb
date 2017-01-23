@@ -38,7 +38,11 @@ ActiveAdmin.register Member do
     column :bcu_number
     column :first_name
     column :last_name
-    column :membership_expires
+    column (:membership_expires) { | member|
+      unless member.memberships.empty?
+        member.expiration_date.to_s
+      end
+    }
     column( :email ) { |member|
       unless member.email_addresses.empty?
         member.email_addresses.first
