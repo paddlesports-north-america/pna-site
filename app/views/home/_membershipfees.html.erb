@@ -2,42 +2,42 @@
 <table class="table">
   <thead>
     <tr><!-- Row 1 -->
-       <th>Yearly Membership</th><!-- Col 1 -->
-       <th align="right">Fee</th><!-- Col 2 -->
+       <th><%= @yearly_label %></th><!-- Col 1 -->
+       <th align="right"><%= @fee_label %></th><!-- Col 2 -->
     </tr>
   </thead>
   <tbody>
     <tr><!-- Row 2 -->
-       <td>Student (Under 26 Years)</td><!-- Col 1 -->
-       <td align="right">$60.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Student (Under 26 Years)</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$60.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 3 -->
-       <td>Individual</td><!-- Col 1 -->
-       <td align="right">$75.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Individual</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$75.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 3 -->
-       <td>Individual (3 yr.)</td><!-- Col 1 -->
-       <td align="right">$200.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Individual (3 yr.)</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$200.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 4 -->
-       <td>Family (Two Adults)</td><!-- Col 1 -->
-       <td align="right">$125.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Family (Two Adults)</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$125.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 4 -->
-       <td>Family (3 yr.)</td><!-- Col 1 -->
-       <td align="right">$350.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Family (3 yr.)</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$350.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 5 -->
-       <td class="indent">Additional Family Member Under 18 Years</td><!-- Col 1 -->
-       <td align="right">$20.00</td><!-- Col 2 -->
+       <td data-title="<%= @fee_label %>" class="indent">Additional Family Member Under 18 Years</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$20.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 6 -->
-       <td>Paddling Club</td><!-- Col 1 -->
-       <td align="right">$175.00</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Paddling Club</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$175.00</td><!-- Col 2 -->
     </tr>
     <tr><!-- Row 7 -->
-       <td>Sustaining</td><!-- Col 1 -->
-       <td align="right">$250.00+</td><!-- Col 2 -->
+       <td data-title="<%= @yearly_label %>" >Sustaining</td><!-- Col 1 -->
+       <td data-title="<%= @fee_label %>" align="right">$250.00+</td><!-- Col 2 -->
     </tr>
   </tbody>
 </table>

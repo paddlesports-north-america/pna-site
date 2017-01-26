@@ -17,9 +17,17 @@ class HomeController < ApplicationController
   end
 
   def coaches
+    # Note that this controls the "Documents" tab
+    @program_label = 'Program'
+    @member_label = 'Member'
+    @nonmember_label = 'Non-Member'
+    @yearly_label = 'Yearly Membership'
+    @fee_label = 'Fee'
   end
 
   def membership
+    @yearly_label = 'Yearly Membership'
+    @fee_label = 'Fee'
   end
 
   def contact
