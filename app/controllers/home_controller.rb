@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
 
+  def initialize
+    super
+    # Used on both the documents and membership pages.
+    @yearly_label = 'Yearly Membership'
+    @fee_label = 'Fee'
+  end
+
   # layout "front", :only => [ :index ]
   # layout "landing", :only => [ :landing ]
 
@@ -20,13 +27,9 @@ class HomeController < ApplicationController
     @program_label = 'Program'
     @member_label = 'Member'
     @nonmember_label = 'Non-Member'
-    @yearly_label = 'Yearly Membership'
-    @fee_label = 'Fee'
   end
 
   def membership
-    @yearly_label = 'Yearly Membership'
-    @fee_label = 'Fee'
   end
 
   def contact
