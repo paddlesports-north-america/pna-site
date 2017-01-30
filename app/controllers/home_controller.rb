@@ -16,8 +16,7 @@ class HomeController < ApplicationController
   def paddlers
   end
 
-  def coaches
-    # Note that this controls the "Documents" tab
+  def documents
     @program_label = 'Program'
     @member_label = 'Member'
     @nonmember_label = 'Non-Member'
