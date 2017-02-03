@@ -29,6 +29,9 @@ class HomeController < ApplicationController
     @nonmember_label = 'Non-Member'
   end
 
+  def guidance
+  end
+
   def membership
   end
 

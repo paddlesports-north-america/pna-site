@@ -12,6 +12,7 @@ PaddleSportsNorthAmerica::Application.routes.draw do
   #get 'coaches' => "home#paddlers"
   get 'coaches' => "coaches#index"
   get 'documents' => "home#documents"
+  get 'guidance' => "home#guidance"
   get 'membership' => "home#membership"
   
   get 'about/candidates' => "home#candidates"

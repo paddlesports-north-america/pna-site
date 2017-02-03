@@ -1,0 +1,58 @@
+<%= render 'shared/jumbotron', :image => 'hero-membership.jpg', :text => ['PNA', 'Guidance'] %>
+
+<div class="container body-copy">
+  <div class="row">
+    <div class="col-md-2 leftrail" data-hook="sidebar">
+
+      <p>
+      <p></p>
+    </div>
+
+    <div class="col-md-7" data-hook="content">
+
+      <span class="section" id="policies">
+    <h3>Policies</h3>
+    <div class="list-group">
+
+      <%= link_to "Conflict of Interest Policy", s3_url('downloads/PNA-Conflict-of-Interest-Policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Data Protection Policy", s3_url('downloads/PNA-Data-Protection-Policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Equal Opportunities Policy for Access", s3_url('downloads/PNA-Equal-Opportunities-Policy-for-Access.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Malpractice Policy", s3_url('downloads/PNA-Malpractice-Policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Reasonable Adjustment Policy", s3_url('downloads/PNA-Reasonable-Adjustment-Policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Special Considerations Policy", s3_url('downloads/PNA-Special-Considerations-Policy.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      </div>
+  </span>
+      <span class="section" id="procedures">
+    <h3>Procedures</h3>
+    <div class="list-group">
+      <%= link_to "Complaints Procedure", s3_url('downloads/PNA-Complaints-Procedure.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Enquiries and Appeals Procedures", s3_url('downloads/PNA-Enquiries-Appeals-Procedure.pdf'), :class => 'list-group-item', :target => '_blank' %>
+	</div>
+  </span>
+      <span class="section" id="statements">
+    <h3>Statements</h3>
+    <div class="list-group">
+      <%= link_to "Code of Ethics", s3_url('downloads/PNA-Code-of-Ethics.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Customer Service Statement", s3_url('downloads/PNA-Customer-Service-Statement.pdf'), :class => 'list-group-item', :target => '_blank' %>
+      <%= link_to "Target Response Times", s3_url('downloads/PNA-Target-Response-Times.pdf'), :class => 'list-group-item', :target => '_blank' %>
+    </div>
+  </span>
+    </div>
+    <div class="col-md-2 com-md-offset-1" data-hook="sidenav">
+      <!-- right side nav -->
+      <div class="sidenav hidden-sm hidden-xs scrollspy affix-top" data-spy="affix" data-offset-top="286" data-offset-bottom="360">
+        <ul class="nav">
+
+          <li>
+            <a href="#policies">Policies</a>
+          </li>
+          <li>
+            <a href="#procedures">Procedures</a>
+
+          </li>
+          <li><a href="#statements">Statements</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

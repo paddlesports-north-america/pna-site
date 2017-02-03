@@ -28,6 +28,7 @@
           <li class="<%= "active" if current_page?(controller: 'calendar', action: 'index') %>"><%= link_to t('nav.calendar'), calendar_path %></li>
           <li class="<%= "active" if current_page?(controller: 'coaches', action: 'index') %>"><%= link_to 'Coaches', '/coaches' %></li>
           <li class="<%= "active" if current_page?(controller: 'home', action: 'documents') %>"><%= link_to 'Documents', '/documents' %></li>
+          <li class="<%= "active" if current_page?(controller: 'home', action: 'guidance') %>"><%= link_to 'Guidance', '/guidance' %></li>
           <li class="<%= "active" if current_page?(controller: 'home', action: 'membership') %>"><%= link_to t('nav.membership'), '/membership' %></li>
           <li class="<%= "active" if current_page?(controller: 'contact') %>"><%= link_to t('nav.contact'), '/contact' %></li>
         </ul>
