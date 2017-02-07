@@ -281,14 +281,14 @@
     </p>
   </div>
   <%= link_to "Accredited Prior Learning Guidance Notes", s3_url( 'downloads/Accredited-Prior-Learning-Guidance-Notes-PNA.pdf'), :target => '_blank', :class => 'list-group-item' %>
-  <%= link_to "Accredited Prior Learning Application Form (MS Word)", s3_url( 'downloads/Accredited-Prior-Learning-Application-Form-PNA-Word.docx' ), :target => '_blank', :class => 'list-group-item' %>
+  <%= link_to "Accredited Prior Learning Application Form", s3_url( 'downloads/PNA-Accredited-Prior-Learning-Application-Form.pdf' ), :target => '_blank', :class => 'list-group-item' %>
 </div>
 </section>
 
 <section id="first-aid">
   <h2>First Aid Requirements</h2>
   <p>All active coaches have a responsibility to maintain a current First Aid award, to ensure they can look after paddlers in their care. Coaches sign a declaration, upon registration for our Coaching qualifications, accepting this responsibility. Holding a valid First Aid award is also part of the British Canoeing coach update process. Coaches who meet these requirements are recognized by PNA and British Canoeing as being active and up-to-date.</p>
-  <p><a href="http://paddlesportsnorthamerica.s3.amazonaws.com/downloads/PNA_BC_First_Aid.pdf">First Aid Policy</a></p>
+  <p><a href= <%= s3_url('downloads/PNA_BC_First_Aid.pdf') %>>First Aid Policy</a></p>
   <p>There is often confusion about 4 and 6 hour courses, with many people told these courses are 'one day'. A one day course is 8 contact hours, a two day course is 16 contact hours. Please ensure you access an appropriate length course. <strong>We check training contact time.</strong></p>
   <p><strong>We do not accept First Aid or CPR certifications from online programs.</strong></p>
   <p>An up-to-date First Aid and CPR certificate must be provided to PNA <strong>every three years</strong>. First Aid and CPR certifications are accepted from a number of recognized providers in North America. If First Aid certificates have been issued outside of the United States or Canada, please contact PNA.</p>
@@ -302,7 +302,7 @@
     <a href="http://www.soloschools.com" target="_blank" class="list-group-item">Stonehearth Open Learning Opportunities (SOLO) - Wilderness First Aid</a>
     <a href="http://www.wildmed.com" target="_blank" class="list-group-item">Wilderness Medical Associates (WMA) - Wilderness First Aid</a>
   </div>
-  <p>Please review PNA’s <a href="http://paddlesportsnorthamerica.s3.amazonaws.com/downloads/PNA_BC_First_Aid.pdf">First Aid Policy</a> for further information. </p>
+  <p>Please review PNA’s <a href=<%= s3_url('downloads/PNA_BC_First_Aid.pdf') %>>First Aid Policy</a> for further information. </p>
 </section><!-- ./first aid -->
 
 <section id="statement-of-physical-competence">
