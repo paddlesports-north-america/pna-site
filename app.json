@@ -1,0 +1,60 @@
+{
+  "name": "pna-site",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "AMAZON_S3_URL": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_UPLOAD_BUCKET": {
+      "required": true
+    },
+    "CONTACT_MAIL_TO": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_CRIMSON_URL": {
+      "required": true
+    },
+    "MANDRILL_API_KEY": {
+      "required": true
+    },
+    "MANDRILL_SMTP_PORT": {
+      "required": true
+    },
+    "MANDRILL_SMTP_SERVER": {
+      "required": true
+    },
+    "MANDRILL_SMTP_USER": {
+      "required": true
+    },
+    "SMTP_PASS": {
+      "required": true
+    },
+    "SMTP_PORT": {
+      "required": true
+    },
+    "SMTP_SERVER": {
+      "required": true
+    },
+    "SMTP_USER": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
