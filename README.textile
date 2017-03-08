@@ -70,11 +70,3 @@ If you make improvements to this application, please share with others.
 * Send the author a pull request.
 
 If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. License
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
