@@ -40,25 +40,31 @@ h2. Development
 * Authentication: None
 * Authorization: None
 
-
-
-
-
 h2. Getting Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Clone the repo to your local machine. Edit config/database.yml so that it refers to relevant Postgres databases
+for the different evironments.
+
+Note that right now (20170308) this is made available to the public via Heroku. Nothing in the code explicitly requires
+that to be the case but it's worth keeping in mind.
+
+h2. Deploying
+
+We use Heroku's "Review App" feature and that has some implications for Github workflow. In a nutshell the process is as follows:
+
+# Create a branch with a hopefully meaningful name and do whatever work you need to do
+# Push that branch up to GITHUB and create a pull request
+# Run over to Heroku and login as the PNA admin
+# Select the pna-dev app
+# Under Review Apps you will see that your just created PR is listed and Heroku is asking if you want to create an instance of the app from that PR (Hint: you do)
+# Test and review and whatever you want on that app. New commits in the PR will require the app to be regenerated of course
+# Approve and merge the PR into master
+# Deploy master to the public pna dev site through the Heroku "Deploy" control panel
+# If you are confident in the changes or are otherwise ready, deploy master to the pna-prod Heroku app through it's "Deploy"  control panel
 
 h2. Documentation and Support
 
 This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 h2. Contributing
 
@@ -70,11 +76,3 @@ If you make improvements to this application, please share with others.
 * Send the author a pull request.
 
 If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. License
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
