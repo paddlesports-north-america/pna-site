@@ -30,17 +30,13 @@ ActiveAdmin.register Qualification do
       award = qualification.award
 
       args = {
-        :award => award.name,
+        :award => award,
         :member => member,
         :date => qualification.awarded_on,
-        :course => qualification.course
       }
 
-      
       output = Pna::PrintTemplate.getPdf( award.print_template, args )
-      
       send_data output, :filename => "#{member.id}-#{qualification.id}.pdf", :type => "application/pdf", :disposition => "inline"
     end
-
   end
 end
