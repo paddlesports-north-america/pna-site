@@ -81,13 +81,13 @@ class PerformancePdf < Prawn::Document
 
     font_size 18
 
-    bounding_box( [2.60.in,3.1.in], :width => 3.in, :height => 2.in ) do
+    bounding_box( [2.70.in,3.in], :width => 3.in, :height => 2.in ) do
       text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
     end
 
     # move_down 1.30.in - 10
     font_size 8
-    bounding_box([ 2.in, 1.10.in ], :width => 1.75.in, :height => 40 ) do
+    bounding_box([ 2.1.in, 1.in ], :width => 1.75.in, :height => 40 ) do
       text params[ :date ].strftime( '%B %d, %Y'), :align => :left
     end
 
