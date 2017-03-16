@@ -3,8 +3,9 @@ class Pna::PrintTemplate
   ENDORSEMENT = 'endorsement'
   PERFORMANCE = 'performance'
   MEMBERSHIP = 'membership'
+  ATTENDANCE = 'attendance'
 
-  ALL = [COACHING, ENDORSEMENT, PERFORMANCE, MEMBERSHIP]
+  ALL = [COACHING, ENDORSEMENT, PERFORMANCE, MEMBERSHIP, ATTENDANCE]
 
   def self.getTemplate( type )
     if ALL.include? type
@@ -17,5 +18,4 @@ class Pna::PrintTemplate
   def self.getPdf( type, args )
     self.getTemplate( type ).new.to_pdf( args )
   end
-
 end

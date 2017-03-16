@@ -7,7 +7,12 @@ class PerformancePdf < Prawn::Document
   MARGIN = 0.in
 
   def initialize()
-    super( :page_size => PAGE_SIZE, :margin => MARGIN )
+    if Rails.env.production?
+      bg_img = nil
+    else
+      bg_img = "#{Rails.root}/private/star-award-blank.png"
+    end
+    super( :page_size => PAGE_SIZE, :margin => MARGIN, :background => bg_img)
   end
 
   def to_pdf( params )
@@ -67,32 +72,23 @@ class PerformancePdf < Prawn::Document
     font_size 36
 
 
-    bounding_box( [0,4.865.in], :width => 7.75.in, :height => 2.in ) do
-      font_size 42
-      text params[ :award ].gsub( /[^0-9]/, '' ), :align => :right
-      move_down 2.cm
-      font_size 28
-      text params[ :award ].gsub(/[0-9]|[Ss]tar/,'' ), :align => :right
+    bounding_box( [0.25.in, 3.85.in], :width => bounds.width, :height => 2.in ) do
+      font_size 24
+      text params[ :award ].name, :align => :center
     end
 
     # move_down 1.40.in
 
-    font_size 22
+    font_size 18
 
-    bounding_box( [5.in,2.875.in], :width => 3.in, :height => 2.in ) do
+    bounding_box( [2.70.in,3.in], :width => 3.in, :height => 2.in ) do
       text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
     end
 
     # move_down 1.30.in - 10
-    font_size 12
-    bounding_box([ 6.25.in, 1.5.in ], :width => 1.75.in, :height => 40 ) do
+    font_size 8
+    bounding_box([ 2.1.in, 1.in ], :width => 1.75.in, :height => 40 ) do
       text params[ :date ].strftime( '%B %d, %Y'), :align => :left
-    end
-
-    bounding_box([ 0.625.in, 1.4.in ], :width => 3.in, :height => 50 ) do
-      font File.join( Rails.root, 'fonts', 'Arial.ttf' )
-      font_size 8
-      text "Certificate # #{params[ :member ].id.to_s.rjust(4,'0')}-#{params[:date].strftime('%m%d%y')}-#{params[ :course ].id.to_s.rjust(4, '0')}"
     end
 
     render
