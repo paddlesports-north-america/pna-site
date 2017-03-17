@@ -45,8 +45,7 @@ h2. Getting Started
 Clone the repo to your local machine. Edit config/database.yml so that it refers to relevant Postgres databases
 for the different evironments.
 
-Note that right now (20170308) this is made available to the public via Heroku. Nothing in the code explicitly requires
-that to be the case but it's worth keeping in mind.
+Note that right now (20170308) the app is deployed to and made available to the public via Heroku. Nothing in the code explicitly requires that to be the case but it's worth keeping in mind.
 
 h2. Deploying
 
