@@ -60,7 +60,9 @@ We use Heroku's "Review App" feature and that has some implications for Github w
 # Test and review and whatever you want on that app. New commits in the PR will require the app to be regenerated of course
 # Approve and merge the PR into master
 # Deploy master to the public pna dev site through the Heroku "Deploy" control panel
-# If you are confident in the changes or are otherwise ready, deploy master to the pna-prod Heroku app through it's "Deploy"  control panel
+# If you are confident in the changes or are otherwise ready, deploy master to the pna-prod. There is no particular time when this must be done (i.e. there's not much concern for downtime) but do consider the time it would take to rollback a change. Perhaps the busiest time for the site isn't the best time for deploying things
+## It is always prudent to backup the database before deploying
+## Use the "Deploy" control panel to deploy the app
 
 h2. Documentation and Support
 
