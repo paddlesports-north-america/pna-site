@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :program do
+    award
     name "A Test Program"
     program_type Pna::ProgramType::ALL.first
   end

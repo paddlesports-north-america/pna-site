@@ -24,4 +24,22 @@ describe CourseParticipant do
     end
   end
 
+  describe "creates quals" do
+    it "should have create qual if not there" do
+      @course_participant.member.qualifications.length.should == 0
+      @course_participant.assign_qualifications
+      @course_participant.member.qualifications.length.should == 1
+    end
+
+    it "should update most recent award if there" do
+      @course_participant.assign_qualifications
+      @course_participant.member.qualifications.length.should == 1
+      new_award_date = Date.today.advance(:years => 1)
+      new_award_date.should_not == @course_participant.member.qualifications[0].most_recent_award
+      @course_participant.course.end_date = new_award_date
+      @course_participant.assign_qualifications
+      @course_participant.member.qualifications.reload
+      @course_participant.member.qualifications[0].most_recent_award.should == new_award_date
+    end
+  end
 end
