@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170403180331) do
+ActiveRecord::Schema.define(:version => 20170501165955) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -250,6 +250,8 @@ ActiveRecord::Schema.define(:version => 20170403180331) do
     t.integer  "award_id"
     t.string   "program_type"
   end
+
+  add_index "programs", ["award_id"], :name => "unique_award", :unique => true
 
   create_table "qualifications", :force => true do |t|
     t.integer  "member_id"
