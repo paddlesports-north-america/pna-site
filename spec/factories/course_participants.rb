@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :course_participant do
     course
     member
-    result CourseParticipant::RESULT.values.first
+    prerequisites_checked true
+    result CourseParticipant::RESULT[:pass]
   end
 end

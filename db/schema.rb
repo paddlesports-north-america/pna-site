@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170502163536) do
+ActiveRecord::Schema.define(:version => 20170427161433) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -252,18 +252,20 @@ ActiveRecord::Schema.define(:version => 20170502163536) do
   end
 
   create_table "qualifications", :force => true do |t|
-    t.integer  "member_id"
-    t.integer  "award_id"
+    t.integer  "member_id",         :null => false
+    t.integer  "award_id",          :null => false
     t.date     "printed_on"
-    t.date     "awarded_on"
+    t.date     "first_awarded_on",  :null => false
     t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.boolean  "verified"
+    t.date     "most_recent_award", :null => false
   end
 
   add_index "qualifications", ["award_id"], :name => "index_qualifications_on_award_id"
   add_index "qualifications", ["course_id"], :name => "index_qualifications_on_course_id"
+  add_index "qualifications", ["member_id", "award_id"], :name => "one_qual_type_per", :unique => true
   add_index "qualifications", ["member_id"], :name => "index_qualifications_on_member_id"
 
   create_table "region_locations", :force => true do |t|

@@ -7,7 +7,7 @@ ActiveAdmin.register Qualification do
     f.inputs do
       f.input :award, :input_html => { "data-hook" => "choose" }
       f.input :course, :input_html => { "data-hook" => "choose" }
-      f.input :awarded_on, :as => :date_picker
+      f.input :first_awarded_on, :as => :date_picker
       f.input :printed_on, :as => :date_picker
       f.input :verified, :hint => "A qualification should be verified only if you have seen supporting evidence, ie. appropriate paperwork"
     end
