@@ -32,7 +32,7 @@ ActiveAdmin.register Qualification do
       args = {
         :award => award,
         :member => member,
-        :date => qualification.awarded_on,
+        :date => qualification.most_recent_award,
       }
 
       output = Pna::PrintTemplate.getPdf( award.print_template, args )
