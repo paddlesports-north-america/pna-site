@@ -341,9 +341,21 @@
 <div class="list-group">
   <%= link_to "Course Report", s3_url( 'downloads/course-report.pdf'), :class => 'list-group-item', :target => '_blank' %>
   <%= link_to "Program Fee Form", s3_url( 'downloads/PNA-Program-Fee-Form.pdf'), :class => 'list-group-item', :target => '_blank' %>
-  <%= link_to "Course Schedule", s3_url( 'downloads/course-schedule.pdf'), :class => 'list-group-item', :target => '_blank' %>
 </div>
 
+<div class="list-group">
+  <p class="list-group-item">Course Schedules</p>
+  <div class="list-group-item well">
+    <p>Course Schedules are provided for a variety of specific courses. If you do not see a specific Course Schedule listed below use the generic Cours Schedule.</p>
+  </div>
+  <%= link_to "Course Schedule", s3_url( 'downloads/course-schedule.pdf'), :class => 'list-group-item', :target => '_blank' %>
+  <%= link_to "Course Schedule-Leader Training", s3_url( 'downloads/PNA-Course-Schedule-Leader-Training.pdf'), :class => 'list-group-item', :target => '_blank' %>
+  <%= link_to "Course Schedule-Leader Assessment", s3_url( 'downloads/PNA-Course-Schedule-Leader-Assessment.pdf'), :class => 'list-group-item', :target => '_blank' %>
+  <%= link_to "Course Schedule-Level 1 Boat-based", s3_url( 'downloads/PNA-Course-Schedule-Level-1-Boat-based.pdf'), :class => 'list-group-item', :target => '_blank' %>
+  <%= link_to "Course Schedule-Level 2 Training", s3_url( 'downloads/PNA-Course-Schedule-Level-2-Training.pdf'), :class => 'list-group-item', :target => '_blank' %>
+  <%= link_to "Course Schedule-Level 2 Assessment", s3_url( 'downloads/PNA-Course-Schedule-Level-2-Assessment.pdf'), :class => 'list-group-item', :target => '_blank' %>
+</div>  
+  
 <div class="list-group">
   <%= link_to "British Canoeing Terms of Reference and Environmental Definitions", s3_url('downloads/BC-Terms-of-Reference.pdf'), :class => 'list-group-item', :target => '_blank' %>
   <%= link_to "Star Award Guidance Notes", s3_url( 'downloads/Star-Award-Guidance-Notes.pdf'), :class => 'list-group-item', :target => '_blank' %>
