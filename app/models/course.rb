@@ -89,6 +89,11 @@ class Course < ActiveRecord::Base
     self.course_coaches.where( :is_director => false ).map { |c| c.member }
   end
 
+  # The returned value is intended to be used in the picker for the New Qualifications admin screen.
+  def admin_new_qual_label
+    "#{program.name}: (#{course_provider}) ##{id}"
+  end
+
   def to_s
     unless program.nil?
       "#{program.name}: ##{id}"
