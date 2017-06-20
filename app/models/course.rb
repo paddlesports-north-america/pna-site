@@ -91,7 +91,11 @@ class Course < ActiveRecord::Base
 
   # The returned value is intended to be used in the picker for the New Qualifications admin screen.
   def admin_new_qual_label
-    "#{program.name}: (#{course_provider}) ##{id}"
+    center_name = "unspecified"
+    if !center.nil?
+      center_name = center.name
+    end
+    "#{program.name}: (#{course_provider}@#{center_name}) ##{id}"
   end
 
   def to_s
