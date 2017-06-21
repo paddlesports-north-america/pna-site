@@ -7,6 +7,12 @@ ActiveAdmin.register Course do
   scope :past
   scope :calendar
 
+  [:all, :upcoming, :past, :calendar].each do | sym |
+    scope(sym, :default => (sym == :all)) do | courses |
+      courses.includes [:course_provider]
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :program, :input_html => { "data-hook" => "choose" }
@@ -58,7 +64,8 @@ ActiveAdmin.register Course do
     column :start_date
     column :end_date
     column :center
-    column :course_director
+    column("Course Director", nil, :sortable => :'members.last_name') { | acourse |
+      "#{acourse.course_provider.first_name} #{acourse.course_provider.last_name}"}
     actions
   end
 
