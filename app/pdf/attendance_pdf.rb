@@ -9,7 +9,7 @@ class AttendancePdf < Prawn::Document
     if Rails.env.production?
       bg_img = nil
     else
-      bg_img = "#{Rails.root}/private/attendance-certificate-blank.png"
+      bg_img = "#{Rails.root}/private/star-award-blank.png"
     end
     super( :page_size => PAGE_SIZE, :margin => MARGIN, :background => bg_img)
   end
@@ -33,20 +33,21 @@ class AttendancePdf < Prawn::Document
 
     font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )
 
-    bounding_box( [ 0.in,3.125.in ], :width => 8.25.in, :height => 3.in ) do
+    bounding_box( [0.25.in, 3.85.in], :width => bounds.width, :height => 2.in ) do
       font_size 24
-      text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :center
-    end
-
-    bounding_box( [ 0, 2.125.in ], :width => 8.25.in, :height => 2.in ) do
-      font_size 28
       text params[ :award ].name, :align => :center
     end
 
+    font_size 18
+
+    bounding_box( [2.70.in,3.in], :width => 3.in, :height => 2.in ) do
+      text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
+    end
+
     font File.join( Rails.root, 'fonts', 'Arial.ttf' )
-    bounding_box( [ 0, 1.5.in ], :width => 8.25.in, :height => 1.in ) do
-      font_size 12
-      text params[ :date ].strftime( '%B %d, %Y' ), :align => :center
+    font_size 8
+    bounding_box([ 2.1.in, 1.in ], :width => 1.75.in, :height => 40 ) do
+      text params[ :date ].strftime( '%B %d, %Y'), :align => :left
     end
 
     render
