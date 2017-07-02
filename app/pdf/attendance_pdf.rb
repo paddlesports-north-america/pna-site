@@ -16,7 +16,11 @@ class AttendancePdf < Prawn::Document
 
   def to_pdf( params )
 
-    bounding_box( [ 0.25.in, 10.8.in ], :width => 6.25.in, :height => 6.in ) do
+    image "#{Rails.root}/public/pna-medalion.png", position: 5.85.in, vposition: 0.35.in, height: 1.75.in
+
+    bounding_box( [ 0.25.in, 10.8.in ], :width => 7.in, :height => 6.in ) do
+
+      bounding_box( [ 0, 6.in ], :width => 4.75.in, :height => 6.in ) do
       font File.join( Rails.root, 'fonts', 'Arial.ttf' )
       font_size 12
       text Date.today.strftime( '%B %d, %Y' )
@@ -29,7 +33,8 @@ class AttendancePdf < Prawn::Document
 
       move_down 0.25.in
       text "Information about PNA membership and member benefits can be found on the PNA website at http://www.paddlesportsnorthamerica.org. If you have any questions about the programs we offer, please contact your PNA Regional Representative. You can find your Regional Representative by visiting the Coaches page on PNA's website: http://www.paddlesportsnorthamerica.org/coaches"
-     end
+      end
+    end
 
     font File.join( Rails.root, 'fonts', 'Arial Bold.ttf' )
 
@@ -40,13 +45,13 @@ class AttendancePdf < Prawn::Document
 
     font_size 18
 
-    bounding_box( [2.70.in,3.in], :width => 3.in, :height => 2.in ) do
+    bounding_box( [2.70.in,3.1.in], :width => 3.in, :height => 2.in ) do
       text "#{params[ :member ].first_name} #{params[ :member ].last_name }", :align => :left
     end
 
     font File.join( Rails.root, 'fonts', 'Arial.ttf' )
     font_size 8
-    bounding_box([ 2.1.in, 1.in ], :width => 1.75.in, :height => 40 ) do
+    bounding_box([ 2.1.in, 1.1.in ], :width => 1.75.in, :height => 40 ) do
       text params[ :date ].strftime( '%B %d, %Y'), :align => :left
     end
 
