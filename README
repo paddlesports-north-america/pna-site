@@ -14,6 +14,3 @@ Recipes:
 Preferences:
 {:git=>true, :railsapps=>"none", :dev_webserver=>"thin", :prod_webserver=>"unicorn", :database=>"postgresql", :templates=>"erb", :unit_test=>"rspec", :integration=>"rspec-capybara", :continuous_testing=>"none", :fixtures=>"factory_girl", :frontend=>"none", :email=>"none", :authentication=>"none", :authorization=>"none", :form_builder=>"none", :starter_app=>"none", :rvmrc=>true, :quiet_assets=>true, :better_errors=>true, :ban_spiders=>true}
 
-________________________
-
-License
