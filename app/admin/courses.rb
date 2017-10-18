@@ -2,6 +2,26 @@ ActiveAdmin.register Course do
   menu :priority => 2
   config.batch_actions = false
 
+  # This hack is because preserve_default_filters does not allow us to specify the
+  # sorting stuff we use for the :center filter
+  filter :country
+  filter :state
+  filter :program
+  filter :course_provider
+  filter :center, as: :select, :collection => proc{
+    Center.all.collect { | center | center.name }.sort
+  }
+  filter :course_coaches
+  filter :coaches
+  filter :course_participants
+  filter :venue
+  filter :created_at
+  filter :update_at
+  filter :show_on_calendar
+  filter :start_date
+  filter :end_date
+  filter :course_number
+
   scope :all, :default => true
   scope :upcoming
   scope :past
